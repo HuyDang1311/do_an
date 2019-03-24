@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8377dc13-e9c8-4256-9265-fba50cc66b30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_134916_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,122 +26,30 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_laravel: database" type="162271b6:PgImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_laravel: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_laravel: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_laravel@127.0.0.1" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_laravel: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134916_create_password_resets_table.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134914_create_companies_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135139_create_schedules_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+        <entry file="das://b6daaeae-53e4-436c-8c20-0dafa2a0dc86/database/db_laravel/schema/public/table/bus_stations">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="150">
+                <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_oders_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="24" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134921_create_cars_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/console.sql">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -152,120 +58,9 @@
             <state>
               <ID>DATABASE</ID>
               <OriginalElement>b6daaeae-53e4-436c-8c20-0dafa2a0dc86</OriginalElement>
-              <nodes>
-                <node x="842.4270833333333" y="1072.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.tickets</node>
-                <node x="256.0" y="1293.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.password_resets</node>
-                <node x="972.7734375" y="728.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers</node>
-                <node x="1126.9270833333333" y="1072.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates</node>
-                <node x="262.0" y="382.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.bus_stations</node>
-                <node x="0.0" y="1293.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.migrations</node>
-                <node x="463.50911458333326" y="0.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies</node>
-                <node x="566.4270833333333" y="358.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars</node>
-                <node x="705.0624999999999" y="728.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats</node>
-                <node x="579.5624999999999" y="1048.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders</node>
-                <node x="0.0" y="298.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users</node>
-                <node x="341.71093749999994" y="692.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans</node>
-                <node x="296.1249999999999" y="1048.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules</node>
-              </nodes>
+              <nodes />
               <notes />
-              <edges>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers">
-                  <point x="77.0" y="-100.0" />
-                  <point x="772.0624999999999" y="1028.0" />
-                  <point x="1033.2734375" y="1028.0" />
-                  <point x="-60.5" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.bus_stations">
-                  <point x="-86.62499999999989" y="-148.0" />
-                  <point x="370.58593750000006" y="667.0" />
-                  <point x="319.75" y="667.0" />
-                  <point x="-57.75" y="88.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-                  <point x="0.0" y="-172.0" />
-                  <point x="121.0" y="278.0" />
-                  <point x="493.75911458333326" y="278.0" />
-                  <point x="-90.75" y="124.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans">
-                  <point x="1.1368683772161603E-13" y="-100.0" />
-                  <point x="411.625" y="1028.0" />
-                  <point x="399.46093749999994" y="1028.0" />
-                  <point x="-57.75" y="148.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-                  <point x="77.00000000000011" y="-100.0" />
-                  <point x="488.625" y="1018.0" />
-                  <point x="694.5624999999999" y="1018.0" />
-                  <point x="694.5624999999999" y="667.0" />
-                  <point x="706.4270833333333" y="667.0" />
-                  <point x="0.0" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats">
-                  <point x="0.0" y="-100.0" />
-                  <point x="695.0624999999999" y="1028.0" />
-                  <point x="762.8124999999999" y="1028.0" />
-                  <point x="-57.75" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-                  <point x="86.62500000000011" y="-148.0" />
-                  <point x="543.8359375" y="667.0" />
-                  <point x="613.0937499999999" y="667.0" />
-                  <point x="-93.33333333333337" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans">
-                  <point x="-77.0" y="-100.0" />
-                  <point x="618.0624999999999" y="1008.0" />
-                  <point x="514.9609375" y="1008.0" />
-                  <point x="57.75" y="148.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-                  <point x="56.75" y="-76.0" />
-                  <point x="1297.1770833333333" y="1028.0" />
-                  <point x="1254.6770833333333" y="1028.0" />
-                  <point x="1254.6770833333333" y="268.0" />
-                  <point x="675.2591145833333" y="268.0" />
-                  <point x="90.75" y="124.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-                  <point x="28.875000000000114" y="-148.0" />
-                  <point x="486.08593750000006" y="667.0" />
-                  <point x="503.5" y="667.0" />
-                  <point x="503.5" y="278.0" />
-                  <point x="554.2591145833333" y="278.0" />
-                  <point x="-30.25" y="124.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-                  <point x="0.0" y="-112.0" />
-                  <point x="820.5624999999999" y="667.0" />
-                  <point x="799.7604166666665" y="667.0" />
-                  <point x="93.33333333333326" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users">
-                  <point x="-76.99999999999989" y="-100.0" />
-                  <point x="334.625" y="1028.0" />
-                  <point x="121.0" y="1028.0" />
-                  <point x="0.0" y="172.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.tickets" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats">
-                  <point x="0.0" y="-76.0" />
-                  <point x="957.9270833333333" y="1018.0" />
-                  <point x="878.3124999999999" y="1018.0" />
-                  <point x="57.75" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers">
-                  <point x="-56.75" y="-76.0" />
-                  <point x="1183.6770833333333" y="1028.0" />
-                  <point x="1154.2734375" y="1028.0" />
-                  <point x="60.5" y="112.0" />
-                </edge>
-                <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-                  <point x="0.0" y="-112.0" />
-                  <point x="706.4270833333333" y="278.0" />
-                  <point x="614.7591145833333" y="278.0" />
-                  <point x="30.25" y="124.0" />
-                </edge>
-              </edges>
+              <edges />
               <settings layout="Hierarchic Group" zoom="0.9177840508115735" x="261.9151642159059" y="1105.4994232987312" />
               <SelectedNodes />
               <Categories>
@@ -319,6 +114,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135139_create_schedules_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134921_create_cars_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -445,7 +241,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/db_laravel@127.0.0.png" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -495,12 +291,12 @@
       <updated>1553267633650</updated>
       <workItem from="1553267634886" duration="3579000" />
       <workItem from="1553434925275" duration="4146000" />
-      <workItem from="1553445348017" duration="1173000" />
+      <workItem from="1553445348017" duration="1879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8898000" />
+    <option name="totallyTimeSpent" value="9604000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -518,6 +314,7 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" weight="0.32868218" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="1" weight="0.32868218" />
       <window_info anchor="bottom" auto_hide="true" id="TODO" order="2" weight="0.32868218" />
@@ -541,20 +338,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HidesAttributes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -795,120 +578,9 @@
         <state>
           <ID>DATABASE</ID>
           <OriginalElement>b6daaeae-53e4-436c-8c20-0dafa2a0dc86</OriginalElement>
-          <nodes>
-            <node x="842.4270833333333" y="1072.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.tickets</node>
-            <node x="256.0" y="1293.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.password_resets</node>
-            <node x="972.7734375" y="728.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers</node>
-            <node x="1126.9270833333333" y="1072.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates</node>
-            <node x="262.0" y="382.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.bus_stations</node>
-            <node x="0.0" y="1293.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.migrations</node>
-            <node x="463.50911458333326" y="0.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies</node>
-            <node x="566.4270833333333" y="358.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars</node>
-            <node x="705.0624999999999" y="728.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats</node>
-            <node x="579.5624999999999" y="1048.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders</node>
-            <node x="0.0" y="298.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users</node>
-            <node x="341.71093749999994" y="692.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans</node>
-            <node x="296.1249999999999" y="1048.0">b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules</node>
-          </nodes>
+          <nodes />
           <notes />
-          <edges>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers">
-              <point x="77.0" y="-100.0" />
-              <point x="772.0624999999999" y="1028.0" />
-              <point x="1033.2734375" y="1028.0" />
-              <point x="-60.5" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.bus_stations">
-              <point x="-86.62499999999989" y="-148.0" />
-              <point x="370.58593750000006" y="667.0" />
-              <point x="319.75" y="667.0" />
-              <point x="-57.75" y="88.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-              <point x="0.0" y="-172.0" />
-              <point x="121.0" y="278.0" />
-              <point x="493.75911458333326" y="278.0" />
-              <point x="-90.75" y="124.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans">
-              <point x="1.1368683772161603E-13" y="-100.0" />
-              <point x="411.625" y="1028.0" />
-              <point x="399.46093749999994" y="1028.0" />
-              <point x="-57.75" y="148.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-              <point x="77.00000000000011" y="-100.0" />
-              <point x="488.625" y="1018.0" />
-              <point x="694.5624999999999" y="1018.0" />
-              <point x="694.5624999999999" y="667.0" />
-              <point x="706.4270833333333" y="667.0" />
-              <point x="0.0" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats">
-              <point x="0.0" y="-100.0" />
-              <point x="695.0624999999999" y="1028.0" />
-              <point x="762.8124999999999" y="1028.0" />
-              <point x="-57.75" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-              <point x="86.62500000000011" y="-148.0" />
-              <point x="543.8359375" y="667.0" />
-              <point x="613.0937499999999" y="667.0" />
-              <point x="-93.33333333333337" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.oders" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans">
-              <point x="-77.0" y="-100.0" />
-              <point x="618.0624999999999" y="1008.0" />
-              <point x="514.9609375" y="1008.0" />
-              <point x="57.75" y="148.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-              <point x="56.75" y="-76.0" />
-              <point x="1297.1770833333333" y="1028.0" />
-              <point x="1254.6770833333333" y="1028.0" />
-              <point x="1254.6770833333333" y="268.0" />
-              <point x="675.2591145833333" y="268.0" />
-              <point x="90.75" y="124.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.plans" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-              <point x="28.875000000000114" y="-148.0" />
-              <point x="486.08593750000006" y="667.0" />
-              <point x="503.5" y="667.0" />
-              <point x="503.5" y="278.0" />
-              <point x="554.2591145833333" y="278.0" />
-              <point x="-30.25" y="124.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars">
-              <point x="0.0" y="-112.0" />
-              <point x="820.5624999999999" y="667.0" />
-              <point x="799.7604166666665" y="667.0" />
-              <point x="93.33333333333326" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.schedules" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.users">
-              <point x="-76.99999999999989" y="-100.0" />
-              <point x="334.625" y="1028.0" />
-              <point x="121.0" y="1028.0" />
-              <point x="0.0" y="172.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.tickets" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.seats">
-              <point x="0.0" y="-76.0" />
-              <point x="957.9270833333333" y="1018.0" />
-              <point x="878.3124999999999" y="1018.0" />
-              <point x="57.75" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.rates" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.customers">
-              <point x="-56.75" y="-76.0" />
-              <point x="1183.6770833333333" y="1028.0" />
-              <point x="1154.2734375" y="1028.0" />
-              <point x="60.5" y="112.0" />
-            </edge>
-            <edge source="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.cars" target="b6daaeae-53e4-436c-8c20-0dafa2a0dc86.TABLE:db_laravel.public.companies">
-              <point x="0.0" y="-112.0" />
-              <point x="706.4270833333333" y="278.0" />
-              <point x="614.7591145833333" y="278.0" />
-              <point x="30.25" y="124.0" />
-            </edge>
-          </edges>
+          <edges />
           <settings layout="Hierarchic Group" zoom="0.9177840508115735" x="261.9151642159059" y="1105.4994232987312" />
           <SelectedNodes />
           <Categories>
@@ -920,8 +592,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <state relative-caret-position="135">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b6daaeae-53e4-436c-8c20-0dafa2a0dc86/database/db_laravel/schema/public/table/bus_stations">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="150">
+            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
