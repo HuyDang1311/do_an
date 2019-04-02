@@ -5,23 +5,24 @@ if (!function_exists('transArr')) {
     /**
      * Translate with array
      *
-     * @param array $data   Data format
-     * @param array $locale Locale
-     * @param bool  $isFlip Check use flip array
+     * @param array  $data   Data format
+     * @param string $locale Locale
+     * @param bool   $isFlip Check use flip array
      *
      * @return array
      */
-    function transArr(array $data, $locale = null, bool $isFlip = false)
+    function transArr(array $data, string $locale = null, bool $isFlip = false)
     {
         $locales = explode(",", $locale);
+
         $arr = [];
 
         foreach ($data as $key => $value) {
             foreach ($locales as $locale) {
                 if ($isFlip) {
-                    $arr[trans($value, [], 'messages', $locale)] = $key;
+                    $arr[trans($value, [], $locale)] = $key;
                 } else {
-                    $arr[$key] = trans($value, [], 'messages', $locale);
+                    $arr[$key] = trans($value, [], $locale);
                 }
             }
         }
