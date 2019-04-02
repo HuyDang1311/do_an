@@ -15,14 +15,21 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('seat_id');
+//            $table->unsignedInteger('seat_id');
             $table->unsignedInteger('plan_id');
             $table->unsignedInteger('customer_id');
-            $table->smallInteger('status')->index();
+            $table->string('order_code')->unique();
+            $table->unsignedInteger('payment_method_id');
+            $table->unsignedInteger('coupon_id');
+//            $table->smallInteger('status')->index();
             $table->timestamps();
-            $table->foreign('seat_id')->references('id')->on('seats');
+//            $table->foreign('seat_id')->references('id')->on('seats');
             $table->foreign('plan_id')->references('id')->on('plans');
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('payment_method_id')->references('id')->on('payment_method');
+            $table->foreign('coupon_id')->references('id')->on('coupons');
+
+
         });
     }
 

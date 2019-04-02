@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8377dc13-e9c8-4256-9265-fba50cc66b30" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6daaeae-53e4-436c-8c20-0dafa2a0dc86.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/storage_v2/_src_/database/db_laravel.-L-NuA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/storage_v2/_src_/database/db_laravel.-L-NuA/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_oders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,73 +34,113 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="do_an@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="do_an@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="do_an@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="do_an: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_075157_create_payment_method_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_072050_create_coupons_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/seeds/CustomerTableSeeder.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_070653_create_images_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+            <state relative-caret-position="510">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_100342_create_evaluations_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="525">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/fzaninotto/faker/src/Faker/Factory.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="255">
+              <caret line="19" column="37" selection-start-line="19" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="390">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Customer.php">
+        <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding>
-                <element signature="e#30#69#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_075216_create_order_detail_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="730" column="23" lean-forward="true" selection-start-line="730" selection-start-column="23" selection-end-line="730" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasTimestamps.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="300">
+              <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -134,18 +179,12 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134941_create_cars_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135108_create_tickets_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_oders_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135047_create_rates_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134914_create_companies_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135139_create_schedules_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134921_create_cars_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/database/seeds/OderTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php" />
         <option value="$PROJECT_DIR$/app/Models/Company.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/app/Models/Ticket.php" />
@@ -158,9 +197,21 @@
         <option value="$PROJECT_DIR$/app/Models/Car.php" />
         <option value="$PROJECT_DIR$/app/Models/BusStation.php" />
         <option value="$PROJECT_DIR$/app/Models/Customer.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/CustomerTableSeeder.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/2c059648-2303-4206-9086-c0814156bcc0/console_1.sql" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_02_072050_create_coupons_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135047_create_rates_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_02_075157_create_payment_method_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_02_075216_create_order_detail_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_02_070653_create_images_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_02_100342_create_evaluations_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php" />
       </list>
     </option>
   </component>
@@ -248,17 +299,19 @@
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="75" />
-    <option name="y" value="44" />
-    <option name="width" value="1281" />
-    <option name="height" value="704" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,18 +322,13 @@
             <path>
               <item name="do_an" type="b2602c69:ProjectViewProjectNode" />
               <item name="do_an" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="do_an" type="b2602c69:ProjectViewProjectNode" />
-              <item name="do_an" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="do_an" type="b2602c69:ProjectViewProjectNode" />
               <item name="do_an" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="factories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="do_an" type="b2602c69:ProjectViewProjectNode" />
@@ -288,21 +336,14 @@
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="do_an" type="b2602c69:ProjectViewProjectNode" />
-              <item name="do_an" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql&#10;postgresql" />
+    <property name="DatabaseDriversLRU" value="postgresql&#10;mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
@@ -356,11 +397,13 @@
       <workItem from="1553434925275" duration="4146000" />
       <workItem from="1553445348017" duration="1879000" />
       <workItem from="1553992986021" duration="4495000" />
+      <workItem from="1554188066690" duration="4197000" />
+      <workItem from="1554205693851" duration="391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14099000" />
+    <option name="totallyTimeSpent" value="19947000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,8 +415,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" side_tool="true" />
@@ -382,7 +424,7 @@
       <window_info anchor="bottom" auto_hide="true" id="Run" order="1" weight="0.32868218" />
       <window_info anchor="bottom" auto_hide="true" id="TODO" order="2" weight="0.32868218" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="3" weight="0.32868218" />
-      <window_info anchor="bottom" auto_hide="true" id="Terminal" order="4" weight="0.32868218" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Terminal" order="4" visible="true" weight="0.40816328" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
@@ -390,80 +432,18 @@
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32868218" />
-      <window_info anchor="right" id="Database" order="0" weight="0.21434262" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32857144" />
+      <window_info anchor="right" id="Database" order="0" weight="0.21428572" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.30677292" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.31684983" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/cache/packages.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/cache/services.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2601" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="6" lean-forward="true" selection-start-line="79" selection-start-column="6" selection-end-line="79" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/vi/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/LocalizationMiddleware.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="58" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="73" selection-start-line="25" selection-start-column="73" selection-end-line="25" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -471,23 +451,7 @@
     <entry file="file://$PROJECT_DIR$/resources/src/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134914_create_companies_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/console_1.sql" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b6daaeae-53e4-436c-8c20-0dafa2a0dc86/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -505,6 +469,7 @@
             <Category>Key columns</Category>
             <Category>Columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -518,13 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://b6daaeae-53e4-436c-8c20-0dafa2a0dc86/database/db_laravel/schema/public/table/bus_stations">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://b6daaeae-53e4-436c-8c20-0dafa2a0dc86/database/db_laravel/schema/public/table/bus_stations" />
     <entry file="file://$PROJECT_DIR$/database/seeds/OrderTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -539,13 +498,6 @@
           <folding>
             <element signature="e#30#69#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135047_create_rates_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="50" lean-forward="true" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -579,27 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135139_create_schedules_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135108_create_tickets_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -620,13 +551,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/PasswordRest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -644,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -658,13 +575,6 @@
           <folding>
             <element signature="e#30#69#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -685,34 +595,6 @@
           <folding>
             <element signature="e#30#69#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134921_create_cars_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="47" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134916_create_password_resets_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -747,17 +629,282 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/CustomerTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9fe789f8-cc41-432b-8137-6aafb24f3745/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/2c059648-2303-4206-9086-c0814156bcc0/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/2c059648-2303-4206-9086-c0814156bcc0/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2c059648-2303-4206-9086-c0814156bcc0/schema/do_an/table/companies">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/2c059648-2303-4206-9086-c0814156bcc0.SCHEMA:do_an">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>2c059648-2303-4206-9086-c0814156bcc0.SCHEMA:do_an</OriginalElement>
+          <nodes>
+            <node x="0.0" y="1195.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.migrations</node>
+            <node x="731.4010416666667" y="333.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.cars</node>
+            <node x="313.25" y="966.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.orders</node>
+            <node x="919.0" y="966.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.schedules</node>
+            <node x="696.0" y="988.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.tickets</node>
+            <node x="693.3697916666667" y="677.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.seats</node>
+            <node x="121.75" y="677.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.customers</node>
+            <node x="244.0" y="1195.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.password_resets</node>
+            <node x="340.99479166666674" y="355.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.bus_stations</node>
+            <node x="1027.9166666666667" y="278.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.users</node>
+            <node x="0.0" y="988.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.rates</node>
+            <node x="409.36979166666674" y="644.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans</node>
+            <node x="647.6276041666667" y="0.0">2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.companies</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.tickets" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.seats">
+              <point x="0.0" y="-70.0" />
+              <point x="797.5" y="946.0" />
+              <point x="841.1197916666667" y="946.0" />
+              <point x="49.25" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.companies">
+              <point x="33.0" y="-136.0" />
+              <point x="574.4947916666667" y="258.0" />
+              <point x="731.6276041666667" y="258.0" />
+              <point x="-28.0" y="114.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.bus_stations">
+              <point x="-99.0" y="-136.0" />
+              <point x="442.36979166666674" y="619.0" />
+              <point x="396.74479166666674" y="619.0" />
+              <point x="-55.75" y="81.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.schedules" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans">
+              <point x="-68.0" y="-92.0" />
+              <point x="953.0" y="936.0" />
+              <point x="607.3697916666667" y="936.0" />
+              <point x="66.0" y="136.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.rates" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.companies">
+              <point x="-59.25" y="-70.0" />
+              <point x="59.25" y="946.0" />
+              <point x="111.25" y="946.0" />
+              <point x="111.25" y="248.0" />
+              <point x="675.6276041666667" y="248.0" />
+              <point x="-84.0" y="114.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.users" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.companies">
+              <point x="0.0" y="-158.0" />
+              <point x="1145.4166666666667" y="248.0" />
+              <point x="843.6276041666667" y="248.0" />
+              <point x="84.0" y="114.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.orders" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.seats">
+              <point x="79.0" y="-92.0" />
+              <point x="510.75" y="946.0" />
+              <point x="742.6197916666667" y="946.0" />
+              <point x="-49.25" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.rates" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.customers">
+              <point x="59.25" y="-70.0" />
+              <point x="-56.0" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.cars" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.companies">
+              <point x="0.0" y="-103.0" />
+              <point x="861.4010416666667" y="258.0" />
+              <point x="787.6276041666667" y="258.0" />
+              <point x="28.0" y="114.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.seats" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.cars">
+              <point x="0.0" y="-103.0" />
+              <point x="791.8697916666667" y="619.0" />
+              <point x="861.4010416666667" y="619.0" />
+              <point x="0.0" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.orders" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.customers">
+              <point x="-79.0" y="-92.0" />
+              <point x="352.75" y="946.0" />
+              <point x="289.75" y="946.0" />
+              <point x="56.0" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.cars">
+              <point x="99.0" y="-136.0" />
+              <point x="640.3697916666667" y="619.0" />
+              <point x="774.7343750000001" y="619.0" />
+              <point x="-86.66666666666663" y="103.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.schedules" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.users">
+              <point x="68.0" y="-92.0" />
+              <point x="1089.0" y="946.0" />
+              <point x="1145.4166666666667" y="946.0" />
+              <point x="0.0" y="158.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.orders" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.plans">
+              <point x="0.0" y="-92.0" />
+              <point x="431.75" y="946.0" />
+              <point x="475.36979166666674" y="946.0" />
+              <point x="-66.0" y="136.0" />
+            </edge>
+            <edge source="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.schedules" target="2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.cars">
+              <point x="0.0" y="-92.0" />
+              <point x="1021.0" y="946.0" />
+              <point x="1056.4869791666667" y="946.0" />
+              <point x="1056.4869791666667" y="619.0" />
+              <point x="948.0677083333334" y="619.0" />
+              <point x="86.66666666666666" y="103.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.36613272311212813" x="632.0" y="646.0" />
+          <SelectedNodes>
+            <node>2c059648-2303-4206-9086-c0814156bcc0.TABLE:do_an.migrations</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2c059648-2303-4206-9086-c0814156bcc0/schema/do_an/table/customers">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134921_create_cars_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134750_create_customers_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134914_create_companies_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="39" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134916_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134917_create_bus_stations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135108_create_tickets_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135139_create_schedules_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135047_create_evaluations_table.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134923_create_plans_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135017_create_seats_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_075157_create_payment_method_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_100342_create_evaluations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_134915_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="37" selection-start-line="19" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_075216_create_order_detail_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_24_135126_create_orders_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_072050_create_coupons_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_02_070653_create_images_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
