@@ -24,7 +24,6 @@ class CreateOrderDetailTable extends Migration
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('seat_id')->references('id')->on('seats');
-
         });
     }
 
