@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,8 +11,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(['namespace' => 'Apis.Customer'], function () {
+    Route::post('logout', 'CreateCustomerController@handle')->name('customer.create');
 
-require __DIR__ . '/API/route_customer.php';
+    Route::group(['middleware' => 'auth:api'], function () {
+    });
+});
