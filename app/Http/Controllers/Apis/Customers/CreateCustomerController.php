@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Apis\Customers;
 
 use App\Http\Controllers\ApiController;
+use App\Repositories\Exceptions\ValidatorException;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use App\Validators\Customer\CreateCustomerValidator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Exception;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateCustomerController extends ApiController
 {
@@ -46,7 +49,7 @@ class CreateCustomerController extends ApiController
      *
      * @param Request $request Request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function handle(Request $request)
     {
@@ -57,11 +60,18 @@ class CreateCustomerController extends ApiController
         ]);
 
         try {
-            $announcements = $this->announcement->listAnnouncements($params);
+            $this->validator->validateData($data);
+            $this->repository->create($data);
+        } catch (ValidatorException $ex) {
+            return $this->responseError(
+                trans('message.validate.fail'),
+                $ex->toArray(),
+                Response::HTTP_UNPROCESSABLE_ENTITY
+            );
         } catch (Exception $ex) {
-            return $this->responseError(trans('messages.customer.create_success'));
+            return $this->responseError(trans('message.customer.create_fail'));
         }
 
-        return $this->responseSuccess(trans('messages.customer.create_success'));
+        return $this->responseSuccess(trans('message.customer.create_success'));
     }
 }

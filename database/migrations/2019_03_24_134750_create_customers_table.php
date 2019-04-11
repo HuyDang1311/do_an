@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Customer;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone_number', 20)->unique();
             $table->string('password');
             $table->string('name')->unique();
-            $table->string('status')->index();
+            $table->string('status')->default(Customer::STATUS_USING)->index();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

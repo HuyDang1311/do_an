@@ -19,8 +19,10 @@ trait ExtendValidator
      *
      * @return void
      */
-    public function validateData($data, $rules, $messages = [], $attribute = [])
+    public function validateData($data, $rules = null, $messages = [], $attribute = [])
     {
+        $rules = $rules ?? $this->rules;
+
         $validator = $this->validator->make($data, $rules, $messages, $attribute);
         if ($validator->fails()) {
             throw new ValidatorException($validator->messages());
