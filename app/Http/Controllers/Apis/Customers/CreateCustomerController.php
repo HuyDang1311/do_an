@@ -61,7 +61,7 @@ class CreateCustomerController extends ApiController
 
         try {
             $this->validator->validateData($data);
-            $this->repository->create($data);
+            $customer = $this->repository->create($data);
         } catch (ValidatorException $ex) {
             return $this->responseError(
                 trans('message.validate.fail'),
@@ -72,6 +72,10 @@ class CreateCustomerController extends ApiController
             return $this->responseError(trans('message.customer.create_fail'));
         }
 
-        return $this->responseSuccess(trans('message.customer.create_success'));
+        return $this->responseSuccess(
+            trans('message.customer.create_success'),
+            ['id' => $customer->id],
+            Response::HTTP_CREATED
+        );
     }
 }

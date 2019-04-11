@@ -15,8 +15,8 @@ class CreateCustomerValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        'phone_number' => 'required|phone_number',
-        'password' => 'required|min:6:max:255',
+        'phone_number' => 'required|phone_number|unique:customers',
+        'password' => 'required|min:6:max:255|unique:customers',
         'name' => 'required|max:255',
     ];
 }

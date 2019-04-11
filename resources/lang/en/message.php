@@ -9,4 +9,7 @@ return [
         'create_success' => 'Customer has been added successfully.',
         'show_fail'      => 'Show customer error.',
     ],
+    'bus_station' => [
+        'list_fail'    => 'Lis bus station error.',
+    ],
 ];

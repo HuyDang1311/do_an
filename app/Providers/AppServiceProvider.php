@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Eloquents\BusStation\BusStationRepository;
 use App\Repositories\Eloquents\Customer\CustomerRepository;
+use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CustomerRepositoryInterface::class,
             CustomerRepository::class
+        );
+        $this->app->bind(
+            BusStationRepositoryInterface::class,
+            BusStationRepository::class
         );
     }
 
