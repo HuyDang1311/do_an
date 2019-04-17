@@ -18,8 +18,9 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('plan_id');
             $table->unsignedInteger('customer_id');
             $table->string('order_code')->unique();
-            $table->unsignedInteger('payment_method_id');
-            $table->unsignedInteger('coupon_id');
+            $table->unsignedInteger('payment_method_id')->nullable();
+            $table->unsignedInteger('coupon_id')->nullable();
+            $table->smallInteger('status')->index();
             $table->timestamps();
             $table->foreign('plan_id')->references('id')->on('plans');
             $table->foreign('customer_id')->references('id')->on('customers');

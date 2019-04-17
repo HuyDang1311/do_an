@@ -21,7 +21,7 @@ class CreatePlansTable extends Migration
             $table->timestamp('time_end');
             $table->unsignedInteger('car_id');
             $table->unsignedInteger('user_driver_id');
-//            $table->unsignedInteger('company_id');
+            $table->unsignedInteger('company_id');
             $table->smallInteger('status')->index();
             $table->integer('price_ticket')->index();
             $table->timestamps();
@@ -31,7 +31,7 @@ class CreatePlansTable extends Migration
             $table->foreign('car_id')->references('id')->on('cars');
             $table->foreign('user_driver_id')->references('id')->on('users');
 
-//            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
