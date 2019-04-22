@@ -11,6 +11,13 @@ class Schedule extends Model
     use SoftDeletes;
 
     /**
+     * Status using.
+     *
+     * @var int
+     */
+    const STATUS_USING = 1;
+
+    /**
      * The table associated with the model.
      *
      * @var string

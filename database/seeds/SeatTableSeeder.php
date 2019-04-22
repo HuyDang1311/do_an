@@ -27,6 +27,7 @@ class SeatTableSeeder extends Seeder
                 'updated_at' => $now,
             ];
         }
+
         Seat::insert($data);
     }
 }

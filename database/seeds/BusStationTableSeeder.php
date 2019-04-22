@@ -17,6 +17,7 @@ class BusStationTableSeeder extends Seeder
         $data = [];
         $faker = Factory::create('en_US');
         $now = Carbon::now();
+
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [
                 'city' => $faker->city,
@@ -25,6 +26,7 @@ class BusStationTableSeeder extends Seeder
                 'updated_at' => $now,
             ];
         }
+
         BusStation::insert($data);
     }
 }

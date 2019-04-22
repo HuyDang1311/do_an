@@ -17,6 +17,20 @@ class Seat extends Model
     const STATUS_USING = 1;
 
     /**
+     * Type of seat.
+     *
+     * @var int
+     */
+    const TYPE_1 = 1;
+
+    /**
+     * Type of seat.
+     *
+     * @var int
+     */
+    const TYPE_2 = 2;
+
+    /**
      * The table associated with the model.
      *
      * @var string

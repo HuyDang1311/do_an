@@ -29,6 +29,7 @@ class CompanyTableSeeder extends Seeder
                 'updated_at' => $now,
             ];
         }
+
         Company::insert($data);
     }
 }

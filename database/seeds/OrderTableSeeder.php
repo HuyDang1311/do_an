@@ -25,6 +25,7 @@ class OrderTableSeeder extends Seeder
                 'updated_at' => $now,
             ];
         }
+
         Order::insert($data);
     }
 }

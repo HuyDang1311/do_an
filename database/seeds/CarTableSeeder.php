@@ -27,6 +27,7 @@ class CarTableSeeder extends Seeder
                 'updated_at' => $now
             ];
         }
+
         Car::insert($data);
     }
 }

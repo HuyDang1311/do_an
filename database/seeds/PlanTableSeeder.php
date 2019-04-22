@@ -14,6 +14,7 @@ class PlanTableSeeder extends Seeder
     public function run()
     {
         $data = [];
+
         for ($i = 1; $i <= 50; $i++) {
             $dateStart = Carbon::now()->subDay(rand(1, 50));
             $dateEnd = $dateStart->copy()->addHour(5);
@@ -32,6 +33,7 @@ class PlanTableSeeder extends Seeder
                 'updated_at' => $now,
             ];
         }
+
         Plan::insert($data);
     }
 }

@@ -16,15 +16,17 @@ class CustomerTableSeeder extends Seeder
     {
         $data = [];
         $faker = Factory::create('en_US');
+        $password = bcrypt('1234567');
+        $now = \Carbon\Carbon::now();
 
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [
                 'phone_number' => substr($faker->phoneNumber, 0, 15),
-                'password' => bcrypt('1234567'),
-                'full_name' => $faker->name,
+                'password' => $password,
+                'name' => $faker->name,
                 'status' => Customer::STATUS_USING,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ];
         }
 
