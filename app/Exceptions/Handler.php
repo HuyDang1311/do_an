@@ -38,6 +38,12 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         parent::report($exception);
+
+        return response()->json([
+            'status_code' => 500,
+            'message' => 'Internal Error.',
+            'data' => [],
+        ], 500, []);
     }
 
     /**
