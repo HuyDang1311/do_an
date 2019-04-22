@@ -16,7 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->smallInteger('type')->index();
+//            $table->smallInteger('type')->index();
             $table->smallInteger('status')->index();
             $table->unsignedInteger('car_id');
             $table->timestamps();

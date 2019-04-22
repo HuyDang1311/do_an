@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\BusStation;
+use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class BusStationTableSeeder extends Seeder
@@ -12,8 +15,8 @@ class BusStationTableSeeder extends Seeder
     public function run()
     {
         $data = [];
-        $faker = \Faker\Factory::create('en_US');
-        $now = \Carbon\Carbon::now();
+        $faker = Factory::create('en_US');
+        $now = Carbon::now();
 
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [
@@ -24,6 +27,6 @@ class BusStationTableSeeder extends Seeder
             ];
         }
 
-        \App\Models\BusStation::insert($data);
+        BusStation::insert($data);
     }
 }

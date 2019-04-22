@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRatesTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rates', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('customer_id');
-            $table->unsignedInteger('company_id');
-            $table->smallInteger('rating')->index();
-            $table->timestamp('created_at');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->unsignedInteger('company_id')->nullable();
+            $table->string('code')->unique();
+            $table->integer('percents');
+            $table->timestamp('start_day');
+            $table->timestamp('end_day');
+            $table->string('status')->index();
+            $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
+
         });
     }
 
@@ -31,6 +34,6 @@ class CreateRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rates');
+        Schema::dropIfExists('coupons');
     }
 }

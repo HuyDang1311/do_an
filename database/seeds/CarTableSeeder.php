@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Car;
+use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class CarTableSeeder extends Seeder
@@ -12,12 +15,11 @@ class CarTableSeeder extends Seeder
     public function run()
     {
         $data = [];
-        $faker = \Faker\Factory::create('en_US');
-        $now = \Carbon\Carbon::now();
-
+        $faker = Factory::create('en_US');
+        $now = Carbon::now();
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [
-                'car_number_plates' => $faker->buildingNumber,
+                'car_number_plates' => $faker->name,
                 'car_manufacturer' => $faker->streetName,
                 'seat_quantity' => 50,
                 'company_id' => rand(1, 50),
@@ -26,6 +28,6 @@ class CarTableSeeder extends Seeder
             ];
         }
 
-        \App\Models\Car::insert($data);
+        Car::insert($data);
     }
 }

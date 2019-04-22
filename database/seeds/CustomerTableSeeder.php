@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Customer;
+use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class CustomerTableSeeder extends Seeder
@@ -12,7 +15,7 @@ class CustomerTableSeeder extends Seeder
     public function run()
     {
         $data = [];
-        $faker = \Faker\Factory::create('en_US');
+        $faker = Factory::create('en_US');
         $password = bcrypt('1234567');
         $now = \Carbon\Carbon::now();
 
@@ -21,12 +24,12 @@ class CustomerTableSeeder extends Seeder
                 'phone_number' => substr($faker->phoneNumber, 0, 15),
                 'password' => $password,
                 'name' => $faker->name,
-                'status' => \App\Models\Customer::STATUS_USING,
+                'status' => Customer::STATUS_USING,
                 'created_at' => $now,
                 'updated_at' => $now,
             ];
         }
 
-        \App\Models\Customer::insert($data);
+        Customer::insert($data);
     }
 }
