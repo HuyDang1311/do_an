@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSchedulesTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('plan_id');
-            $table->unsignedInteger('car_id');
-            $table->smallInteger('status')->index();
+            $table->string('images');
+            $table->unsignedInteger('car_id')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->timestamp('deleted_at')->nullable();
             $table->foreign('car_id')->references('id')->on('cars');
+
         });
     }
 
@@ -33,6 +31,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('images');
     }
 }

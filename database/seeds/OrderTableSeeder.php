@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class OrderTableSeeder extends Seeder
@@ -12,19 +14,18 @@ class OrderTableSeeder extends Seeder
     public function run()
     {
         $data = [];
-        $now = \Carbon\Carbon::now();
-
+        $now = Carbon::now();
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [
-                'seat_id' => $i,
                 'plan_id' => $i,
                 'customer_id' => $i,
-                'status' => \App\Models\Order::STATUS_USING,
+                'status' => Order::STATUS_USING,
+                'order_code' => $i . '_code',
                 'created_at' => $now,
                 'updated_at' => $now,
             ];
         }
 
-        \App\Models\Order::insert($data);
+        Order::insert($data);
     }
 }

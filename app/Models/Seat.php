@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Seat extends Model
 {
-
     use SoftDeletes;
 
     /**
