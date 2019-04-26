@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Apis\Customers;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Exceptions\ValidatorException;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
-use Illuminate\Http\JsonResponse;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
-class ShowCustomerController extends ApiController
+class ShowController extends ApiController
 {
 
     /**
@@ -32,13 +31,13 @@ class ShowCustomerController extends ApiController
     }
 
     /**
-     * List announcements
+     * Handle the incoming request.
      *
      * @param int $customerId Id of customer
      *
      * @return JsonResponse
      */
-    public function handle($customerId)
+    public function __invoke($customerId)
     {
         try {
             $customer = $this->repository->find($customerId, [

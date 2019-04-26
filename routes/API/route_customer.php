@@ -12,8 +12,9 @@
 */
 
 Route::namespace('Apis\Customers')->prefix('customers')->group(function () {
-    Route::get('/{customerId}', 'ShowCustomerController@handle')->name('customer.show');
-    Route::post('', 'CreateCustomerController@handle')->name('customer.create');
+    Route::get('/{customerId}', 'ShowController')->name('customer.show');
+    Route::get('', 'ListController')->name('customer.index');
+    Route::post('', 'CreateController')->name('customer.create');
 
     Route::group(['middleware' => 'auth:api'], function () {
     });

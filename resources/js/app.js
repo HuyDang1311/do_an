@@ -28,6 +28,33 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
-});
+import VueRouter from 'vue-router';
+
+window.Vue.use(VueRouter);
+
+import CustomersIndex from './components/customers/CustomersIndex.vue';
+import CustomersCreate from './components/customers/CustomersCreate.vue';
+import CustomersEdit from './components/customers/CustomersEdit.vue';
+
+const routes = [
+    {
+        path: '/admin/customers',
+        components: {
+            companiesIndex: CustomersIndex
+        }
+    },
+    {
+        path: '/admin/customers/create',
+        component: CustomersCreate,
+        name: 'createCompany'
+    },
+    {
+        path: '/admin/customers/edit/:id',
+        component: CustomersEdit,
+        name: 'editCompany'
+    },
+];
+
+const router = new VueRouter({ routes });
+
+const app = new Vue({ router }).$mount('#app');

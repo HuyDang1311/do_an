@@ -6,12 +6,12 @@ use App\Http\Controllers\ApiController;
 use App\Repositories\Exceptions\ValidatorException;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use App\Validators\Customer\CreateCustomerValidator;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateCustomerController extends ApiController
+class CreateController extends ApiController
 {
 
     /**
@@ -45,13 +45,13 @@ class CreateCustomerController extends ApiController
     }
 
     /**
-     * List announcements
+     * Handle the incoming request.
      *
      * @param Request $request Request
      *
      * @return JsonResponse
      */
-    public function handle(Request $request)
+    public function __invoke(Request $request)
     {
         $data = $request->only([
             'phone_number',
