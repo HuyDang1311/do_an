@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,12 +40,6 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         parent::report($exception);
-
-        return response()->json([
-            'status_code' => 500,
-            'message' => 'Internal Error.',
-            'data' => [],
-        ], 500, []);
     }
 
     /**
@@ -55,6 +51,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+//        return parent::render($request, $exception);
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return response()->json([
+                'status_code' => Response::HTTP_METHOD_NOT_ALLOWED,
+                'message' => trans('message.route_not_found'),
+                'data' => [],
+            ], Response::HTTP_METHOD_NOT_ALLOWED, []);
+        }
+
+        return response()->json([
+            'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
+            'message' => 'Internal Error.',
+            'data' => [],
+        ], Response::HTTP_INTERNAL_SERVER_ERROR, []);
     }
 }
