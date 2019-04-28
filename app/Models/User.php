@@ -34,33 +34,6 @@ class User extends Authenticatable
      * @var int
      */
     const STATUS_USING = 1;
-    /**
-     * Role super admin
-     *
-     * @var int
-     */
-    const ROLE_SUPER_ADMIN = 1;
-
-    /**
-     * Role admin of company.
-     *
-     * @var int
-     */
-    const ROLE_ADMIN = 2;
-
-    /**
-     * Role manager of company.
-     *
-     * @var int
-     */
-    const ROLE_MANAGER = 3;
-
-    /**
-     * Status using.
-     *
-     * @var int
-     */
-    const STATUS_USING = 1;
 
     /**
      * The table associated with the model.
