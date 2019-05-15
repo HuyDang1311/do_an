@@ -1,8 +1,3 @@
-<template>
-  @include
-</template>
-
-<script>
 export default {
   name: 'BackToTop',
   props: {
@@ -81,32 +76,3 @@ export default {
     },
   },
 };
-</script>
-
-<style scoped>
-  .back-to-ceiling {
-    position: fixed;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .back-to-ceiling:hover {
-    background: #d5dbe7;
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity .5s;
-  }
-
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0
-  }
-
-  .back-to-ceiling .Icon {
-    fill: #9aaabf;
-    background: none;
-  }
-</style>

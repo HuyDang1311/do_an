@@ -16,6 +16,10 @@ class VueController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('index');
+        if ($request->is('admin*')) {
+            return view('backend');
+        }
+
+        return view('frontend');
     }
 }
