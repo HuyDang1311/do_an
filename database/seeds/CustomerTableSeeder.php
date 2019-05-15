@@ -17,7 +17,7 @@ class CustomerTableSeeder extends Seeder
         $data = [];
         $faker = Factory::create('en_US');
         $password = bcrypt('1234567');
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now();
 
         for ($i = 1; $i <= 50; $i++) {
             $data[] = [

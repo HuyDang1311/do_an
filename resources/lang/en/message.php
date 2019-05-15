@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'route_not_found' => 'URL invalid.',
     'validate' => [
         'fail' => 'Data validation failed.'
     ],

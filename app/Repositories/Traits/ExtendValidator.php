@@ -24,6 +24,7 @@ trait ExtendValidator
         $rules = $rules ?? $this->rules;
 
         $validator = $this->validator->make($data, $rules, $messages, $attribute);
+
         if ($validator->fails()) {
             throw new ValidatorException($validator->messages());
         }

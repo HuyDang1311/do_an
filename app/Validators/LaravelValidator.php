@@ -43,15 +43,16 @@ class LaravelValidator extends AbstractValidator
     {
         $rules = $this->getRules($action);
         $messages = $this->getMessages();
+
         $this->setAttributes($this->getAttributes());
-//        app('db')->enableQueryLog();
+
         $validator = $this->validator->make($this->data, $rules, $messages, $this->getAttributes());
+
         if ($validator->fails()) {
-//            dump(app('db')->getQueryLog());
             $this->errors = $validator->messages();
             return false;
         }
-//        dump(app('db')->getQueryLog());
+
         return true;
     }
 }

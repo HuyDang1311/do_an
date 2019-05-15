@@ -16,9 +16,8 @@ Route::get('version', function () {
     return "v1.0.0";
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'api'], function () {
+    require __DIR__ . '/API/route_auth.php';
+    require __DIR__ . '/API/route_customer.php';
+    require __DIR__ . '/API/route_bus_station.php';
 });
-
-require __DIR__ . '/API/route_customer.php';
-require __DIR__ . '/API/route_bus_station.php';
