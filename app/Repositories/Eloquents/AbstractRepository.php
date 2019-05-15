@@ -233,14 +233,19 @@ abstract class AbstractRepository implements RepositoryCriteriaInterface, Reposi
                     $this->model = $this->model->whereIn($column, $value);
                 } else {
                     if ('date' == $type) {
-                        if ('>=' == $operator || '<' == $operator) {
-                            $value = Carbon::createFromFormat('Y-m-d H:i:s', $value . '00:00:00', $timeZone)
-                                ->setTimezone('UTC');
-                        } elseif ('<=' == $operator || '>' == $operator) {
-                            $value = Carbon::createFromFormat('Y-m-d H:i:s', $value . '23:59:59', $timeZone)
-                                ->setTimezone('UTC');
+                        if ('=' == $operator) {Carbon::createFromFormat('Y-m-d', $value, $timeZone)
+                            ->setTimezone('UTC');
+                            $this->model = $this->model->whereDate($column, $value);
+                        } else {
+                            if ('>=' == $operator || '<' == $operator) {
+                                $value = Carbon::createFromFormat('Y-m-d H:i:s', $value . '00:00:00', $timeZone)
+                                    ->setTimezone('UTC');
+                            } elseif ('<=' == $operator || '>' == $operator) {
+                                $value = Carbon::createFromFormat('Y-m-d H:i:s', $value . '23:59:59', $timeZone)
+                                    ->setTimezone('UTC');
+                            }
+                            $this->model = $this->model->where($column, $operator, $value);
                         }
-                        $this->model = $this->model->where($column, $operator, $value);
                     } else {
                         if ('like' == $operator || 'ilike' == $operator) {
                             $value = '%' . $value . '%';
