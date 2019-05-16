@@ -1,9 +1,11 @@
 <?php
 namespace App\Repositories\Eloquents\Plan;
 
+use App\Models\Car;
 use App\Models\Plan;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
+use Carbon\Carbon;
 use DB;
 
 class PlanRepository extends AbstractRepository implements PlanRepositoryInterface
@@ -39,10 +41,32 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
      */
     public function listPlan(array $searchData, array $sortData, array $params = [])
     {
-        return $this->queryGetPlan()
+        $results = $this->queryGetPlan()
             ->search($searchData)
             ->orderBy($sortData['sort_column'], $sortData['sort_direction'])
             ->paginate($params['per_page'] ?? 10, $this->getColumnsForList());
+
+        $this->updateDataResult($results['items']);
+
+        return $results;
+    }
+
+    /**
+     * Show plan
+     *
+     * @param int $id Id of plan
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function showPlan(int $id)
+    {
+        $results = $this->queryGetPlan()
+            ->find($id, $this->getColumnsForList())
+            ->toArray();
+
+        return $this->updateDataRecord($results);
     }
 
     /**
@@ -91,5 +115,43 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
             "plans.price_ticket",
             'os.seat_ids as seat_ids'
         ];
+    }
+
+    /**
+     * Update record data
+     *
+     * @param array $value Data
+     *
+     * @return array
+     */
+    private function updateDataRecord(array $value)
+    {
+        $timeStart = Carbon::parse($value['time_start']);
+        $timeEnd = Carbon::parse($value['time_end']);
+        $value['time_between'] = $timeStart->diff($timeEnd)->format('%Hh%Ip');
+        $value['time_start'] = $timeStart->format('H:i');
+        $value['time_end'] = $timeEnd->format('H:i');
+        $value['status_name'] = trans(Plan::$status[$value['status']] ?? '');
+        $value['car_type_name'] = trans(Car::$type[$value['car_type']] ?? '');
+        $value['seat_quantity_empty'] = max(
+            intval($value['seat_quantity']) - count(json_decode($value['seat_ids']) ?? []),
+            0
+        );
+
+        return $value;
+    }
+
+    /**
+     * Update result data
+     *
+     * @param array $data Data
+     *
+     * @return void
+     */
+    private function updateDataResult(array &$data)
+    {
+        array_walk($data, function (&$value) {
+            $value = $this->updateDataRecord($value);
+        });
     }
 }

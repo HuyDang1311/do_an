@@ -10,5 +10,6 @@
 |
 */
 Route::namespace('Apis\Plans')->prefix('plans')->group(function () {
-    Route::get('', 'ListPlanController@handle')->name('plan.list');
+    Route::get('', 'ListPlanController')->name('plan.list');
+    Route::get('/{id}', 'ShowPlanController')->name('plan.show');
 });
