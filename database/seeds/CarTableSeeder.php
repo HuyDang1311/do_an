@@ -22,6 +22,7 @@ class CarTableSeeder extends Seeder
                 'car_number_plates' => $faker->name,
                 'car_manufacturer' => $faker->streetName,
                 'seat_quantity' => 50,
+                'type' => rand(1,2),
                 'company_id' => rand(1, 50),
                 'created_at' => $now,
                 'updated_at' => $now

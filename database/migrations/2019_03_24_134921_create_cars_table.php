@@ -18,6 +18,7 @@ class CreateCarsTable extends Migration
             $table->string('car_number_plates')->unique();
             $table->string('car_manufacturer');
             $table->integer('seat_quantity');
+            $table->integer('type');
             $table->unsignedInteger('company_id');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
