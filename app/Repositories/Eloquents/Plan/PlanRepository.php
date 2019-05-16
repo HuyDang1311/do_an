@@ -39,6 +39,7 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
     public function listPlan(array $searchData, array $sortData, array $params = [],array $columns = ['*'])
     {
         return $this->search($searchData)
+            ->with($params['with'])
             ->orderBy($sortData['sort_column'], $sortData['sort_direction'])
             ->paginate($params['per_page'] ?? 10, $columns);
     }

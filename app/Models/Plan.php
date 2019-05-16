@@ -38,4 +38,44 @@ class Plan extends Model
         'company_id',
         'status',
     ];
+
+    /**
+     * Plan belongsTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function addressStart()
+    {
+        return $this->belongsTo(BusStation::class, 'address_start_id', 'id');
+    }
+
+    /**
+     * Plan belongsTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function addressEnd()
+    {
+        return $this->belongsTo(BusStation::class, 'address_end_id', 'id');
+    }
+
+    /**
+     * Plan belongsTo Company
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
+
+    /**
+     * Plan belongsTo Car
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function car()
+    {
+        return $this->belongsTo(Car::class, 'car_id', 'id');
+    }
 }
