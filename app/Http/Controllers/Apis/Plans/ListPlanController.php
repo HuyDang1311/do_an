@@ -41,7 +41,7 @@ class ListPlanController extends ApiController
      *
      * @return JsonResponse
      */
-    public function handle(Request $request)
+    public function __invoke(Request $request)
     {
         try {
             $searchData = $request->only([
@@ -61,7 +61,7 @@ class ListPlanController extends ApiController
             return $this->responseError(trans('message.plan.list_fail'));
         }
 
-        return $this->responseSuccess('', $this->updateDataResult($plans));
+        return $this->responseSuccess('', $plans);
     }
 
     /**
@@ -82,31 +82,5 @@ class ListPlanController extends ApiController
             'time_start',
             'price_ticket'
         ], 'time_start');
-    }
-
-    /**
-     * Update result data
-     *
-     * @param array $plans Plans
-     *
-     * @return array
-     */
-    private function updateDataResult(array $plans)
-    {
-        array_walk($plans['items'], function (&$value) {
-            $timeStart = Carbon::parse($value['time_start']);
-            $timeEnd = Carbon::parse($value['time_end']);
-            $value['time_between'] = $timeStart->diff($timeEnd)->format('%Hh%Ip');
-            $value['time_start'] = $timeStart->format('H:i');
-            $value['time_end'] = $timeEnd->format('H:i');
-            $value['status_name'] = trans(Plan::$status[$value['status']] ?? '');
-            $value['car_type_name'] = trans(Car::$type[$value['car_type']] ?? '');
-            $value['seat_quantity_empty'] = max(
-                intval($value['seat_quantity']) - count(json_decode($value['seat_ids']) ?? []),
-                0
-            );
-        });
-
-        return $plans;
     }
 }

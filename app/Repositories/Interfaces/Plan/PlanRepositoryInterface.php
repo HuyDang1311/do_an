@@ -13,4 +13,22 @@ interface PlanRepositoryInterface
      * @return array
      */
     public function listPlan(array $searchData, array $sortData, array $params = []);
+
+    /**
+     * Show plan
+     *
+     * @param int $id Id of plan
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function showPlan(int $id);
+
+    /**
+     * Get query for get plan
+     *
+     * @return $this
+     */
+    public function queryGetPlan();
 }
