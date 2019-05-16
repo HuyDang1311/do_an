@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('payment_method_id')->references('id')->on('payment_method');
             $table->foreign('coupon_id')->references('id')->on('coupons');
         });
+        DB::statement('ALTER TABLE orders ADD COLUMN seat_ids integer[]');
     }
 
     /**

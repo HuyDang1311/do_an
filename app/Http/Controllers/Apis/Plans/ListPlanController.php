@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Apis\Plans;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Car;
+use App\Models\Plan;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -51,8 +53,9 @@ class ListPlanController extends ApiController
             $plans = $this->repository->listPlan(
                 $searchData,
                 $this->getSortData($request),
-                $this->getParameters($request),
-                $this->getColumns()
+                [
+                    'per_page' => $request->get('per_page', 10)
+                ]
             );
         } catch (Exception $ex) {
             return $this->responseError(trans('message.plan.list_fail'));
@@ -82,70 +85,6 @@ class ListPlanController extends ApiController
     }
 
     /**
-     * Get parameters
-     *
-     * @param Request $request Request
-     *
-     * @return array
-     */
-    private function getParameters(Request $request)
-    {
-        $with['addressStart'] = function ($query) {
-            return $query->select([
-                'bus_stations.id',
-                'bus_stations.city',
-            ]);
-        };
-
-        $with['addressEnd'] = function ($query) {
-            return $query->select([
-                'bus_stations.id',
-                'bus_stations.city',
-            ]);
-        };
-
-        $with['company'] = function ($query) {
-            return $query->select([
-                'companies.id',
-                'companies.name',
-            ]);
-        };
-
-        $with['car'] = function ($query) {
-            return $query->select([
-                'cars.id',
-                'cars.seat_quantity',
-            ]);
-        };
-
-        return [
-            'per_page' => $request->get('per_page', 10),
-            'with' => $with
-        ];
-    }
-
-    /**
-     * Get columns
-     *
-     * @return array
-     */
-    private function getColumns()
-    {
-        return [
-            "id",
-            "address_start_id",
-            "address_end_id",
-            "time_start",
-            "time_end",
-            "car_id",
-            "user_driver_id",
-            "company_id",
-            "status",
-            "price_ticket",
-        ];
-    }
-
-    /**
      * Update result data
      *
      * @param array $plans Plans
@@ -160,6 +99,12 @@ class ListPlanController extends ApiController
             $value['time_between'] = $timeStart->diff($timeEnd)->format('%Hh%Ip');
             $value['time_start'] = $timeStart->format('H:i');
             $value['time_end'] = $timeEnd->format('H:i');
+            $value['status_name'] = trans(Plan::$status[$value['status']] ?? '');
+            $value['car_type_name'] = trans(Car::$type[$value['car_type']] ?? '');
+            $value['seat_quantity_empty'] = max(
+                intval($value['seat_quantity']) - count(json_decode($value['seat_ids']) ?? []),
+                0
+            );
         });
 
         return $plans;

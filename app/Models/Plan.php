@@ -25,6 +25,15 @@ class Plan extends Model
     protected $table = 'plans';
 
     /**
+     * Status object
+     *
+     * @var array
+     */
+    public static $status = [
+        self::STATUS_USING => 'label.plan.status.using'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -77,5 +86,15 @@ class Plan extends Model
     public function car()
     {
         return $this->belongsTo(Car::class, 'car_id', 'id');
+    }
+
+    /**
+     * Plan hasMany Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function oder()
+    {
+        return $this->hasMany(Order::class, 'plan_id', 'id');
     }
 }

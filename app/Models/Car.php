@@ -11,6 +11,30 @@ class Car extends Model
     use SoftDeletes;
 
     /**
+     * Type lay.
+     *
+     * @var int
+     */
+    const TYPE_LAY = 1;
+
+    /**
+     * Type seat
+     *
+     * @var int
+     */
+    const TYPE_SEAT = 2;
+
+    /**
+     * Type object.
+     *
+     * @var array
+     */
+    public static $type = [
+        self::TYPE_LAY => 'label.car.type_lay',
+        self::TYPE_SEAT => 'label.car.type_seat'
+    ];
+
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -27,5 +51,6 @@ class Car extends Model
         'car_manufacturer',
         'seat_quantity',
         'company_id',
+        'type'
     ];
 }
