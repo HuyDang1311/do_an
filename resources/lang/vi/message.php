@@ -13,4 +13,7 @@ return [
     'bus_station' => [
         'list_fail'    => 'Có lỗi khi xem danh sách bến xe.',
     ],
+    'plan' => [
+        'list_fail'    => 'Có lỗi khi xem danh sách lịnh trình.',
+    ],
 ];

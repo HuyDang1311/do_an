@@ -12,5 +12,6 @@
 */
 
 Route::namespace('Apis\BusStations')->prefix('bus-stations')->group(function () {
-    Route::get('', 'ListBusStationController@handle')->name('bus_station.list');
+    Route::get('', 'ListBusStationController')->name('bus_station.list');
+    Route::get('/{id}', 'ShowBusStationController')->name('bus_station.show');
 });

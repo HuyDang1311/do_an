@@ -13,4 +13,7 @@ return [
     'bus_station' => [
         'list_fail'    => 'Lis bus station error.',
     ],
+    'plan' => [
+        'list_fail'    => 'Lis plan error.',
+    ],
 ];

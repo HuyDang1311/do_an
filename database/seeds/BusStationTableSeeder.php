@@ -22,6 +22,7 @@ class BusStationTableSeeder extends Seeder
             $data[] = [
                 'city' => $faker->city,
                 'name_station' => $faker->citySuffix,
+                'parent_id' => $i,
                 'created_at' => $now,
                 'updated_at' => $now,
             ];

@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Apis\BusStations;
 
 use App\Http\Controllers\ApiController;
-use App\Models\BusStation;
 use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ListBusStationController extends ApiController
+class ShowBusStationController extends ApiController
 {
 
     /**
@@ -36,18 +35,21 @@ class ListBusStationController extends ApiController
      * List bus stations
      *
      * @param Request $request Request
+     * @param int     $id      Id of bus station
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, $id)
     {
         try {
-            $type = intval($request->get('type', BusStation::TYPE_CITY));
-            $busStations = $this->repository->listBusStation($type);
+            \DB::enableQueryLog();
+            $busStation = $this->repository->showBusStation($id);
+//            dd(\DB::getQueryLog());
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.bus_station.list_fail'));
+            dd($ex->getMessage());
+            return $this->responseError(trans('message.bus_station.show_fail'));
         }
 
-        return $this->responseSuccess('', $busStations);
+        return $this->responseSuccess('', $busStation);
     }
 }
