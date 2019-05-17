@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
+use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,21 +12,21 @@ class ShowOrderController extends ApiController
 {
 
     /**
-     * PlanRepositoryInterface
+     * OrderRepositoryInterface
      *
-     * @var PlanRepositoryInterface
+     * @var OrderRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param PlanRepositoryInterface $repository PlanRepositoryInterface
+     * @param OrderRepositoryInterface $repository OrderRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        PlanRepositoryInterface $repository
+        OrderRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -42,9 +42,9 @@ class ShowOrderController extends ApiController
     public function __invoke(Request $request, $id)
     {
         try {
-            $plans = $this->repository->showPlan($id);
+            $plans = $this->repository->showOrder($id);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.plan.show_fail'));
+            return $this->responseError(trans('message.order.show_fail'));
         }
 
         return $this->responseSuccess('', $plans);

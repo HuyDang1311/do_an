@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-
-    use SoftDeletes;
 
     /**
      * Status using.
@@ -30,9 +27,32 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'seat_id',
         'plan_id',
         'customer_id',
+        'order_code',
+        'payment_method_id',
+        'coupon_id',
         'status',
+        'seat_ids',
     ];
+
+    /**
+     * Order hasMany OrderDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orderDetail()
+    {
+        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
+    }
+
+    /**
+     * Order belongsTo Plan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class, 'plan_id', 'id');
+    }
 }

@@ -3,30 +3,31 @@
 namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
+use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateOrderController extends ApiController
 {
 
     /**
-     * PlanRepositoryInterface
+     * OrderRepositoryInterface
      *
-     * @var PlanRepositoryInterface
+     * @var OrderRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param PlanRepositoryInterface $repository PlanRepositoryInterface
+     * @param OrderRepositoryInterface $repository OrderRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        PlanRepositoryInterface $repository
+        OrderRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -41,43 +42,24 @@ class CreateOrderController extends ApiController
     public function __invoke(Request $request)
     {
         try {
-            $searchData = $request->only([
+            $data = $request->only([
                 'address_start_id',
                 'address_end_id',
-                'time_start',
+                'plan_id',
+                'seat_ids',
             ]);
 
-            $plans = $this->repository->listPlan(
-                $searchData,
-                $this->getSortData($request),
-                [
-                    'per_page' => $request->get('per_page', 10)
-                ]
-            );
+            $this->beginTransaction();
+
+            $order = $this->repository->createOrder($data);
+
+            $this->commit();
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.plan.list_fail'));
+            dd($ex->getMessage());
+            $this->rollback();
+            return $this->responseError(trans('message.order.create_fail'));
         }
 
-        return $this->responseSuccess('', $plans);
-    }
-
-    /**
-     * Get sort data
-     *
-     * @param Request $request Request
-     *
-     * @return array
-     */
-    private function getSortData(Request $request)
-    {
-        $sortData = [
-            'sort_column' => $request->get('sort_column', 'time_start'),
-            'sort_direction' => $request->get('sort_direction', 'asc'),
-        ];
-
-        return getSortConditions($sortData, [
-            'time_start',
-            'price_ticket'
-        ], 'time_start');
+        return $this->responseSuccess('', $order, Response::HTTP_CREATED);
     }
 }

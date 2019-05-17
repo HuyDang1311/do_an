@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Repositories\Eloquents\BusStation\BusStationRepository;
 use App\Repositories\Eloquents\Customer\CustomerRepository;
+use App\Repositories\Eloquents\Order\OrderRepository;
 use App\Repositories\Eloquents\Plan\PlanRepository;
 use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
+use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             PlanRepositoryInterface::class,
             PlanRepository::class
+        );
+        $this->app->bind(
+            OrderRepositoryInterface::class,
+            OrderRepository::class
         );
     }
 
