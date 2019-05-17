@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,14 +9,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('version', function () {
-    return "v1.0.0";
-});
-
-Route::group(['middleware' => 'api'], function () {
-    require __DIR__ . '/API/route_auth.php';
-    require __DIR__ . '/API/route_customer.php';
-    require __DIR__ . '/API/route_bus_station.php';
-    require __DIR__ . '/API/route_plan.php';
-    require __DIR__ . '/API/route_order.php';
+Route::namespace('Apis\Orders')->prefix('orders')->group(function () {
+    Route::post('', 'CreateOrderController')->name('order.create');
+    Route::get('/{id}', 'ShowOrderController')->name('order.show');
 });

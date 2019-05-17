@@ -15,8 +15,9 @@ class CreateBusStationsTable extends Migration
     {
         Schema::create('bus_stations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('city')->unique();
+            $table->string('city');
             $table->string('name_station');
+            $table->unsignedInteger('parent_id')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

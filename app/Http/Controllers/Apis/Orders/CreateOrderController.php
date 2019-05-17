@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Apis\Plans;
+namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\ApiController;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ListPlanController extends ApiController
+class CreateOrderController extends ApiController
 {
 
     /**

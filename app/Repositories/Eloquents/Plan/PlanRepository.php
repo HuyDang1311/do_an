@@ -126,6 +126,7 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
      */
     private function updateDataRecord(array $value)
     {
+        $value['day_start'] = Carbon::parse($value['time_start'])->toDateString();
         $timeStart = Carbon::parse($value['time_start']);
         $timeEnd = Carbon::parse($value['time_end']);
         $value['time_between'] = $timeStart->diff($timeEnd)->format('%Hh%Ip');

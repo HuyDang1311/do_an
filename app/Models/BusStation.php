@@ -4,11 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class BusStation extends Model
 {
 
     use SoftDeletes;
+
+    /**
+     * Type city.
+     *
+     * @var int
+     */
+    const TYPE_CITY = 1;
+
+    /**
+     * Type bus station.
+     *
+     * @var int
+     */
+    const TYPE_BUS_STATION = 2;
 
     /**
      * The table associated with the model.
@@ -26,4 +41,14 @@ class BusStation extends Model
         'city',
         'name_station',
     ];
+
+    /**
+     * BusStation hasMany BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function childBusStation()
+    {
+        return $this->hasMany(BusStation::class, 'parent_id' , 'id');
+    }
 }
