@@ -19,6 +19,7 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
     {
         return Plan::class;
     }
+
     /**
      * Field seachable
      *

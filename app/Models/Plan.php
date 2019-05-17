@@ -93,7 +93,7 @@ class Plan extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function oder()
+    public function order()
     {
         return $this->hasMany(Order::class, 'plan_id', 'id');
     }

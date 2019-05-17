@@ -15,15 +15,13 @@ class CreateOrderDetailTable extends Migration
     {
         Schema::create('order_detail', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('order_id')->nullable();
-            $table->unsignedInteger('seat_id')->nullable();
+            $table->unsignedInteger('order_id');
             $table->integer('quantity');
-            $table->string('totla_money');
-            $table->string('payment_status');
-            $table->string('processing_status');
+            $table->string('total_money');
+            $table->smallInteger('payment_status')->default(1);
+            $table->smallInteger('process_status')->default(1);
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('seat_id')->references('id')->on('seats');
         });
     }
 
