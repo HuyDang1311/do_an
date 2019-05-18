@@ -1,25 +1,24 @@
 <?php
 namespace App\Http\Controllers\Apis\Auth;
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\UserResource as UserResource;
+use App\Resources\UserResource;
 
 /**
  * Class AuthController
  *
  * @package App\Http\Controllers
  */
-class UserLoginController extends ApiController
+class LoginController extends AuthController
 {
 
     /**
      * Handle the incoming request.
      *
-     * @param Request $request
+     * @param Request $request Request
      *
      * @return JsonResponse
      */

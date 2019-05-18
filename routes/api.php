@@ -18,6 +18,7 @@ Route::get('version', function () {
 
 Route::group(['middleware' => 'api'], function () {
     require __DIR__ . '/API/route_auth.php';
+    require __DIR__ . '/API/route_customer_auth.php';
     require __DIR__ . '/API/route_customer.php';
     require __DIR__ . '/API/route_bus_station.php';
     require __DIR__ . '/API/route_plan.php';

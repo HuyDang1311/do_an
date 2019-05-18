@@ -1,18 +1,16 @@
 <?php
 namespace App\Http\Controllers\Apis\Auth;
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\UserResource as UserResource;
 
 /**
  * Class AuthController
  *
  * @package App\Http\Controllers
  */
-class UserInfoController extends ApiController
+class LogoutController extends AuthController
 {
 
     /**
@@ -24,8 +22,18 @@ class UserInfoController extends ApiController
      */
     public function __invoke(Request $request)
     {
-        $user = new UserResource(Auth::user());
+        $this->guard()->logout();
 
-        return $this->responseSuccess('', $user);
+        return $this->responseSuccess(trans('auth.logout'));
+    }
+
+    /**
+     * Auth guard
+     *
+     * @return mixed
+     */
+    private function guard()
+    {
+        return Auth::guard();
     }
 }
