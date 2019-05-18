@@ -11,10 +11,10 @@
 |
 */
 
-Route::namespace('Apis\Auth')->prefix('auth')->group(function () {
-    Route::post('login', 'LoginController')->name('auth.login');
-    Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('info', 'InfoController')->name('auth.info');;
-        Route::post('logout', 'LogoutController')->name('auth.logout');;
+Route::namespace('Apis\CustomerAuth')->group(function () {
+    Route::post('login', 'LoginController')->name('customer-auth.login');
+    Route::group(['middleware' => 'customer-auth:api'], function () {
+        Route::get('info', 'InfoController')->name('customer-auth.info');;
+        Route::post('logout', 'LogoutController')->name('customer-auth.logout');;
     });
 });

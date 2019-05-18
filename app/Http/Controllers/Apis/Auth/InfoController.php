@@ -12,7 +12,7 @@ use App\Http\Resources\UserResource as UserResource;
  *
  * @package App\Http\Controllers
  */
-class UserInfoController extends ApiController
+class InfoController extends ApiController
 {
 
     /**
