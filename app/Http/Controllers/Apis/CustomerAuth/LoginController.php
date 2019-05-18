@@ -1,36 +1,19 @@
 <?php
 namespace App\Http\Controllers\Apis\CustomerAuth;
 
-use App\Http\Controllers\ApiController;
-use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\CustomerResource;
-use Illuminate\Support\Facades\Config;
+use App\Resources\CustomerResource;
 
-class LoginController extends ApiController
+class LoginController extends CustomerAuthController
 {
-
-    /**
-     * Constructor.
-     *
-     * @return void
-     */
-    function __construct()
-    {
-        Config::set('jwt.user', Customer::class);
-        Config::set('auth.providers', ['users' => [
-            'driver' => 'eloquent',
-            'model' => Customer::class,
-        ]]);
-    }
 
     /**
      * Handle the incoming request.
      *
-     * @param Request $request
+     * @param Request $request Request
      *
      * @return JsonResponse
      */

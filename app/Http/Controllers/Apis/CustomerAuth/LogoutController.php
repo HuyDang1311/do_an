@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Apis\CustomerAuth;
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
  *
  * @package App\Http\Controllers
  */
-class LogoutController extends ApiController
+class LogoutController extends CustomerAuthController
 {
 
     /**
@@ -25,7 +24,7 @@ class LogoutController extends ApiController
     {
         $this->guard()->logout();
 
-        return $this->responseSuccess(trans('auth.logout'));
+        return $this->responseSuccess(trans('customer-auth.logout'));
     }
 
     /**

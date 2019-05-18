@@ -1,18 +1,17 @@
 <?php
 namespace App\Http\Controllers\Apis\CustomerAuth;
 
-use App\Http\Controllers\ApiController;
+use App\Resources\CustomerResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\UserResource as UserResource;
 
 /**
  * Class AuthController
  *
  * @package App\Http\Controllers
  */
-class InfoController extends ApiController
+class InfoController extends CustomerAuthController
 {
 
     /**
@@ -24,7 +23,7 @@ class InfoController extends ApiController
      */
     public function __invoke(Request $request)
     {
-        $user = new UserResource(Auth::user());
+        $user = new CustomerResource(Auth::user());
 
         return $this->responseSuccess('', $user);
     }

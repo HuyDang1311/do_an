@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Apis\Auth;
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
  *
  * @package App\Http\Controllers
  */
-class LogoutController extends ApiController
+class LogoutController extends AuthController
 {
 
     /**

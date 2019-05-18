@@ -1,48 +1,29 @@
 <?php
 namespace App\Http\Controllers\Apis\Auth;
 
-use App\Http\Controllers\ApiController;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\UserResource;
-use Illuminate\Support\Facades\Config;
+use App\Resources\UserResource;
 
 /**
  * Class AuthController
  *
  * @package App\Http\Controllers
  */
-class LoginController extends ApiController
+class LoginController extends AuthController
 {
-
-    /**
-     * Constructor.
-     *
-     * @return void
-     */
-    function __construct()
-    {
-        Config::set('jwt.user', User::class);
-        Config::set('auth.providers', ['users' => [
-            'driver' => 'eloquent',
-            'model' => User::class,
-        ]]);
-    }
 
     /**
      * Handle the incoming request.
      *
-     * @param Request $request
+     * @param Request $request Request
      *
      * @return JsonResponse
      */
     public function __invoke(Request $request)
     {
-        Config::set( 'jwt.user', 'App\Models\User' );
-        Config::set( 'auth.providers.users.model', User::class );
         $credentials = $request->only('username', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
