@@ -64,10 +64,9 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
     public function showPlan(int $id)
     {
         $results = $this->queryGetPlan()
-            ->find($id, $this->getColumnsForList())
-            ->toArray();
+            ->find($id, $this->getColumnsForList());
 
-        return $this->updateDataRecord($results);
+        return $this->updateDataRecord($results->toArray());
     }
 
     /**

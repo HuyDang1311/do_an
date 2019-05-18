@@ -55,7 +55,6 @@ class CreateOrderController extends ApiController
 
             $this->commit();
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             $this->rollback();
             return $this->responseError(trans('message.order.create_fail'));
         }
