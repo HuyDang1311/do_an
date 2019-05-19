@@ -54,30 +54,10 @@ class ShowPlanController extends ApiController
     {
         try {
             $plan = $this->repository->showPlan($id);
-            $plan = $this->getBusStation($plan);
         } catch (Exception $ex) {
             return $this->responseError(trans('message.plan.show_fail'));
         }
 
         return $this->responseSuccess('', $plan);
-    }
-
-    /**
-     * Get bus station
-     *
-     * @param array $plan Plan
-     *
-     * @return array
-     */
-    public function getBusStation(array $plan)
-    {
-        $plan['addressStart'] = $this->repoBusStation
-            ->showBusStation($plan['address_start_id'])
-            ->toArray()['child_bus_station'] ?? null;
-        $plan['addressEnd'] = $this->repoBusStation
-            ->showBusStation($plan['address_end_id'])
-            ->toArray()['child_bus_station'] ?? null;
-
-        return $plan;
     }
 }
