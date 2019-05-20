@@ -45,9 +45,11 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
         $results = $this->queryGetPlan()
             ->search($searchData)
             ->orderBy($sortData['sort_column'], $sortData['sort_direction'])
-            ->paginate($params['per_page'] ?? 10, $this->getColumnsForList());
+            ->all($this->getColumnsForList());
 
-        $this->updateDataResult($results['items']);
+        $results = $results->toArray();
+
+        $this->updateDataResult($results);
 
         return $results;
     }
