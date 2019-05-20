@@ -34,14 +34,14 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
         if ($type === BusStation::TYPE_CITY) {
             return $this->scopeQuery(function ($query) use ($type) {
                 return $query->where('parent_id', DB::raw('id'));
-            })->orderBy('city', 'desc')
+            })->orderBy('city', 'asc')
             ->all([
                 'id',
                 'city'
             ]);
         }
 
-        return $this->orderBy('city', 'desc')->all([
+        return $this->orderBy('city', 'asc')->all([
             'id',
             'city',
             'name_station'
