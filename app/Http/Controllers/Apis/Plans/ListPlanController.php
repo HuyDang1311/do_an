@@ -77,7 +77,7 @@ class ListPlanController extends ApiController
 
         return getSortConditions($sortData, [
             'time_start',
-            'price_ticket'
+            'price_ticket',
         ], 'time_start');
     }
 }
