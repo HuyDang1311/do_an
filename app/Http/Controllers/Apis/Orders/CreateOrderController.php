@@ -47,6 +47,7 @@ class CreateOrderController extends ApiController
                 'address_end_id',
                 'plan_id',
                 'seat_ids',
+                'order_code',
             ]);
 
             $this->beginTransaction();
@@ -55,6 +56,7 @@ class CreateOrderController extends ApiController
 
             $this->commit();
         } catch (Exception $ex) {
+            dd($ex->getMessage());
             $this->rollback();
             return $this->responseError(trans('message.order.create_fail'));
         }

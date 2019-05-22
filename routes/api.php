@@ -15,8 +15,14 @@ use \App\Laravue\JsonResponse;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->get('/version', function (Request $request) {
+    return [
+        'status_code' => 200,
+        'message' => '',
+        'data' => [
+            'version' => '1.0.0'
+        ],
+    ];
 });
 
 Route::group(['middleware' => 'api'], function () {
@@ -61,21 +67,21 @@ Route::group(['middleware' => 'api'], function () {
         return response()->json(new JsonResponse(['items' => $data]));
     });
 
-    Route::get('/orders', function () {
-        $rowsNumber = 8;
-        $data = [];
-        for ($rowIndex = 0; $rowIndex < $rowsNumber; $rowIndex++) {
-            $row = [
-                'order_no' => 'LARAVUE' . mt_rand(1000000, 9999999),
-                'price' => mt_rand(10000, 999999),
-                'status' => Faker::randomInArray(['success', 'pending']),
-            ];
-
-            $data[] = $row;
-        }
-
-        return response()->json(new JsonResponse(['items' => $data]));
-    });
+//    Route::get('/orders', function () {
+//        $rowsNumber = 8;
+//        $data = [];
+//        for ($rowIndex = 0; $rowIndex < $rowsNumber; $rowIndex++) {
+//            $row = [
+//                'order_no' => 'LARAVUE' . mt_rand(1000000, 9999999),
+//                'price' => mt_rand(10000, 999999),
+//                'status' => Faker::randomInArray(['success', 'pending']),
+//            ];
+//
+//            $data[] = $row;
+//        }
+//
+//        return response()->json(new JsonResponse(['items' => $data]));
+//    });
 
     Route::get('/articles', function () {
         $rowsNumber = 10;
