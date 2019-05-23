@@ -1,44 +1,46 @@
 import { login, logout, getInfo } from '@/api/auth';
 import { getToken, setToken, removeToken } from '@/utils/auth';
-import router, { resetRouter } from '@/router';
-import store from '@/store';
 
 const state = {
   token: getToken(),
-  name: '',
   avatar: '',
-  introduction: '',
-  roles: [],
-  permissions: [],
+  email: '',
+  username: '',
+  name: '',
+  roleId: '',
+  roleName: '',
 };
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token;
   },
-  SET_INTRODUCTION: (state, introduction) => {
-    state.introduction = introduction;
+  SET_AVATAR: (state, avatar) => {
+    state.avatar = avatar;
+  },
+  SET_EMAIL: (state, email) => {
+    state.email = email;
+  },
+  SET_USERNAME: (state, username) => {
+    state.username = username;
   },
   SET_NAME: (state, name) => {
     state.name = name;
   },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar;
+  SET_ROLE_ID: (state, roleId) => {
+    state.roleId = roleId;
   },
-  SET_ROLES: (state, roles) => {
-    state.roles = roles;
-  },
-  SET_PERMISSIONS: (state, permissions) => {
-    state.permissions = permissions;
+  SET_ROLE_NAME: (state, roleName) => {
+    state.roleName = roleName;
   },
 };
 
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    const { email, password } = userInfo;
+    const { username, password } = userInfo;
     return new Promise((resolve, reject) => {
-      login({ email: email.trim(), password: password })
+      login({ username: username.trim(), password: password })
         .then(response => {
           commit('SET_TOKEN', response.token);
           setToken(response.token);
@@ -61,17 +63,19 @@ const actions = {
             reject('Verification failed, please Login again.');
           }
 
-          const { roles, name, avatar, introduction, permissions } = data;
+          const { role, name, avatar, email, username } = data;
           // roles must be a non-empty array
-          if (!roles || roles.length <= 0) {
+          if (!role || role.length <= 0) {
             reject('getInfo: roles must be a non-null array!');
           }
 
           commit('SET_ROLES', roles);
-          commit('SET_PERMISSIONS', permissions);
-          commit('SET_NAME', name);
           commit('SET_AVATAR', avatar);
-          commit('SET_INTRODUCTION', introduction);
+          commit('SET_EMAIL', email);
+          commit('SET_USERNAME', username);
+          commit('SET_NAME', name);
+          commit('SET_ROLE_ID', role.value !== undefined ? role.value : '');
+          commit('SET_ROLE_NAME', role.value !== undefined ? role.text : '');
           resolve(data);
         })
         .catch(error => {
@@ -86,9 +90,9 @@ const actions = {
       logout(state.token)
         .then(() => {
           commit('SET_TOKEN', '');
-          commit('SET_ROLES', []);
+          commit('SET_ROLE_ID', '');
+          commit('SET_ROLE_NAME', '');
           removeToken();
-          resetRouter();
           resolve();
         })
         .catch(error => {
@@ -101,34 +105,9 @@ const actions = {
   resetToken({ commit }) {
     return new Promise(resolve => {
       commit('SET_TOKEN', '');
-      commit('SET_ROLES', []);
+      commit('SET_ROLE_ID', '');
+      commit('SET_ROLE_NAME', '');
       removeToken();
-      resolve();
-    });
-  },
-
-  // Dynamically modify permissions
-  changeRoles({ commit, dispatch }, role) {
-    return new Promise(async resolve => {
-      // const token = role + '-token';
-
-      // commit('SET_TOKEN', token);
-      // setToken(token);
-
-      // const { roles } = await dispatch('getInfo');
-
-      const roles = [role.name];
-      const permissions = role.permissions.map(permission => permission.name);
-      commit('SET_ROLES', roles);
-      commit('SET_PERMISSIONS', permissions);
-      resetRouter();
-
-      // generate accessible routes map based on roles
-      const accessRoutes = await store.dispatch('permission/generateRoutes', { roles, permissions });
-
-      // dynamically add accessible routes
-      router.addRoutes(accessRoutes);
-
       resolve();
     });
   },

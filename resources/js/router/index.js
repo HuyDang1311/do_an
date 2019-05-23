@@ -89,7 +89,6 @@ export const constantRoutes = [
 ];
 
 export const asyncRoutes = [
-  adminRoutes,
   errorRoutes,
   { path: '*', redirect: '/404', hidden: true },
 ];

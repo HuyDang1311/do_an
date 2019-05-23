@@ -1,13 +1,24 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+    <el-form
+        ref="loginForm"
+        :model="loginForm"
+        :rules="loginRules"
+        class="login-form"
+        auto-complete="on"
+        label-position="left">
       <h3 class="title">{{ $t('login.title') }}</h3>
       <lang-select class="set-language" />
-      <el-form-item prop="email">
+      <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input v-model="loginForm.email" name="email" type="text" auto-complete="on" :placeholder="$t('login.email')" />
+        <el-input
+          v-model="loginForm.username"
+          name="username"
+          type="text"
+          auto-complete="on"
+          :placeholder="$t('login.username')"/>
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
@@ -30,8 +41,8 @@
         </el-button>
       </el-form-item>
       <div class="tips">
-        <span style="margin-right:20px;">Email: admin@laravue.dev</span>
-        <span>Password: laravue</span>
+        <span style="margin-right:20px;">Username: super_admin</span>
+        <span>Password: 12345678</span>
       </div>
     </el-form>
   </div>
@@ -39,15 +50,14 @@
 
 <script>
 import LangSelect from '@/components/LangSelect';
-import { validEmail } from '@/utils/validate';
 
 export default {
   name: 'Login',
   components: { LangSelect },
   data() {
-    const validateEmail = (rule, value, callback) => {
-      if (!validEmail(value)) {
-        callback(new Error('Please enter the correct email'));
+    const validateUsername = (rule, value, callback) => {
+      if (value.length < 4) {
+        callback(new Error('Please enter the correct username'));
       } else {
         callback();
       }
@@ -61,11 +71,11 @@ export default {
     };
     return {
       loginForm: {
-        email: 'admin@laravue.dev',
-        password: 'laravue',
+        username: 'super_admin',
+        password: '12345678',
       },
       loginRules: {
-        email: [{ required: true, trigger: 'blur', validator: validateEmail }],
+        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePass }],
       },
       loading: false,

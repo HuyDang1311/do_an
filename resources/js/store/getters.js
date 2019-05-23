@@ -7,11 +7,10 @@ const getters = {
   cachedViews: state => state.tagsView.cachedViews,
   token: state => state.user.token,
   avatar: state => state.user.avatar,
+  email: state => state.user.email,
+  username: state => state.user.username,
   name: state => state.user.name,
-  introduction: state => state.user.introduction,
-  roles: state => state.user.roles,
-  permissions: state => state.user.permissions,
-  permission_routes: state => state.permission.routes,
-  addRoutes: state => state.permission.addRoutes,
+  roleId: state => state.user.roleId,
+  roleName: state => state.user.roleName,
 };
 export default getters;

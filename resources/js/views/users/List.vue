@@ -127,10 +127,8 @@
 <script>
 import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
 import UserResource from '@/api/user';
-import Resource from '@/api/resource';
 import waves from '@/directive/waves'; // Waves directive
 import permission from '@/directive/permission'; // Waves directive
-import checkPermission from '@/utils/permission'; // Permission checking
 
 const userResource = new UserResource();
 const permissionResource = new Resource('permissions');
@@ -257,12 +255,8 @@ export default {
   created() {
     this.resetNewUser();
     this.getList();
-    if (checkPermission(['manage permission'])) {
-      this.getPermissions();
-    }
   },
   methods: {
-    checkPermission,
     async getPermissions() {
       const { data } = await permissionResource.list({});
       const { all, menu, other } = this.classifyPermissions(data);
