@@ -9,8 +9,6 @@ function resolve(dir) {
   );
 }
 
-console.log(44444)
-
 module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],

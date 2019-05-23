@@ -1,24 +1,13 @@
 <template>
   <div class="login-container">
-    <el-form
-        ref="loginForm"
-        :model="loginForm"
-        :rules="loginRules"
-        class="login-form"
-        auto-complete="on"
-        label-position="left">
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
       <h3 class="title">{{ $t('login.title') }}</h3>
       <lang-select class="set-language" />
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input
-          v-model="loginForm.username"
-          name="username"
-          type="text"
-          auto-complete="on"
-          :placeholder="$t('login.username')"/>
+        <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" :placeholder="$t('login.username')" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Message } from 'element-ui';
 import { getToken, setToken } from '@/utils/auth';
+import { getLanguage } from '@/lang';
 
 // Create axios instance
 const service = axios.create({
@@ -11,6 +12,7 @@ const service = axios.create({
 // Request intercepter
 service.interceptors.request.use(
   config => {
+    config.headers['Language'] = getLanguage(); // Set language
     const token = getToken();
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + getToken(); // Set JWT token

@@ -39,23 +39,23 @@ class ApiController extends BaseController
     /**
      * Return a new JSON response from the application.
      *
-     * @param mixed        $message Message
-     * @param string|array $error   Error response
+     * @param mixed        $error   Message
+     * @param string|array $data    Error response
      * @param int          $status  Status code
      * @param array        $headers Headers
      *
      * @return JsonResponse;
      */
     public function responseError(
-        $message,
-        $error = [],
+        $error,
+        $data = [],
         $status = Response::HTTP_INTERNAL_SERVER_ERROR,
         array $headers = []
     ) {
         return response()->json([
+            'error' => $error,
             'status_code' => $status,
-            'message' => $message,
-            'errors' => $error,
+            'data' => $data,
         ], $status, $headers);
     }
 }
