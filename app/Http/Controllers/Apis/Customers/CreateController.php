@@ -57,6 +57,9 @@ class CreateController extends ApiController
             'phone_number',
             'password',
             'name',
+            'address',
+            'email',
+            'avatar',
         ]);
 
         try {

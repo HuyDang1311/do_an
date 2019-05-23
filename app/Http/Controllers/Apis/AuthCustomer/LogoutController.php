@@ -1,7 +1,6 @@
 <?php
-namespace App\Http\Controllers\Apis\CustomerAuth;
+namespace App\Http\Controllers\Apis\AuthCustomer;
 
-use App\Resources\CustomerResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
  *
  * @package App\Http\Controllers
  */
-class InfoController extends CustomerAuthController
+class LogoutController extends CustomerAuthController
 {
 
     /**
@@ -23,8 +22,18 @@ class InfoController extends CustomerAuthController
      */
     public function __invoke(Request $request)
     {
-        $user = new CustomerResource(Auth::user());
+        $this->guard()->logout();
 
-        return $this->responseSuccess('', $user);
+        return $this->responseSuccess(trans('customer-auth.logout'));
+    }
+
+    /**
+     * Auth guard
+     *
+     * @return mixed
+     */
+    private function guard()
+    {
+        return Auth::guard();
     }
 }

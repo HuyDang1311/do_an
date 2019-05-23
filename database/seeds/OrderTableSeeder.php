@@ -22,7 +22,7 @@ class OrderTableSeeder extends Seeder
                 'customer_id' => $i,
                 'status' => Order::STATUS_USING,
                 'order_code' => $i . '_code',
-                'seat_ids' => toPgArray([0,5,10]),
+                'seat_ids' => toPgArray(['A-0','B-5','B-10']),
                 'created_at' => $now,
                 'updated_at' => $now,
             ];

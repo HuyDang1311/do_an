@@ -82,10 +82,9 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     private function updateDataToCreate(array $data)
     {
-        $data['arr_seat_ids'] = explode(',', $data['seat_ids']);
-        $data['seat_ids'] = toPgArray($data['arr_seat_ids']);
+        $data['arr_seat_ids'] = is_array($data['seat_ids']) ? $data['seat_ids'] : explode(',', $data['seat_ids']);
+        $data['seat_ids'] = toPgArray($data['seat_ids']);
         $data['customer_id'] = 1;
-        $data['order_code'] = uniqid();
         return $data;
     }
 

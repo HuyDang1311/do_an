@@ -47,6 +47,7 @@ class CreateOrderController extends ApiController
                 'address_end_id',
                 'plan_id',
                 'seat_ids',
+                'order_code',
             ]);
 
             $this->beginTransaction();

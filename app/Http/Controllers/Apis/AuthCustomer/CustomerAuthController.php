@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Apis\CustomerAuth;
+namespace App\Http\Controllers\Apis\AuthCustomer;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Customer;
