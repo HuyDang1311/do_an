@@ -45,13 +45,13 @@ const actions = {
       login({ username: username.trim(), password: password })
         .then(response => {
           console.log(22);
-          console.log(response);
+          console.log(response.token);
           commit('SET_TOKEN', response.token);
           setToken(response.token);
           resolve();
         })
         .catch(error => {
-          reject(error.response.data.message);
+          reject(error);
         });
     });
   },

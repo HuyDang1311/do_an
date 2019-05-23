@@ -32,7 +32,7 @@ class LoginController extends AuthController
                 ->header('Authorization', $token);
         }
 
-        return $this->responseError(trans('auth.failed'), [], Response::HTTP_UNAUTHORIZED);
+        return $this->responseError('', trans('auth.failed'), Response::HTTP_UNAUTHORIZED);
     }
 
     /**
