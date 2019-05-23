@@ -23,6 +23,9 @@ class CustomerTableSeeder extends Seeder
             $data[] = [
                 'phone_number' => substr($faker->phoneNumber, 0, 15),
                 'password' => $password,
+                'address' => $faker->address,
+                'avatar' => null,
+                'email' => $faker->email,
                 'name' => $faker->name,
                 'status' => Customer::STATUS_USING,
                 'created_at' => $now,

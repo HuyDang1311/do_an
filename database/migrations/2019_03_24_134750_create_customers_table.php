@@ -16,9 +16,12 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('phone_number', 20)->unique();
+            $table->string('phone_number', 20)->unique()->index();
             $table->string('password');
-            $table->string('name')->unique();
+            $table->string('address')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
             $table->string('status')->default(Customer::STATUS_USING)->index();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();

@@ -43,6 +43,9 @@ class ShowController extends ApiController
             $customer = $this->repository->find($customerId, [
                 'phone_number',
                 'name',
+                'address',
+                'email',
+                'avatar',
                 'status',
                 'created_at'
             ]);
