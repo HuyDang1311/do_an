@@ -80,7 +80,7 @@ export const constantRoutes = [
     hidden: true,
   },
   {
-    path: '',
+    path: '/home',
     component: Layout,
     redirect: 'dashboard',
     children: [
@@ -93,7 +93,7 @@ export const constantRoutes = [
     ],
   },
   {
-    path: '/home',
+    path: '',
     component: Layout1,
     redirect: 'home-dashboard',
     children: [

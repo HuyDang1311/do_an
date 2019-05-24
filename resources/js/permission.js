@@ -22,7 +22,7 @@ router.beforeEach(async (to, from, next) => {
   if (hasToken) {
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
-      next({ path: '/' });
+      next({ path: '/home' });
       NProgress.done();
     } else {
       // determine whether the user has obtained his permission roles through getInfo
