@@ -1,0 +1,16 @@
+import '../assets/frontend/js/jquery.min.js';
+import '../assets/frontend/js/jquery-migrate-3.0.1.min.js';
+import '../assets/frontend/js/popper.min.js';
+import '../assets/frontend/js/bootstrap.min.js';
+import '../assets/frontend/js/jquery.easing.1.3.js';
+import '../assets/frontend/js/jquery.waypoints.min.js';
+import '../assets/frontend/js/jquery.stellar.min.js';
+import '../assets/frontend/js/owl.carousel.min.js';
+import '../assets/frontend/js/jquery.magnific-popup.min.js';
+import '../assets/frontend/js/jquery.animateNumber.min.js';
+import '../assets/frontend/js/bootstrap-datepicker.js';
+// import '../assets/frontend/js/jquery.timepicker.min.js';
+import '../assets/frontend/js/scrollax.min.js';
+import '../assets/frontend/js/google-map.js';
+import '../assets/frontend/js/aos.js';
+import '../assets/frontend/js/main.js';

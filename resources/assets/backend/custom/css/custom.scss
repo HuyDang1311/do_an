@@ -1,0 +1,59 @@
+.box {
+    border-top: 1px solid #d2d6de;
+    .box-header {
+        color: #32c5d2;
+    }
+    padding-left: 10px;
+    padding-right: 10px;
+    //font-family: Arial;
+}
+.control-label {
+    font-size: 15px;
+}
+
+.form-search button{
+    border-radius: 0px;
+}
+
+.form-search button:last-child{
+    background: #32c5d2;
+}
+.form-search button:last-child:hover{
+    background: #2E9FD2;
+}
+
+.table-custom {
+    font-size: 15px;
+}
+
+.box-header {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.pagination {
+    li:first-child a {
+        border-radius: 0px;
+    }
+    li:last-child a {
+        border-radius: 0px;
+    }
+    margin: 0px;
+    li a {
+        color: #23527c;
+    }
+}
+.no-radius {
+    border-radius: 0px;
+}
+
+table tr th {
+    position: relative;
+    span {
+        position: absolute;
+        right: 5px;
+        .fa-sort {
+            color: #cccccc;
+        }
+    }
+}

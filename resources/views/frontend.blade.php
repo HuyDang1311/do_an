@@ -1,38 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel Vue Admin</title>
+    <title>Louie - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0//frontend/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+    <link rel="stylesheet" href="/css/frontend.css">
 </head>
 <body>
-    <div id="app">
-        <app></app>
-    </div>
 
-    <script src=/static/tinymce4.7.5/tinymce.min.js></script>
-    <script src="{{ mix('js/vendor.js') }}"></script>
-    <script src="{{ mix('js/manifest.js') }}"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/js/app.js"></script>
+    <script src="/frontend/js/jquery.min.js"></script>
+    <script src="/frontend/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/frontend/js/popper.min.js"></script>
+    <script src="/frontend/js/bootstrap.min.js"></script>
+    <script src="/frontend/js/jquery.easing.1.3.js"></script>
+    <script src="/frontend/js/jquery.waypoints.min.js"></script>
+    <script src="/frontend/js/jquery.stellar.min.js"></script>
+    <script src="/frontend/js/owl.carousel.min.js"></script>
+    <script src="/frontend/js/jquery.magnific-popup.min.js"></script>
+    <script src="/frontend/js/jquery.animateNumber.min.js"></script>
+    <script src="/frontend/js/bootstrap-datepicker.js"></script>
+    <script src="/frontend/js/scrollax.min.js"></script>
+    <script src="/frontend/js/google-map.js"></script>
+    <script src="/frontend/js/aos.js"></script>
+    <script src="/frontend/js/main.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

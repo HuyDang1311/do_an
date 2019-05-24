@@ -11,10 +11,11 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/{any}', 'VueController')->where('any', '.*');
-});
+Route::get('{any}', function () {
+    if (Request::is('admin*')) {
+        return view('backend');
+    } else {
+        return view('frontend');
+    }
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+})->where('any', '.*');
