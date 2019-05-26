@@ -78,7 +78,7 @@
     import CategoryRequest from '../../../Request/CategoryRequest';
     import ProductRequest from '../../../Request/ProductRequest';
     import VueUploadMultipleImage from 'vue-upload-multiple-image'
-    import {Awn} from '../../../utilities';
+    import {Awn} from '@/utils/awn';
     export default {
         name: "Create",
         components: {
