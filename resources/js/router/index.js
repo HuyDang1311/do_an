@@ -11,7 +11,6 @@ Vue.use(Router);
 
 /* Layout */
 import Layout from '@/layout';
-import Layout1 from '@/layout-1';
 
 /* Router for modules */
 import elementUiRoutes from './modules/element-ui';
@@ -80,26 +79,13 @@ export const constantRoutes = [
     hidden: true,
   },
   {
-    path: '/home',
+    path: '',
     component: Layout,
     redirect: 'dashboard',
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', noCache: false },
-      },
-    ],
-  },
-  {
-    path: '',
-    component: Layout1,
-    redirect: 'home-dashboard',
-    children: [
-      {
-        path: 'home-dashboard',
-        component: () => import('@/views/home-dashboard/index'),
         name: 'Dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: false },
       },
@@ -242,6 +228,27 @@ const router = createRouter();
 export function resetRouter() {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher; // reset router
+}
+
+export function getRouter() {
+  return {
+    0: 'view menu element ui',
+    1: 'view menu permission',
+    2: 'view menu components',
+    3: 'view menu charts',
+    4: 'view menu nested routes',
+    5: 'view menu table',
+    6: 'view menu administrator',
+    7: 'view menu theme',
+    8: 'view menu clipboard',
+    9: 'view menu excel',
+    10: 'view menu zip',
+    11: 'view menu pdf',
+    12: 'view menu i18n',
+    13: 'manage user',
+    14: 'manage article',
+    15: 'manage permission',
+  };
 }
 
 export default router;

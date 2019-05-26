@@ -1,6 +1,6 @@
 import { login, logout, getInfo } from '@/api/auth';
 import { getToken, setToken, removeToken } from '@/utils/auth';
-import router, { resetRouter } from '@/router';
+import router, { resetRouter, getRouter } from '@/router';
 import store from '@/store';
 
 const state = {
@@ -12,6 +12,7 @@ const state = {
   roles: [],
   email: '',
   address: '',
+  permissions: [],
 };
 
 const mutations = {
@@ -39,6 +40,9 @@ const mutations = {
   SET_ADDRESS: (state, address) => {
     state.address = address;
   },
+  SET_PERMISSIONS: (state, permissions) => {
+    state.permissions = permissions;
+  },
 };
 
 const actions = {
@@ -50,14 +54,16 @@ const actions = {
         .then(response => {
           commit('SET_TOKEN', response.token);
           setToken(response.token);
-          const { role, name, avatar, username, address, id, email } = response.data;
+          const { role, name, username, address, id, email } = response.data;
           commit('SET_ID', id);
           commit('SET_USERNAME', username);
           commit('SET_NAME', name);
-          commit('SET_AVATAR', avatar);
+          commit('SET_AVATAR', 'http://i.pravatar.cc/128');
           commit('SET_ROLES', role);
           commit('SET_EMAIL', email);
           commit('SET_ADDRESS', address);
+          console.log(getRouter());
+          commit('SET_PERMISSIONS', getRouter());
           resolve();
         })
         .catch(error => {
@@ -90,6 +96,8 @@ const actions = {
           commit('SET_ROLES', role);
           commit('SET_EMAIL', email === undefined ? email : '');
           commit('SET_ADDRESS', address === undefined ? address : '');
+          console.log(getRouter());
+          commit('SET_PERMISSIONS', getRouter());
 
           resolve(data);
         })
