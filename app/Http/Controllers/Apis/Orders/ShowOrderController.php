@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Apis\Orders;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Apis\AuthCustomer\CustomerAuthController;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class ShowOrderController extends ApiController
+class ShowOrderController extends CustomerAuthController
 {
 
     /**
@@ -28,11 +30,12 @@ class ShowOrderController extends ApiController
     public function __construct(
         OrderRepositoryInterface $repository
     ) {
+        parent::__construct();
         $this->repository = $repository;
     }
 
     /**
-     * List plan
+     * Show order
      *
      * @param Request $request Request
      * @param int     $id      Id of plan
@@ -42,11 +45,13 @@ class ShowOrderController extends ApiController
     public function __invoke(Request $request, $id)
     {
         try {
-            $plans = $this->repository->showOrder($id);
+            $order = $this->repository->showOrder($id);
+        } catch (ModelNotFoundException $ex) {
+            return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
             return $this->responseError(trans('message.order.show_fail'));
         }
 
-        return $this->responseSuccess('', $plans);
+        return $this->responseSuccess('', $order);
     }
 }

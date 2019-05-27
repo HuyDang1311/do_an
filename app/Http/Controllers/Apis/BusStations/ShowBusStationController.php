@@ -42,11 +42,8 @@ class ShowBusStationController extends ApiController
     public function __invoke(Request $request, $id)
     {
         try {
-            \DB::enableQueryLog();
             $busStation = $this->repository->showBusStation($id);
-//            dd(\DB::getQueryLog());
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             return $this->responseError(trans('message.bus_station.show_fail'));
         }
 

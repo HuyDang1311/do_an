@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\Apis\AuthCustomer\CustomerAuthController;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateOrderController extends CustomerAuthController
+class HistoryOrderController extends CustomerAuthController
 {
 
     /**
@@ -34,34 +35,20 @@ class CreateOrderController extends CustomerAuthController
     }
 
     /**
-     * List order
-     *
-     * @param Request $request Request
+     * Show history order
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
         try {
-            $data = $request->only([
-                'address_start_id',
-                'address_end_id',
-                'plan_id',
-                'seat_ids',
-                'order_code',
-                'payment_method_id',
-            ]);
-
-            $this->beginTransaction();
-
-            $order = $this->repository->createOrder($data);
-
-            $this->commit();
+            $historyOrder = $this->repository->historyOrder();
+        } catch (ModelNotFoundException $ex) {
+            return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            $this->rollback();
-            return $this->responseError(trans('message.order.create_fail'));
+            return $this->responseError(trans('message.order.show_fail'));
         }
 
-        return $this->responseSuccess('', $order, Response::HTTP_CREATED);
+        return $this->responseSuccess('', $historyOrder);
     }
 }

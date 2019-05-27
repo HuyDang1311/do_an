@@ -16,5 +16,8 @@ return [
     'failed' => 'Đăng nhập thất bại, tên đăng nhập hoặc mật khẩu không đúng.',
     'logout' => 'Đăng xuất thành công!',
     'throttle' => 'Quá nhiều yêu cầu gửi tới máy chủ. Hãy thử lại sau :seconds giây.',
+    'auth' => [
+        'login_fail' => 'Đăng nhập thất bại, tên đăng nhập hoặc mật khẩu không đúng.',
+    ],
 
 ];
