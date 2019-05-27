@@ -19,6 +19,17 @@ interface OrderRepositoryInterface
      * @param int $id Id of order
      *
      * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
      */
     public function showOrder(int $id);
+
+    /**
+     * History order
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function historyOrder();
 }

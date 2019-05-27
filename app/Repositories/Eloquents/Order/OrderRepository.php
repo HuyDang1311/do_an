@@ -5,6 +5,8 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class OrderRepository extends AbstractRepository implements OrderRepositoryInterface
 {
@@ -50,6 +52,44 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     public function showOrder(int $id)
     {
+        $customerId = Auth::user()->id;
+
+        $result = $this->with($this->withOrderDetail())
+            ->scopeQuery(function ($query) use ($customerId) {
+                return $query->where('customer_id', $customerId);
+            })
+            ->find($id, $this->getColumns());
+
+        return $result;
+    }
+
+    /**
+     * History order
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function historyOrder()
+    {
+        $customerId = Auth::user()->id;
+
+        $result = $this->with($this->withOrderDetail())
+            ->scopeQuery(function ($query) use ($customerId) {
+                return $query->where('customer_id', $customerId);
+            })
+            ->all($this->getColumns());
+
+        return $result;
+    }
+
+    /**
+     * Get with order detail
+     *
+     * @return array
+     */
+    private function withOrderDetail()
+    {
         $with['orderDetail'] = function ($query) {
             return $query->select([
                 'order_id',
@@ -60,17 +100,37 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             ]);
         };
 
-        return $this->with($with)->find($id, [
+        return $with;
+    }
+
+    /**
+     * Get column select order
+     *
+     * @return array
+     */
+    private function getColumns()
+    {
+        return [
             'id',
             'plan_id',
             'customer_id',
             'order_code',
             'payment_method_id',
+            DB::raw("CASE WHEN payment_method_id = " . Order::PAYMENT_METHOD_DIRECT_MONEY
+                . " THEN '" . trans(Order::$paymentMethodObject[Order::PAYMENT_METHOD_DIRECT_MONEY])
+                . "' ELSE '' END as payment_method_name"),
             'coupon_id',
             'status',
+            DB::raw("CASE WHEN payment_method_id = " . Order::STATUS_REGISTERED
+                . " THEN '" . trans(Order::$statusObject[Order::STATUS_REGISTERED])
+                . "' WHEN payment_method_id = " . Order::STATUS_RUNNING
+                . " THEN '" . trans(Order::$statusObject[Order::STATUS_RUNNING])
+                . "' WHEN payment_method_id = " . Order::STATUS_DONE
+                . " THEN '" . trans(Order::$statusObject[Order::STATUS_DONE])
+                . "' ELSE '" . trans(Order::$statusObject[Order::STATUS_CANCEL]) . "' END as status_name"),
             'seat_ids',
             'created_at'
-        ]);
+        ];
     }
 
     /**
@@ -84,7 +144,8 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     {
         $data['arr_seat_ids'] = is_array($data['seat_ids']) ? $data['seat_ids'] : explode(',', $data['seat_ids']);
         $data['seat_ids'] = toPgArray($data['seat_ids']);
-        $data['customer_id'] = 1;
+        $data['payment_method_id'] = $data['payment_method_id'] ?? Order::PAYMENT_METHOD_DIRECT_MONEY;
+        $data['customer_id'] = Auth::user()->id;
         return $data;
     }
 
