@@ -20,7 +20,7 @@ class OrderTableSeeder extends Seeder
             $data[] = [
                 'plan_id' => rand(45, 50),
                 'customer_id' => $i,
-                'status' => Order::STATUS_NOT_RUN,
+                'status' => Order::STATUS_REGISTERED,
                 'order_code' => $i . '_code',
                 'seat_ids' => toPgArray(['A-0','B-5','B-10']),
                 'created_at' => $now,
