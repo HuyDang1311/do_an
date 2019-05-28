@@ -13,8 +13,8 @@
 
 Route::namespace('Apis\AuthCustomer')->group(function () {
     Route::post('login', 'LoginController')->name('customer-auth.login');
-    Route::group(['middleware' => 'customer.auth:api'], function () {
+//    Route::group(['middleware' => 'customer.auth:api'], function () {
         Route::get('info', 'InfoController')->name('customer-auth.info');;
         Route::post('logout', 'LogoutController')->name('customer-auth.logout');;
-    });
+//    });
 });

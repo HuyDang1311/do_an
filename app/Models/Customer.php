@@ -50,7 +50,9 @@ class Customer extends Authenticatable implements JWTSubject
         'phone_number',
         'password',
         'name',
-        'status',
+        'address',
+        'email',
+        'avatar',
     ];
 
     /**

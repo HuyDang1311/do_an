@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\Eloquents\Order;
 
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Repositories\Eloquents\AbstractRepository;
@@ -32,6 +33,9 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     public function createOrder(array $data)
     {
+        //validate customer id
+        Customer::findOrFail($data['customer_id'] ?? 0);
+
         $data = $this->updateDataToCreate($data);
 
         $order = $this->create($data);
@@ -52,11 +56,11 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     public function showOrder(int $id)
     {
-        $customerId = Auth::user()->id;
-
         $result = $this->with($this->withOrderDetail())
-            ->scopeQuery(function ($query) use ($customerId) {
-                return $query->where('customer_id', $customerId);
+            ->scopeQuery(function ($query) {
+                return $query->join('plans', 'plans.id', '=', 'orders.plan_id')
+                    ->join('bus_stations as bt1', 'bt1.id', '=', 'plans.address_start_id')
+                    ->join('bus_stations as bt2', 'bt2.id', '=', 'plans.address_end_id');
             })
             ->find($id, $this->getColumns());
 
@@ -66,17 +70,23 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     /**
      * History order
      *
+     * @param int $customerId Id of customer
+     *
      * @return array
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function historyOrder()
+    public function historyOrder($customerId)
     {
-        $customerId = Auth::user()->id;
+        //validate customer id
+        Customer::findOrFail($customerId ?? 0);
 
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) use ($customerId) {
-                return $query->where('customer_id', $customerId);
+                return $query->join('plans', 'plans.id', '=', 'orders.plan_id')
+                    ->join('bus_stations as bt1', 'bt1.id', '=', 'plans.address_start_id')
+                    ->join('bus_stations as bt2', 'bt2.id', '=', 'plans.address_end_id')
+                    ->where('customer_id', $customerId);
             })
             ->all($this->getColumns());
 
@@ -111,25 +121,32 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     private function getColumns()
     {
         return [
-            'id',
-            'plan_id',
-            'customer_id',
-            'order_code',
-            'payment_method_id',
-            DB::raw("CASE WHEN payment_method_id = " . Order::PAYMENT_METHOD_DIRECT_MONEY
+            'orders.id',
+            'orders.plan_id',
+            'orders.customer_id',
+            'orders.order_code',
+            'orders.payment_method_id',
+            DB::raw("CASE WHEN orders.payment_method_id = " . Order::PAYMENT_METHOD_DIRECT_MONEY
                 . " THEN '" . trans(Order::$paymentMethodObject[Order::PAYMENT_METHOD_DIRECT_MONEY])
                 . "' ELSE '' END as payment_method_name"),
-            'coupon_id',
-            'status',
-            DB::raw("CASE WHEN payment_method_id = " . Order::STATUS_REGISTERED
+            'orders.coupon_id',
+            'orders.status',
+            DB::raw("CASE WHEN orders.status = " . Order::STATUS_REGISTERED
                 . " THEN '" . trans(Order::$statusObject[Order::STATUS_REGISTERED])
-                . "' WHEN payment_method_id = " . Order::STATUS_RUNNING
+                . "' WHEN orders.status = " . Order::STATUS_RUNNING
                 . " THEN '" . trans(Order::$statusObject[Order::STATUS_RUNNING])
-                . "' WHEN payment_method_id = " . Order::STATUS_DONE
+                . "' WHEN orders.status = " . Order::STATUS_DONE
                 . " THEN '" . trans(Order::$statusObject[Order::STATUS_DONE])
-                . "' ELSE '" . trans(Order::$statusObject[Order::STATUS_CANCEL]) . "' END as status_name"),
-            'seat_ids',
-            'created_at'
+                . "' ELSE '" . trans(Order::$statusObject[Order::STATUS_CANCEL])
+                . "' END as status_name"),
+            'orders.seat_ids',
+            'orders.created_at',
+            'plans.address_start_id',
+            'bt1.city as address_start_city',
+            'bt1.name_station as address_start_name_station',
+            'plans.address_end_id',
+            'bt2.city as address_end_city',
+            'bt2.name_station as address_end_name_station',
         ];
     }
 
@@ -145,7 +162,6 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
         $data['arr_seat_ids'] = is_array($data['seat_ids']) ? $data['seat_ids'] : explode(',', $data['seat_ids']);
         $data['seat_ids'] = toPgArray($data['seat_ids']);
         $data['payment_method_id'] = $data['payment_method_id'] ?? Order::PAYMENT_METHOD_DIRECT_MONEY;
-        $data['customer_id'] = Auth::user()->id;
         return $data;
     }
 

@@ -20,9 +20,9 @@ class LocalizationMiddleware
     public function handle($request, Closure $next)
     {
         if ($request->has('language')) {
-            $translator = $request->get('language', 'en');
+            $translator = $request->get('language', 'vi');
         } else {
-            $translator = $request->header('Language', 'en');
+            $translator = $request->header('Language', 'vi');
         }
         
         app('translator')->setLocale($translator);
