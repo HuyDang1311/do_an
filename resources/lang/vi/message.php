@@ -9,16 +9,26 @@ return [
         'create_fail'    => 'Tạo thông tin khách hàng không thành công.',
         'create_success' => 'Tạo thông tin khánh hàng thành công.',
         'show_fail'      => 'Có lỗi khi xem thông tin khách hàng.',
+        'list_fail'      => 'Có lỗi khi xem danh sách khánh hàng.',
+        'not_found'      => 'Không tìm thấy thông tin khánh hàng.',
+        'update_fail'      => 'Có lỗi khi cập nhật khánh hàng.',
     ],
     'bus_station' => [
         'list_fail'    => 'Có lỗi khi xem danh sách bến xe.',
+        'show_fail'    => 'Có lỗi khi xem thông tin bến xe.',
     ],
     'plan' => [
         'list_fail'    => 'Có lỗi khi xem danh sách lịnh trình.',
+        'show_fail'    => 'Có lỗi khi xem thông tin lịnh trình.',
     ],
     'order' => [
-        'list_fail'    => 'Có lỗi khi xem danh sách đặt vé.',
+        'create_fail'    => 'Có lỗi khi đặt vé.',
+        'list_fail'      => 'Có lỗi khi xem danh sách đặt vé.',
         'show_fail'      => 'Có lỗi khi xem thông tin đặt vé.',
         'not_found'      => 'Không tìm thấy thông tin đặt vé.',
+    ],
+    'customer_auth' => [
+        'not_found' => 'Không tìm thấy thông tin khách hàng.',
+        'show_fail'      => 'Có lỗi khi xem thông tin khách hàng.',
     ],
 ];

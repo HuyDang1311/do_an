@@ -27,9 +27,11 @@ interface OrderRepositoryInterface
     /**
      * History order
      *
+     * @param int $customerId Id of customer
+     *
      * @return array
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function historyOrder();
+    public function historyOrder($customerId);
 }
