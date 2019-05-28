@@ -26,6 +26,7 @@ return [
         'list_fail'      => 'Có lỗi khi xem danh sách đặt vé.',
         'show_fail'      => 'Có lỗi khi xem thông tin đặt vé.',
         'not_found'      => 'Không tìm thấy thông tin đặt vé.',
+        'history_fail'      => 'Có lỗi khi xem thông tin lịch sử đặt vé.',
     ],
     'customer_auth' => [
         'not_found' => 'Không tìm thấy thông tin khách hàng.',

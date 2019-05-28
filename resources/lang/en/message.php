@@ -26,6 +26,7 @@ return [
         'list_fail'    => 'List order error.',
         'show_fail'    => 'Show order error.',
         'not_found'      => 'Oder not found.',
+        'history_fail'      => 'Show history order error.',
     ],
     'customer_auth' => [
         'not_found' => 'Customer not found.',

@@ -58,7 +58,8 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     {
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) {
-                return $query->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+                return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
+                    ->join('companies', 'plans.company_id', '=', 'companies.id')->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                     ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
                     ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id');
             })
@@ -83,7 +84,9 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
 
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) use ($customerId) {
-                return $query->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+                return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
+                    ->join('companies', 'plans.company_id', '=', 'companies.id')
+                    ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                     ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
                     ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
                     ->where('customer_id', $customerId);
@@ -147,6 +150,11 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             'order_detail.address_end_id',
             'bt2.city as address_end_city',
             'bt2.name_station as address_end_name_station',
+            'companies.name as company_name',
+            DB::raw('DATE(plans.time_start) as date_start'),
+            DB::raw('DATE(plans.time_end) as date_end'),
+            DB::raw("to_char(plans.time_start,'HH:MM') as time_start"),
+            DB::raw("to_char(plans.time_end,'HH:MM') as time_end"),
         ];
     }
 
