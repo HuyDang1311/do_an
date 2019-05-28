@@ -58,9 +58,9 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     {
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) {
-                return $query->join('plans', 'plans.id', '=', 'orders.plan_id')
-                    ->join('bus_stations as bt1', 'bt1.id', '=', 'plans.address_start_id')
-                    ->join('bus_stations as bt2', 'bt2.id', '=', 'plans.address_end_id');
+                return $query->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+                    ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
+                    ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id');
             })
             ->find($id, $this->getColumns());
 
@@ -83,9 +83,9 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
 
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) use ($customerId) {
-                return $query->join('plans', 'plans.id', '=', 'orders.plan_id')
-                    ->join('bus_stations as bt1', 'bt1.id', '=', 'plans.address_start_id')
-                    ->join('bus_stations as bt2', 'bt2.id', '=', 'plans.address_end_id')
+                return $query->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+                    ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
+                    ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
                     ->where('customer_id', $customerId);
             })
             ->all($this->getColumns());
@@ -141,10 +141,10 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
                 . "' END as status_name"),
             'orders.seat_ids',
             'orders.created_at',
-            'plans.address_start_id',
+            'order_detail.address_start_id',
             'bt1.city as address_start_city',
             'bt1.name_station as address_start_name_station',
-            'plans.address_end_id',
+            'order_detail.address_end_id',
             'bt2.city as address_end_city',
             'bt2.name_station as address_end_name_station',
         ];
