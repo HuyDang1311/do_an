@@ -39,7 +39,6 @@
 
 <script>
 import LangSelect from '@/components/LangSelect';
-import { getRouter } from '@/router';
 
 export default {
   name: 'Login',
@@ -95,7 +94,6 @@ export default {
           this.loading = true;
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
-              console.log(getRouter());
               this.$router.push({ path: this.redirect || '/' });
               this.loading = false;
             })
