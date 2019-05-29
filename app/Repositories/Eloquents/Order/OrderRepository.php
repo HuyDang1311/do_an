@@ -153,8 +153,8 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             'companies.name as company_name',
             DB::raw('DATE(plans.time_start) as date_start'),
             DB::raw('DATE(plans.time_end) as date_end'),
-            DB::raw("to_char(plans.time_start,'HH:MM') as time_start"),
-            DB::raw("to_char(plans.time_end,'HH:MM') as time_end"),
+            DB::raw("to_char(plans.time_start,'HH24:MI') as time_start"),
+            DB::raw("to_char(plans.time_end,'HH24:MI') as time_end"),
         ];
     }
 
