@@ -3,18 +3,22 @@ import VueI18n from 'vue-i18n';
 import Cookies from 'js-cookie';
 import elementEnLocale from 'element-ui/lib/locale/lang/en'; // element-ui lang
 import elementViLocale from 'element-ui/lib/locale/lang/vi';// element-ui lang
-import enLocale from './en';
-import viLocale from './vi';
+import enLocale from './en/en';
+import viLocale from './vi/vi';
+import enValidateLocale from './en/validate';
+import viValidateLocale from './vi/validate';
 
 Vue.use(VueI18n);
 
 const messages = {
   en: {
     ...enLocale,
+    ...enValidateLocale,
     ...elementEnLocale,
   },
   vi: {
     ...viLocale,
+    ...viValidateLocale,
     ...elementViLocale,
   },
 };
@@ -33,7 +37,7 @@ export function getLanguage() {
       return locale;
     }
   }
-  return 'en';
+  return 'vi';
 }
 const i18n = new VueI18n({
   // set locale

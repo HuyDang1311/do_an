@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+/* Layout */
+import Layout from '@/layout';
+
 /**
  * Layzloading will create many files and slow on compiling, so best not to use lazyloading on devlopment.
  * The syntax is lazyloading, but we convert to proper require() with babel-plugin-syntax-dynamic-import
@@ -36,6 +39,19 @@ export const constantRoutes = [
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true,
+  },
+  {
+    path: '/documentation',
+    component: Layout,
+    redirect: '/documentation/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/documentation/index'),
+        name: 'Documentation',
+        meta: { title: 'documentation', icon: 'documentation', noCache: true },
+      },
+    ],
   },
 ];
 
