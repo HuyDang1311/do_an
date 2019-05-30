@@ -11,10 +11,8 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/{any}', 'VueController')->where('any', '.*');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});

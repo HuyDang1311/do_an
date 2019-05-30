@@ -60,6 +60,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        if (!$request->expectsJson()) {
+            return redirect('login');
+        }
+
         return response()->json([
             'status_code' => Response::HTTP_UNAUTHORIZED,
             'message' => trans('auth.auth.login_fail'),
