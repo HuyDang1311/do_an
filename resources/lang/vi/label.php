@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'title' => 'Vé xe online',
+    'title_login' => 'Đăng Nhập Hệ Thống',
+    'login' => [
+        'username_placeholder'    => 'Tên đăng nhập',
+        'password_placeholder'    => 'Mật khẩu',
+        'btn_login'    => 'Đăng nhập',
+        'lb_forgot_pw'    => 'Quên mật khẩu',
+        'lb_register'    => 'Đăng ký mới',
+    ],
     'status' => [
         'using'    => 'Đang sử dụng',
     ],

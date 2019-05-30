@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'title' => 'Online bus ticket',
+    'title_login' => 'Login system',
+    'login' => [
+        'plh_username'    => 'Username',
+        'plh_password'    => 'Password',
+        'btn_login'    => 'Sign In',
+        'lb_forgot_pw'    => 'Forgot password',
+        'lb_register'    => 'Register',
+    ],
     'status' => [
         'using'    => 'Using',
     ],

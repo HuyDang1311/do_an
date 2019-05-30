@@ -39,6 +39,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+//        dd($exception->getMessage(), $exception);
         parent::report($exception);
     }
 
@@ -51,20 +52,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        return parent::render($request, $exception);
+        if ($request->wantsJson()) {
 
-        if ($exception instanceof MethodNotAllowedHttpException) {
+            if ($exception instanceof MethodNotAllowedHttpException) {
+                return response()->json([
+                    'status_code' => Response::HTTP_METHOD_NOT_ALLOWED,
+                    'message' => trans('message.route_not_found'),
+                    'data' => [],
+                ], Response::HTTP_METHOD_NOT_ALLOWED, []);
+            }
+
             return response()->json([
-                'status_code' => Response::HTTP_METHOD_NOT_ALLOWED,
-                'message' => trans('message.route_not_found'),
+                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'message' => 'Internal Error.',
                 'data' => [],
-            ], Response::HTTP_METHOD_NOT_ALLOWED, []);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR, []);
         }
 
-        return response()->json([
-            'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
-            'message' => 'Internal Error.',
-            'data' => [],
-        ], Response::HTTP_INTERNAL_SERVER_ERROR, []);
+        return parent::render($request, $exception);
     }
 }
