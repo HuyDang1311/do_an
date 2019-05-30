@@ -53,6 +53,8 @@ class OrderDetail extends Model
         'total_money',
         'payment_status',
         'process_status',
+        'address_start_id',
+        'address_end_id',
     ];
 
     /**

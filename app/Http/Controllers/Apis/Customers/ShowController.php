@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Apis\Customers;
 use App\Http\Controllers\ApiController;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShowController extends ApiController
 {
@@ -49,6 +51,8 @@ class ShowController extends ApiController
                 'status',
                 'created_at'
             ]);
+        } catch (ModelNotFoundException $ex) {
+            return $this->responseError(trans('message.customer.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
             return $this->responseError(trans('message.customer.show_fail'));
         }

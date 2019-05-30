@@ -37,16 +37,19 @@ class HistoryOrderController extends CustomerAuthController
     /**
      * Show history order
      *
+     * @param Request $request Request
+     *
      * @return JsonResponse
      */
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         try {
-            $historyOrder = $this->repository->historyOrder();
+            $customerId = $request->get('customer_id');
+            $historyOrder = $this->repository->historyOrder($customerId);
         } catch (ModelNotFoundException $ex) {
             return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.order.show_fail'));
+            return $this->responseError(trans('message.order.history_fail'));
         }
 
         return $this->responseSuccess('', $historyOrder);

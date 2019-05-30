@@ -11,9 +11,7 @@
 */
 Route::namespace('Apis\Orders')->prefix('orders')->group(function () {
     Route::get('/payment-methods', 'ListPaymentMethodOrderController')->name('order.payment_methods');
-    Route::group(['middleware' => 'auth:api'], function () {
-        Route::post('', 'CreateOrderController')->name('order.create');
-        Route::get('', 'HistoryOrderController')->name('order.history');
-        Route::get('/{id}', 'ShowOrderController')->name('order.show');
-    });
+    Route::post('', 'CreateOrderController')->name('order.create');
+    Route::get('', 'HistoryOrderController')->name('order.history');
+    Route::get('/{id}', 'ShowOrderController')->name('order.show');
 });
