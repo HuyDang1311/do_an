@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b>Vé xe online</b>',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<img src="favicon.ico" style="width: 70%;"/>',
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
 
     'logout_url' => 'logout',
 
-    'logout_method' => null,
+    'logout_method' => 'POST',
 
     'login_url' => 'login',
 
@@ -108,6 +108,24 @@ return [
     */
 
     'menu' => [
+        'MENU',
+        [
+            'text'        => 'Quản lý bến xe',
+            'icon'        => 'bus',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách bến xe',
+                    'url'  => 'admin/bus-stations',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký bến xe mới',
+                    'url'  => 'admin/bus-stations/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
