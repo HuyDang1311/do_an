@@ -3,6 +3,10 @@
 return [
     'title' => 'Vé xe online',
     'title_login' => 'Đăng Nhập Hệ Thống',
+    'search' => 'Tìm kiếm',
+    'clear' => 'Xóa',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
     'login' => [
         'username_placeholder'    => 'Tên đăng nhập',
         'password_placeholder'    => 'Mật khẩu',
@@ -35,5 +39,17 @@ return [
         'running' => 'Đang tiến hành',
         'done' => 'Đã hoàn thành',
         'cancel' => 'Đã bị hủy',
+    ],
+    'bus-stations' => [
+        'title' => 'Thông tin bến xe',
+        'list_stations' => 'Danh sách bến xe',
+        'city_name' => 'Tên thành phố',
+        'station_name' => 'Tên bến xe',
+        'pld_city_name' => 'Nhập tên thành phố...',
+        'pld_station_name' => 'Nhập tên bến xe...',
+        'tr_no' => 'No.',
+        'tr_city' => 'Tên thành phố',
+        'tr_name_station' => 'Tên bến xe',
+        'tr_created_at' => 'Ngày tạo',
     ],
 ];
