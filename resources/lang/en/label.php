@@ -3,6 +3,10 @@
 return [
     'title' => 'Online bus ticket',
     'title_login' => 'Login system',
+    'search' => 'Search',
+    'clear' => 'Clear',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
     'login' => [
         'plh_username'    => 'Username',
         'plh_password'    => 'Password',
@@ -35,5 +39,17 @@ return [
         'running' => 'Running',
         'done' => 'Done',
         'cancel' => 'Cancel',
+    ],
+    'bus-stations' => [
+        'title' => 'Bus station info',
+        'list_stations' => 'List bus stations',
+        'city_name' => 'City name',
+        'station_name' => 'Bus station name',
+        'pld_city_name' => 'Input city name...',
+        'pld_station_name' => 'Input bus station name...',
+        'tr_no' => 'No.',
+        'tr_city' => 'City name',
+        'tr_name_station' => 'Bus station name',
+        'tr_created_at' => 'Create date',
     ],
 ];

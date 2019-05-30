@@ -21,30 +21,46 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
     }
 
     /**
+     * Field seachable
+     *
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'city_name' => ['column' => 'bus_stations.city', 'operator' => 'ilike', 'type' => 'normal'],
+        'station_name' => ['column' => 'bus_stations.name_station', 'operator' => 'ilike', 'type' => 'normal'],
+    ];
+
+    /**
      * List bus station
      *
-     * @param int $type Type of select bus station
+     * @param int   $type Type of select bus station
+     * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function listBusStation(int $type)
+    public function listBusStation(int $type, array $data = [])
     {
+        $query = $this->search($data);
+
         if ($type === BusStation::TYPE_CITY) {
-            return $this->scopeQuery(function ($query) use ($type) {
+            return $query->scopeQuery(function ($query) {
                 return $query->where('parent_id', DB::raw('id'));
             })->orderBy('city', 'asc')
+            ->groupBy(['id', 'city'])
             ->all([
                 'id',
-                'city'
+                'city',
             ]);
         }
 
-        return $this->orderBy('city', 'asc')->all([
+        return $query->orderBy('city', 'asc')->all([
             'id',
             'city',
-            'name_station'
+            'name_station',
+            'created_at',
+            DB::raw("ROW_NUMBER () OVER (ORDER BY city) as row_number")
         ]);
     }
 

@@ -15,4 +15,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('', 'HomeController@index')->name('home');
+    require __DIR__ . '/WEB/route_bus_station.php';
 });

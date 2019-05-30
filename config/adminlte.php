@@ -116,12 +116,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Danh sách bến xe',
-                    'url'  => 'admin/bus-stations',
+                    'url'  => 'bus-stations',
                     'icon' => 'list',
                 ],
                 [
                     'text' => 'Đăng ký bến xe mới',
-                    'url'  => 'admin/bus-stations/create',
+                    'url'  => 'bus-stations/create',
                     'icon' => 'plus-square',
                 ],
             ],
