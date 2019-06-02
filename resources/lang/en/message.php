@@ -28,6 +28,7 @@ return [
         'not_found'      => 'Oder not found.',
         'history_fail'      => 'Show history order error.',
         'cancel_fail'      => 'Cancel order error.',
+        'cancel_success'      => 'Cancel order success.',
     ],
     'customer_auth' => [
         'not_found' => 'Customer not found.',
