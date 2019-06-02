@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\Interfaces\Order;
 
+use App\Models\Order;
+
 interface OrderRepositoryInterface
 {
 
@@ -34,4 +36,15 @@ interface OrderRepositoryInterface
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
     public function historyOrder($customerId);
+
+    /**
+     * Cancel order
+     *
+     * @param int $id Id of order
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function cancelOrder(int $id, int $status = Order::STATUS_DONE);
 }
