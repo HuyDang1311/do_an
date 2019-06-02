@@ -22,6 +22,7 @@ return [
     'plan' => [
         'list_fail'    => 'List plan error.',
         'show_fail'    => 'Show plan error.',
+        'not_found'    => 'Plan not found.',
     ],
     'order' => [
         'create_fail'    => 'Create order error.',
@@ -29,9 +30,16 @@ return [
         'show_fail'    => 'Show order error.',
         'not_found'      => 'Oder not found.',
         'history_fail'      => 'Show history order error.',
+        'cancel_fail'      => 'Cancel order error.',
+        'cancel_success'      => 'Cancel order success.',
     ],
     'customer_auth' => [
         'not_found' => 'Customer not found.',
         'show_fail'      => 'Show customer error.',
+    ],
+    'drivers' => [
+        'list_fail'      => 'List plan error.',
+        'show_fail'      => 'Plan not found.',
+        'not_found'      => 'Plan not found.',
     ],
 ];

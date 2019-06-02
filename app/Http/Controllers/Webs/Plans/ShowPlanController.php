@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Apis\Plans;
+namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\ApiController;
 use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;

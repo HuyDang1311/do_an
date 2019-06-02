@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Apis\Plans;
+namespace App\Http\Controllers\Apis\Drivers;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
+use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
-use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,23 +35,24 @@ class ShowPlanController extends ApiController
     }
 
     /**
-     * Show plan
+     * Handle the incoming request.
      *
-     * @param Request $request Request
-     * @param int     $id      Id of plan
+     * @param Request $request  Request
+     * @param int     $driverId Id of driver
+     * @param int     $planId   Id of plan
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request, $id)
+    public function __invoke(Request $request, $driverId, $planId)
     {
         try {
-            $plan = $this->repository->showPlan($id);
+            $customer = $this->repository->showPlanOfDriver($driverId, $planId);
         } catch (ModelNotFoundException $ex) {
-            return $this->responseError(trans('message.plan.not_found'), [], Response::HTTP_NOT_FOUND);
+            return $this->responseError(trans('message.driver.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.plan.show_fail'));
+            return $this->responseError(trans('message.driver.show_fail'));
         }
 
-        return $this->responseSuccess('', $plan);
+        return $this->responseSuccess('', $customer);
     }
 }

@@ -22,6 +22,7 @@ return [
     'plan' => [
         'list_fail'    => 'Có lỗi khi xem danh sách lịnh trình.',
         'show_fail'    => 'Có lỗi khi xem thông tin lịnh trình.',
+        'not_found'    => 'Không tìm thấy thông tin lịnh trình.',
     ],
     'order' => [
         'create_fail'    => 'Có lỗi khi đặt vé.',
@@ -29,9 +30,16 @@ return [
         'show_fail'      => 'Có lỗi khi xem thông tin đặt vé.',
         'not_found'      => 'Không tìm thấy thông tin đặt vé.',
         'history_fail'      => 'Có lỗi khi xem thông tin lịch sử đặt vé.',
+        'cancel_fail'      => 'Có lỗi khi hủy đặt vé.',
+        'cancel_success'      => 'Hủy đặt vé thành công.',
     ],
     'customer_auth' => [
         'not_found' => 'Không tìm thấy thông tin khách hàng.',
         'show_fail'      => 'Có lỗi khi xem thông tin khách hàng.',
+    ],
+    'drivers' => [
+        'list_fail'      => 'Có lỗi khi xem danh sách lịch trình.',
+        'show_fail'      => 'Có lỗi khi xem thông tin lịch trình.',
+        'not_found'      => 'Không tìm thấy thông lịch trình.',
     ],
 ];

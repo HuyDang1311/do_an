@@ -18,6 +18,27 @@ class Plan extends Model
     const STATUS_USING = 1;
 
     /**
+     * Type history plan
+     *
+     * @var int
+     */
+    const TYPE_HISTORY_PLAN = 1;
+
+    /**
+     * Type now day plan
+     *
+     * @var int
+     */
+    const TYPE_NOW_DAY_PLAN = 2;
+
+    /**
+     * Type future plan
+     *
+     * @var int
+     */
+    const TYPE_FUTURE_PLAN = 3;
+
+    /**
      * The table associated with the model.
      *
      * @var string

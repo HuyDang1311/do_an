@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Orders;
+namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\Apis\AuthCustomer\CustomerAuthController;
+use App\Models\Order;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -10,7 +11,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ShowOrderController extends CustomerAuthController
+class CancelOrderController extends CustomerAuthController
 {
 
     /**
@@ -45,13 +46,14 @@ class ShowOrderController extends CustomerAuthController
     public function __invoke(Request $request, $id)
     {
         try {
-            $order = $this->repository->showOrder($id);
+            $status = $request->get('status', Order::STATUS_CANCEL);
+            $this->repository->cancelOrder($id, $status);
         } catch (ModelNotFoundException $ex) {
             return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.order.show_fail'));
+            return $this->responseError(trans('message.order.cancel_fail'));
         }
 
-        return $this->responseSuccess('', $order);
+        return $this->responseSuccess(trans('message.order.cancel_success'), []);
     }
 }
