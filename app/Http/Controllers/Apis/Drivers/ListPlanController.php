@@ -47,7 +47,7 @@ class ListPlanController extends ApiController
 
             $plans = $this->repository->listDriverPlan($driverId, $type);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.driver.list_fail'));
+            return $this->responseError(trans('message.drivers.list_fail'));
         }
 
         return $this->responseSuccess('', $plans);

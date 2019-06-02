@@ -6,7 +6,11 @@ return [
     'search' => 'Search',
     'clear' => 'Clear',
     'edit' => 'Edit',
+    'update' => 'Update',
     'delete' => 'Delete',
+    'show' => 'Show',
+    'reset' => 'Reset',
+    'create' => 'Create',
     'login' => [
         'plh_username'    => 'Username',
         'plh_password'    => 'Password',

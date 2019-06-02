@@ -40,6 +40,8 @@ class BusStation extends Model
     protected $fillable = [
         'city',
         'name_station',
+        'latitude',
+        'longitude',
     ];
 
     /**

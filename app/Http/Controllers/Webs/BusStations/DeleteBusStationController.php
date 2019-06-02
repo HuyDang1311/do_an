@@ -47,6 +47,6 @@ class DeleteBusStationController extends Controller
             return back()->withErrors(['error' => trans('message.bus_stations.delete_fail')]);
         }
 
-        return redirect('/bus-station');
+        return redirect('/bus-stations/index');
     }
 }

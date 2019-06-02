@@ -6,7 +6,11 @@ return [
     'search' => 'Tìm kiếm',
     'clear' => 'Xóa',
     'edit' => 'Sửa',
+    'update' => 'Lưu thay đổi',
     'delete' => 'Xóa',
+    'show' => 'Xem',
+    'reset' => 'Đặt lại',
+    'create' => 'Tạo mới',
     'login' => [
         'username_placeholder'    => 'Tên đăng nhập',
         'password_placeholder'    => 'Mật khẩu',

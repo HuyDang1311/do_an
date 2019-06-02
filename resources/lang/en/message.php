@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'not_found' => 'Data not found.',
     'route_not_found' => 'URL invalid.',
     'validate' => [
         'fail' => 'Data validation failed.'
@@ -16,6 +17,8 @@ return [
     'bus_station' => [
         'list_fail'      => 'List bus station error.',
         'show_fail'      => 'Show bus station error.',
+        'create_fail'    => 'Create bus station error.',
+        'update_fail'    => 'Update bus station error.',
         'delete_fail'    => 'Delete bus station error.',
         'delete_success' => 'Delete bus station success.',
     ],

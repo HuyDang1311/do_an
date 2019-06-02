@@ -60,6 +60,8 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
             'city',
             'name_station',
             'created_at',
+            'latitude',
+            'longitude',
             DB::raw("ROW_NUMBER () OVER (ORDER BY city) as row_number")
         ]);
     }
@@ -75,7 +77,7 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
      */
     public function showBusStation(int $id)
     {
-        $with['childBusStation'] = function ($query) use ($id) {
+        $with['childBusStation'] = function ($query) {
             return $query->select([
                 'id',
                 'parent_id',
@@ -88,6 +90,55 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
             'city',
             'name_station',
             'created_at',
+            'latitude',
+            'longitude',
         ]);
+    }
+
+    /**
+     * Update bus station
+     *
+     * @param int   $id Id of bus station
+     * @param array $data Data
+     *
+     * @return mixed
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function updateBusStation(int $id, array $data)
+    {
+        $busStations = $this->update($data, $id);
+
+        $parent = BusStation::whereNull('deleted_at')
+            ->where(DB::raw('lower(city)'), '=', strtolower($busStations->city))
+            ->first(['id']);
+
+        $busStations->parent_id = $parent->id ?? $busStations->id;
+        $busStations->save();
+
+        return $busStations;
+    }
+
+    /**
+     * Create bus station
+     *
+     * @param array $data Data
+     *
+     * @return mixed
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function createBusStation(array $data)
+    {
+        $busStations = $this->create($data);
+
+        $parent = BusStation::whereNull('deleted_at')
+            ->where(DB::raw('lower(city)'), '=', strtolower($busStations->city))
+            ->first(['id']);
+
+        $busStations->parent_id = $parent->id ?? $busStations->id;
+        $busStations->save();
+
+        return $busStations;
     }
 }

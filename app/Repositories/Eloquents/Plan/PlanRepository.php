@@ -193,7 +193,8 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                 DB::raw("to_char(plans.time_end,'HH24:MI') as time_end")
             ]);
         };
-        User::findOrFail($driverId);
+        Plan::where('user_driver_id', '=', $driverId)
+            ->findOrFail($planId);
 
         $results = $this->with($with)
             ->queryGetPlan()

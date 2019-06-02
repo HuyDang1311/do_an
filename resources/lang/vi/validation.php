@@ -150,6 +150,8 @@ return [
         'city' => 'Tên thành phố',
         'name_station' => 'Tên bến xe',
         'created_at' => 'Ngày tạo',
+        'latitude' => 'Latitude',
+        'longitude' => 'Longitude',
     ],
 
 ];

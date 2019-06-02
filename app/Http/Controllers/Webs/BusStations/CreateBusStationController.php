@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ShowBusStationController extends Controller
+class CreateBusStationController extends Controller
 {
 
     /**
@@ -32,24 +32,38 @@ class ShowBusStationController extends Controller
     }
 
     /**
-     * List bus stations
+     * Show form update bus stations
      *
      * @param Request $request Request
-     * @param int     $id      Id of bus station
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request, $id)
+    public function show(Request $request)
+    {
+        return view('web.bus-stations.create');
+    }
+
+    /**
+     * Create bus stations
+     *
+     * @param Request $request Request
+     *
+     * @return JsonResponse
+     */
+    public function create(Request $request)
     {
         try {
-            $busStation = $this->repository->showBusStation($id);
+            $data = $request->only([
+                'city',
+                'name_station',
+                'latitude',
+                'longitude',
+            ]);
+            $busStation = $this->repository->createBusStation($data);
         } catch (Exception $ex) {
-            return redirect('bus-stations/index')
-                ->with(['error' => trans('message.bus_station.show_fail')]);
+            return back()->with(['error' => trans('message.bus_station.create_fail')]);
         }
 
-        return view('web.bus-stations.show')->with([
-            'data' => $busStation->toArray()
-        ]);
+        return redirect('bus-stations/show/' . $busStation->id);
     }
 }

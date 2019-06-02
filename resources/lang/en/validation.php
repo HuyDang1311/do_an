@@ -151,6 +151,8 @@ return [
         'city' => 'City name',
         'name_station' => 'Bus station name',
         'created_at' => 'Create date',
+        'latitude' => 'Latitude',
+        'longitude' => 'Longitude',
     ],
 
 ];
