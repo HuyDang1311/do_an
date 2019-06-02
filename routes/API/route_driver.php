@@ -11,4 +11,5 @@
 */
 Route::namespace('Apis\Drivers')->prefix('drivers')->group(function () {
     Route::get('/plan', 'ListPlanController')->name('driver.list_plan');
+    Route::get('/{driverId}/plan/{planId}', 'ShowPlanController')->name('driver.show_plan');
 });

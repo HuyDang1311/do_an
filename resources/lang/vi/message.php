@@ -20,6 +20,7 @@ return [
     'plan' => [
         'list_fail'    => 'Có lỗi khi xem danh sách lịnh trình.',
         'show_fail'    => 'Có lỗi khi xem thông tin lịnh trình.',
+        'not_found'    => 'Không tìm thấy thông tin lịnh trình.',
     ],
     'order' => [
         'create_fail'    => 'Có lỗi khi đặt vé.',
@@ -33,5 +34,10 @@ return [
     'customer_auth' => [
         'not_found' => 'Không tìm thấy thông tin khách hàng.',
         'show_fail'      => 'Có lỗi khi xem thông tin khách hàng.',
+    ],
+    'drivers' => [
+        'list_fail'      => 'Có lỗi khi xem danh sách lịch trình.',
+        'show_fail'      => 'Có lỗi khi xem thông tin lịch trình.',
+        'not_found'      => 'Không tìm thấy thông lịch trình.',
     ],
 ];
