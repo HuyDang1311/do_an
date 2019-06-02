@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Apis\Orders;
+namespace App\Http\Controllers\Webs\Orders;
 
 use App\Http\Controllers\Apis\AuthCustomer\CustomerAuthController;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;

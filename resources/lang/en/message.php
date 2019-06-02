@@ -20,6 +20,7 @@ return [
     'plan' => [
         'list_fail'    => 'List plan error.',
         'show_fail'    => 'Show plan error.',
+        'not_found'    => 'Plan not found.',
     ],
     'order' => [
         'create_fail'    => 'Create order error.',
@@ -33,5 +34,10 @@ return [
     'customer_auth' => [
         'not_found' => 'Customer not found.',
         'show_fail'      => 'Show customer error.',
+    ],
+    'drivers' => [
+        'list_fail'      => 'List plan error.',
+        'show_fail'      => 'Plan not found.',
+        'not_found'      => 'Plan not found.',
     ],
 ];

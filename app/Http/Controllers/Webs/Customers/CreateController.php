@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Apis\Customers;
+namespace App\Http\Controllers\Webs\Customers;
 
 use App\Http\Controllers\ApiController;
 use App\Repositories\Exceptions\ValidatorException;
