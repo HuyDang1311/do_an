@@ -14,8 +14,10 @@ return [
         'update_fail'      => 'Update customer error.',
     ],
     'bus_station' => [
-        'list_fail'    => 'List bus station error.',
-        'show_fail'    => 'Show bus station error.',
+        'list_fail'      => 'List bus station error.',
+        'show_fail'      => 'Show bus station error.',
+        'delete_fail'    => 'Delete bus station error.',
+        'delete_success' => 'Delete bus station success.',
     ],
     'plan' => [
         'list_fail'    => 'List plan error.',

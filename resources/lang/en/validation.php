@@ -148,6 +148,9 @@ return [
     'attributes' => [
         'username' => 'Username',
         'password' => 'Password',
+        'city' => 'City name',
+        'name_station' => 'Bus station name',
+        'created_at' => 'Create date',
     ],
 
 ];

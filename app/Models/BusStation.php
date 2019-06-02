@@ -51,4 +51,14 @@ class BusStation extends Model
     {
         return $this->hasMany(BusStation::class, 'parent_id' , 'id');
     }
+
+    /**
+     * BusStation belongTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentBusStation()
+    {
+        return $this->belongsTo(BusStation::class, 'parent_id' , 'id');
+    }
 }

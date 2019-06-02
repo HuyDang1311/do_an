@@ -41,6 +41,8 @@ return [
         'cancel' => 'Đã bị hủy',
     ],
     'bus-stations' => [
+        'name' => 'Bến xe',
+        'show_title' => 'Chi tiết bến xe',
         'title' => 'Thông tin bến xe',
         'list_stations' => 'Danh sách bến xe',
         'city_name' => 'Tên thành phố',

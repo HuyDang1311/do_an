@@ -13,6 +13,7 @@
         </div>
         <!-- /.box-header -->
         <form role="form" method="get">
+            <input type="hidden" value="{{ csrf_token() }}">
             <div class="box-body" style="">
                 <div class="row">
                     <div class="col-md-6">
@@ -89,7 +90,8 @@
                                                             <button type="submit" class="btn btn-info float-left"><i class="fa fa-edit"></i>
                                                                 &nbsp;@lang('label.edit')</button>
                                                         </form>
-                                                        <form style="margin-left: 10px;" class="pull-left" method="delete" action="bus-stations/{{ $row['id'] }}">
+                                                        <form style="margin-left: 10px;" class="pull-left" method="post" action="/bus-stations/delete/{{ $row['id'] }}">
+                                                            <input type="hidden" value="{{ csrf_token() }}">
                                                             <button type="submit" class="btn btn-danger float-left"><i class="fa fa-remove"></i>
                                                                 &nbsp;@lang('label.delete')</button>
                                                         </form>

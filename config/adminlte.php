@@ -116,7 +116,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Danh sách bến xe',
-                    'url'  => 'bus-stations',
+                    'url'  => 'bus-stations/index',
                     'icon' => 'list',
                 ],
                 [

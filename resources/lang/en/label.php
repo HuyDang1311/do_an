@@ -41,6 +41,8 @@ return [
         'cancel' => 'Cancel',
     ],
     'bus-stations' => [
+        'name' => 'Bus station',
+        'show_title' => 'Detail bus station',
         'title' => 'Bus station info',
         'list_stations' => 'List bus stations',
         'city_name' => 'City name',

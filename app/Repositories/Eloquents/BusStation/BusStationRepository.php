@@ -86,6 +86,8 @@ class BusStationRepository extends AbstractRepository implements BusStationRepos
         return $this->with($with)->find($id, [
             'id',
             'city',
+            'name_station',
+            'created_at',
         ]);
     }
 }

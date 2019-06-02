@@ -12,6 +12,7 @@
 */
 
 Route::namespace('Webs\BusStations')->prefix('bus-stations')->group(function () {
-    Route::get('', 'ListBusStationController')->name('web.bus_station.list');
-    Route::get('/{id}', 'ShowBusStationController')->name('bus_station.show');
+    Route::get('index', 'ListBusStationController')->name('web.bus_station.list');
+    Route::get('/show/{id}', 'ShowBusStationController')->name('web.bus_station.show');
+    Route::post('/delete/{id}', 'DeleteBusStationController')->name('web.bus_station.delete');
 });
