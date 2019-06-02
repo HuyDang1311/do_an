@@ -31,4 +31,17 @@ interface PlanRepositoryInterface
      * @return $this
      */
     public function queryGetPlan();
+
+    /**
+     * List plan of driver
+     *
+     * @param int $driverId Driver id
+     * @param int $type Type of get plan
+     * @param array $params Parameter
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function listDriverPlan(int $driverId, int $type, array $params = []);
 }

@@ -3,6 +3,7 @@ namespace App\Repositories\Eloquents\Plan;
 
 use App\Models\Car;
 use App\Models\Plan;
+use App\Models\User;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Carbon\Carbon;
@@ -90,6 +91,53 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                     'plans.id'
                 );
         });
+    }
+
+    /**
+     * List plan of driver
+     *
+     * @param int $driverId Driver id
+     * @param int $type Type of get plan
+     * @param array $params Parameter
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function listDriverPlan(int $driverId, int $type, array $params = [])
+    {
+        User::findOrFail($driverId);
+
+        $results = $this->scopeQuery(function ($query) use ($driverId, $type) {
+            $query->join('bus_stations as bus_start', 'bus_start.id', '=', 'plans.address_start_id')
+                ->join('bus_stations as bus_end', 'bus_end.id', '=', 'plans.address_end_id')
+                ->join('companies', 'companies.id', '=', 'plans.company_id')
+                ->join('cars', 'cars.id', '=', 'plans.car_id')
+                ->leftJoin(
+                    DB::raw('(SELECT array_to_json(array_agg(seat_id)) as seat_ids, plan_id FROM (SELECT unnest(od.seat_ids), od.plan_id FROM orders as od GROUP BY od.seat_ids, od.plan_id) as dt(seat_id, plan_id) GROUP BY dt.plan_id) as os'),
+                    'os.plan_id',
+                    '=',
+                    'plans.id'
+                )
+                ->where('user_driver_id', '=', $driverId);
+                $now = Carbon::now()->toDate();
+                switch ($type) {
+                    case Plan::TYPE_HISTORY_PLAN;
+                        return $query->whereDate('time_start', '<', $now);
+                    case Plan::TYPE_NOW_DAY_PLAN;
+                        return $query->whereDate('time_start', '=', $now);
+                    case Plan::TYPE_FUTURE_PLAN;
+                        return $query->whereDate('time_start', '>', $now);
+                }
+        })
+            ->orderBy('time_start', 'desc')
+            ->all($this->getColumnsForList());
+
+        $results = $results->toArray();
+
+        $this->updateDataResult($results);
+
+        return $results;
     }
 
     /**

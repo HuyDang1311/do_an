@@ -23,4 +23,5 @@ Route::group(['middleware' => 'api'], function () {
     require __DIR__ . '/API/route_bus_station.php';
     require __DIR__ . '/API/route_plan.php';
     require __DIR__ . '/API/route_order.php';
+    require __DIR__ . '/API/route_driver.php';
 });

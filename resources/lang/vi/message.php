@@ -27,6 +27,7 @@ return [
         'show_fail'      => 'Có lỗi khi xem thông tin đặt vé.',
         'not_found'      => 'Không tìm thấy thông tin đặt vé.',
         'history_fail'      => 'Có lỗi khi xem thông tin lịch sử đặt vé.',
+        'cancel_fail'      => 'Có lỗi khi hủy đặt vé.',
     ],
     'customer_auth' => [
         'not_found' => 'Không tìm thấy thông tin khách hàng.',

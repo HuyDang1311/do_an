@@ -6,7 +6,6 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
 use DB;
 
 class OrderRepository extends AbstractRepository implements OrderRepositoryInterface
@@ -94,6 +93,25 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             ->all($this->getColumns());
 
         return $result;
+    }
+
+    /**
+     * Cancel order
+     *
+     * @param int $id Id of order
+     *
+     * @return array
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
+     */
+    public function cancelOrder(int $id, int $status = Order::STATUS_DONE)
+    {
+        Order::where('status' , '=', Order::STATUS_REGISTERED)
+            ->findOrFail($id);
+
+        return $this->update([
+            'status' => $status
+        ], $id);
     }
 
     /**

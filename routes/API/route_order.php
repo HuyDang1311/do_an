@@ -14,4 +14,5 @@ Route::namespace('Apis\Orders')->prefix('orders')->group(function () {
     Route::post('', 'CreateOrderController')->name('order.create');
     Route::get('', 'HistoryOrderController')->name('order.history');
     Route::get('/{id}', 'ShowOrderController')->name('order.show');
+    Route::put('/{id}', 'CancelOrderController')->name('order.cancel');
 });

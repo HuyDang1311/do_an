@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Orders;
+namespace App\Http\Controllers\Apis\Orders;
 
 use App\Http\Controllers\Apis\AuthCustomer\CustomerAuthController;
+use App\Models\Order;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -10,7 +11,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateOrderController extends CustomerAuthController
+class CancelOrderController extends CustomerAuthController
 {
 
     /**
@@ -35,38 +36,24 @@ class CreateOrderController extends CustomerAuthController
     }
 
     /**
-     * List order
+     * Show order
      *
      * @param Request $request Request
+     * @param int     $id      Id of plan
      *
      * @return JsonResponse
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, $id)
     {
         try {
-            $data = $request->only([
-                'address_start_id',
-                'address_end_id',
-                'plan_id',
-                'seat_ids',
-                'order_code',
-                'payment_method_id',
-                'customer_id'
-            ]);
-
-            $this->beginTransaction();
-
-            $order = $this->repository->createOrder($data);
-
-            $this->commit();
+            $status = $request->get('status', Order::STATUS_CANCEL);
+            $order = $this->repository->cancelOrder($id, $status);
         } catch (ModelNotFoundException $ex) {
-            $this->rollback();
-            return $this->responseError(trans('message.customer.not_found'), [], Response::HTTP_NOT_FOUND);
+            return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            $this->rollback();
-            return $this->responseError(trans('message.order.create_fail'));
+            return $this->responseError(trans('message.order.cancel_fail'));
         }
 
-        return $this->responseSuccess('', $order, Response::HTTP_CREATED);
+        return $this->responseSuccess('', $order);
     }
 }
