@@ -47,13 +47,13 @@ class CancelOrderController extends CustomerAuthController
     {
         try {
             $status = $request->get('status', Order::STATUS_CANCEL);
-            $order = $this->repository->cancelOrder($id, $status);
+            $this->repository->cancelOrder($id, $status);
         } catch (ModelNotFoundException $ex) {
             return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
             return $this->responseError(trans('message.order.cancel_fail'));
         }
 
-        return $this->responseSuccess('', $order);
+        return $this->responseSuccess(trans('message.order.cancel_success'), []);
     }
 }

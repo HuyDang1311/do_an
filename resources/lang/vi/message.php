@@ -28,6 +28,7 @@ return [
         'not_found'      => 'Không tìm thấy thông tin đặt vé.',
         'history_fail'      => 'Có lỗi khi xem thông tin lịch sử đặt vé.',
         'cancel_fail'      => 'Có lỗi khi hủy đặt vé.',
+        'cancel_success'      => 'Hủy đặt vé thành công.',
     ],
     'customer_auth' => [
         'not_found' => 'Không tìm thấy thông tin khách hàng.',
