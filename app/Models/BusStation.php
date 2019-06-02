@@ -40,6 +40,8 @@ class BusStation extends Model
     protected $fillable = [
         'city',
         'name_station',
+        'latitude',
+        'longitude',
     ];
 
     /**
@@ -50,5 +52,15 @@ class BusStation extends Model
     public function childBusStation()
     {
         return $this->hasMany(BusStation::class, 'parent_id' , 'id');
+    }
+
+    /**
+     * BusStation belongTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentBusStation()
+    {
+        return $this->belongsTo(BusStation::class, 'parent_id' , 'id');
     }
 }

@@ -32,10 +32,11 @@
                                    placeholder="{{ trans('label.bus-stations.pld_station_name') }}">
                         </div>
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-eraser"></i>
+                            <button type="reset" class="btn btn-default pull-right"><i class="fa fa-eraser"></i>
                                 &nbsp;@lang('label.clear')</button>
                         </div>
                     </div>
@@ -58,6 +59,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title"><b>@lang('label.bus-stations.list_stations')</b></h3>
+                <a href="/bus-stations/create" class="btn btn-success pull-right">@lang('label.create')</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -85,12 +87,20 @@
                                                 <td>{{ $row['created_at'] ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">
-                                                        <form class="pull-left" method="put" action="bus-stations/{{ $row['id'] }}">
-                                                            <button type="submit" class="btn btn-info float-left"><i class="fa fa-edit"></i>
-                                                                &nbsp;@lang('label.edit')</button>
-                                                        </form>
-                                                        <form style="margin-left: 10px;" class="pull-left" method="delete" action="bus-stations/{{ $row['id'] }}">
-                                                            <button type="submit" class="btn btn-danger float-left"><i class="fa fa-remove"></i>
+                                                        <div class="form-group pull-left">
+                                                            <a class="btn btn-default" href="/bus-stations/show/{{ $row['id'] }}">
+                                                                <i class="fa fa-search"></i>
+                                                                @lang('label.show')</a>
+                                                        </div>
+                                                        <div class="form-group pull-left" style="margin-left: 10px;">
+                                                            <a class="btn btn-info" href="/bus-stations/edit/{{ $row['id'] }}">
+                                                                <i class="fa fa-edit"></i>
+                                                                @lang('label.edit')</a>
+                                                        </div>
+                                                        <form class="pull-left" method="post" action="/bus-stations/delete/{{ $row['id'] }}">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger float-left" style="margin-left: 10px;">
+                                                                <i class="fa fa-remove"></i>
                                                                 &nbsp;@lang('label.delete')</button>
                                                         </form>
                                                         <!-- /.col -->
@@ -98,17 +108,12 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                    @else
+                                        <tr role="row" class="odd">
+                                            <td>@lang('message.not_found')</td>
+                                        </tr>
                                     @endif
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th rowspan="1" colspan="1">@lang('label.bus-stations.tr_no')</th>
-                                    <th rowspan="1" colspan="1">@lang('label.bus-stations.tr_city')</th>
-                                    <th rowspan="1" colspan="1">@lang('label.bus-stations.tr_name_station')</th>
-                                    <th rowspan="1" colspan="1">@lang('label.bus-stations.tr_created_at')</th>
-                                    <th rowspan="1" colspan="1"></th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>

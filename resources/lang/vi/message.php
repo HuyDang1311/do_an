@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'not_found' => 'Không tìm thấy dữ liệu',
     'route_not_found' => 'URL không chính xác.',
     'validate' => [
         'fail' => 'Dữ liệu kiểm tra không chính xác.'
@@ -16,6 +17,10 @@ return [
     'bus_station' => [
         'list_fail'    => 'Có lỗi khi xem danh sách bến xe.',
         'show_fail'    => 'Có lỗi khi xem thông tin bến xe.',
+        'create_fail'    => 'Có lỗi khi tạo thông tin bến xe.',
+        'update_fail'    => 'Có lỗi khi sửa thông tin bến xe.',
+        'delete_fail'    => 'Có lỗi khi xóa thông tin bến xe.',
+        'delete_success'    => 'Xóa thông tin bến xe thành công.',
     ],
     'plan' => [
         'list_fail'    => 'Có lỗi khi xem danh sách lịnh trình.',

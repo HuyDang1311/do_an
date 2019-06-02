@@ -48,9 +48,9 @@ class ShowPlanController extends ApiController
         try {
             $customer = $this->repository->showPlanOfDriver($driverId, $planId);
         } catch (ModelNotFoundException $ex) {
-            return $this->responseError(trans('message.driver.not_found'), [], Response::HTTP_NOT_FOUND);
+            return $this->responseError(trans('message.drivers.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.driver.show_fail'));
+            return $this->responseError(trans('message.drivers.show_fail'));
         }
 
         return $this->responseSuccess('', $customer);

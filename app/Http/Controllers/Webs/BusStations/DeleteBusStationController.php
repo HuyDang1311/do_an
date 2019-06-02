@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ShowBusStationController extends Controller
+class DeleteBusStationController extends Controller
 {
 
     /**
@@ -42,14 +42,11 @@ class ShowBusStationController extends Controller
     public function __invoke(Request $request, $id)
     {
         try {
-            $busStation = $this->repository->showBusStation($id);
+            $this->repository->delete($id);
         } catch (Exception $ex) {
-            return redirect('bus-stations/index')
-                ->with(['error' => trans('message.bus_station.show_fail')]);
+            return back()->withErrors(['error' => trans('message.bus_stations.delete_fail')]);
         }
 
-        return view('web.bus-stations.show')->with([
-            'data' => $busStation->toArray()
-        ]);
+        return redirect('/bus-stations/index');
     }
 }
