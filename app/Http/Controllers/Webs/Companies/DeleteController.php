@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Apis\BusStations;
+namespace App\Http\Controllers\Webs\Companies;
 
-use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
+use App\Http\Controllers\Controller;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ShowBusStationController extends ApiController
+class DeleteController extends Controller
 {
 
     /**
@@ -32,21 +32,21 @@ class ShowBusStationController extends ApiController
     }
 
     /**
-     * List bus stations
+     * Delete company
      *
      * @param Request $request Request
-     * @param int     $id      Id of bus station
+     * @param int     $id      Id of company
      *
      * @return JsonResponse
      */
     public function __invoke(Request $request, $id)
     {
         try {
-            $busStation = $this->repository->showBusStation($id);
+            $this->repository->delete($id);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.bus_station.show_fail'));
+            return back()->withErrors(['error' => trans('message.companies.delete_fail')]);
         }
 
-        return $this->responseSuccess('', $busStation);
+        return redirect('/companies/index');
     }
 }

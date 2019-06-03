@@ -48,7 +48,7 @@ class EditBusStationController extends Controller
         }
 
         return view('web.bus-stations.edit')->with([
-            'data' => $busStation->toArray()
+            'data' => $busStation
         ]);
     }
 

@@ -9,7 +9,7 @@
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data['name_station'] ?? '' }}</b></h2>
+            <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data->name_station ?? '' }}</b></h2>
             <a href="/bus-stations/index" class="pull-right btn btn-info">@lang('label.bus-stations.list_stations')</a>
         </div>
         <div class="form-group">
@@ -23,10 +23,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="city" value="{{ $data['city'] ?? '' }}" />
+                        <input type="text" name="city" value="{{ $data->city ?? '' }}"  class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -37,10 +39,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="name_station" value="{{ $data['name_station'] ?? '' }}" />
+                        <input type="text" name="name_station" value="{{ $data->name_station ?? '' }}"  class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -51,10 +55,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="latitude" value="{{ $data['latitude'] ?? '' }}" />
+                        <input type="number" name="latitude" value="{{ $data->latitude ?? '' }}"  class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -65,10 +71,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="longitude" value="{{ $data['longitude'] ?? '' }}" />
+                        <input type="number" name="longitude" value="{{ $data->longitude ?? '' }}"  class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>

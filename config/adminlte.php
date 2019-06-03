@@ -126,11 +126,22 @@ return [
                 ],
             ],
         ],
-        'MAIN NAVIGATION',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Quản lý nhà xe',
+            'icon'        => 'home',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách nhà xe',
+                    'url'  => 'companies/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký nhà xe mới',
+                    'url'  => 'companies/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
         ],
         [
             'text'        => 'Pages',
