@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Apis\BusStations;
+namespace App\Http\Controllers\Webs\Companies;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ShowBusStationController extends ApiController
+class ShowController extends Controller
 {
 
     /**
@@ -44,9 +44,12 @@ class ShowBusStationController extends ApiController
         try {
             $busStation = $this->repository->showBusStation($id);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.bus_station.show_fail'));
+            return redirect('bus-stations/index')
+                ->with(['error' => trans('message.companies.show_fail')]);
         }
 
-        return $this->responseSuccess('', $busStation);
+        return view('web.companies.show')->with([
+            'data' => $busStation->toArray()
+        ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
+use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
@@ -22,21 +22,21 @@ class ShowPlanController extends ApiController
     /**
      * BusStationRepositoryInterface
      *
-     * @var BusStationRepositoryInterface
+     * @var CompanyRepositoryInterface
      */
     protected $repoBusStation;
 
     /**
      * Constructor.
      *
-     * @param PlanRepositoryInterface       $repository     PlanRepositoryInterface
-     * @param BusStationRepositoryInterface $repoBusStation BusStationRepositoryInterface
+     * @param PlanRepositoryInterface    $repository     PlanRepositoryInterface
+     * @param CompanyRepositoryInterface $repoBusStation BusStationRepositoryInterface
      *
      * @return void
      */
     public function __construct(
         PlanRepositoryInterface $repository,
-        BusStationRepositoryInterface $repoBusStation
+        CompanyRepositoryInterface $repoBusStation
     ) {
         $this->repository = $repository;
         $this->repoBusStation = $repoBusStation;
