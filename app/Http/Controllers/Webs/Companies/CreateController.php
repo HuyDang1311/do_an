@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Webs\Companies;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
+use App\Models\Company;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -40,7 +41,8 @@ class CreateController extends Controller
      */
     public function show(Request $request)
     {
-        return view('web.companies.create');
+        return view('web.companies.create')
+            ->with(['status_object' => transArr(Company::$statusObject)]);
     }
 
     /**
@@ -54,12 +56,14 @@ class CreateController extends Controller
     {
         try {
             $data = $request->only([
-                'city',
-                'name_station',
-                'latitude',
-                'longitude',
+                'name',
+                'address',
+                'phone_number',
+                'email',
+                'status',
             ]);
-            $busStation = $this->repository->createBusStation($data);
+            $data['status'] = $data['status'] ?? Company::STATUS_USING;
+            $busStation = $this->repository->createCompany($data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.companies.create_fail')]);
         }

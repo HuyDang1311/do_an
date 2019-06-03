@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->string('phone_number', 20);
             $table->string('email')->nullable();
-            $table->smallInteger('status')->index();
+            $table->smallInteger('status')->index()->default(1);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

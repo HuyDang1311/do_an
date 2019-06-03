@@ -49,7 +49,7 @@ class ShowBusStationController extends Controller
         }
 
         return view('web.bus-stations.show')->with([
-            'data' => $busStation->toArray()
+            'data' => $busStation
         ]);
     }
 }

@@ -9,7 +9,7 @@
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data['name_station'] ?? '' }}</b></h2>
+            <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data->name_station ?? '' }}</b></h2>
             <a href="/bus-stations/index" class="pull-right btn btn-info">@lang('label.bus-stations.list_stations')</a>
         </div>
         <div class="form-group">
@@ -24,7 +24,7 @@
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data['city'] ?? '' }}</span>
+                    <span>{{ $data->city ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -38,7 +38,7 @@
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data['name_station'] ?? '' }}</span>
+                    <span>{{ $data->name_station ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -52,7 +52,7 @@
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data['created_at'] ?? '' }}</span>
+                    <span>{{ $data->created_at ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -66,7 +66,7 @@
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data['latitude'] ?? '' }}</span>
+                    <span>{{ $data->latitude ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -80,7 +80,7 @@
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data['longitude'] ?? '' }}</span>
+                    <span>{{ $data->longitude ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -88,12 +88,12 @@
 
         <div class="row">
             <div class="col-md-4">
-                <a class="btn btn-primary pull-right" href="/bus-stations/edit/{{ $data['id'] ?? '' }}"><i class="fa fa-edit"></i>
+                <a class="btn btn-primary pull-right" href="/bus-stations/edit/{{ $data->id ?? '' }}"><i class="fa fa-edit"></i>
                     &nbsp;@lang('label.edit')</a>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
-                <form method="post" action="/bus-stations/delete/{{ $data['id'] ?? '' }}">
+                <form method="post" action="/bus-stations/delete/{{ $data->id ?? '' }}">
                     @csrf
                     <button type="submit" class="btn btn-danger pull-left"><i class="fa fa-search"></i>
                         &nbsp;@lang('label.delete')</button>

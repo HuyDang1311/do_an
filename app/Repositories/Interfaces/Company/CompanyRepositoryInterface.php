@@ -17,26 +17,30 @@ interface CompanyRepositoryInterface
     public function listCompany(array $data);
 
     /**
-     * List bus station
+     * Show company
      *
-     * @param int $id Id of bus station
+     * @param int $id Id of company
      *
      * @return mixed
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function showBusStation(int $id);
+    public function showCompany(int $id);
 
     /**
-     * Update bus station
+     * Update company
      *
-     * @param int   $id   Id of bus station
+     * @param int $id Id of company
      * @param array $data Data
      *
      * @return mixed
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateBusStation(int $id, array $data);
+    public function updateCompany(int $id, array $data);
 
     /**
-     * Create bus station
+     * Create company
      *
      * @param array $data Data
      *
@@ -44,5 +48,5 @@ interface CompanyRepositoryInterface
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function createBusStation(array $data);
+    public function createCompany(array $data);
 }

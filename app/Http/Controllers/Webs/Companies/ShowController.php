@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Webs\Companies;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -32,24 +32,24 @@ class ShowController extends Controller
     }
 
     /**
-     * List bus stations
+     * Show company
      *
      * @param Request $request Request
-     * @param int     $id      Id of bus station
+     * @param int     $id      Id of company
      *
      * @return JsonResponse
      */
     public function __invoke(Request $request, $id)
     {
         try {
-            $busStation = $this->repository->showBusStation($id);
+            $company = $this->repository->showCompany($id);
         } catch (Exception $ex) {
-            return redirect('bus-stations/index')
+            return redirect('companies/index')
                 ->with(['error' => trans('message.companies.show_fail')]);
         }
 
         return view('web.companies.show')->with([
-            'data' => $busStation->toArray()
+            'data' => $company
         ]);
     }
 }

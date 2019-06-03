@@ -23,10 +23,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="city" />
+                        <input type="text" name="city" class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -37,10 +39,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="name_station" />
+                        <input type="text" name="name_station"  class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -51,10 +55,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="latitude" />
+                        <input type="number" name="latitude" class="form-control"  />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>
@@ -65,10 +71,12 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="longitude" />
+                        <input type="number" name="longitude" class="form-control"  />
                     </div>
+                </div>
+                <div class="col-md-4">
                 </div>
                 <!-- /.col -->
             </div>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Webs\Companies;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
+use App\Models\Company;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -42,21 +43,22 @@ class EditController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            $busStation = $this->repository->showBusStation($id);
+            $company = $this->repository->showCompany($id);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.companies.show_fail')]);
         }
 
         return view('web.companies.edit')->with([
-            'data' => $busStation->toArray()
+            'data' => $company,
+            'status_object' => transArr(Company::$statusObject)
         ]);
     }
 
     /**
-     * Update bus stations
+     * Update company
      *
      * @param Request $request Request
-     * @param int     $id      Id of bus station
+     * @param int     $id      Id of company
      *
      * @return JsonResponse
      */
@@ -64,16 +66,17 @@ class EditController extends Controller
     {
         try {
             $data = $request->only([
-                'city',
-                'name_station',
-                'latitude',
-                'longitude',
+                'name',
+                'address',
+                'phone_number',
+                'email',
+                'status',
             ]);
-            $busStation = $this->repository->updateBusStation($id, $data);
+            $company = $this->repository->updateCompany($id, $data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.companies.update_fail')]);
         }
 
-        return redirect('companies/show/' . $busStation->id);
+        return redirect('companies/show/' . $company->id);
     }
 }

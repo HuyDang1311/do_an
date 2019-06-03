@@ -82,8 +82,8 @@
             <div class="box-body">
                 <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                        <div class="col-md-12 table-responsive">
+                            <table id="example2" class="table table-bordered table-hover table-striped table-condensed tasks-table" role="grid"
                                    aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row">
@@ -98,7 +98,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($data)
+                                    @if(count($data ?? []))
                                         @foreach($data as $row)
                                             <tr role="row" class="odd">
                                                 <td>{{ $row->row_number ?? '' }}</td>
@@ -106,7 +106,7 @@
                                                 <td>{{ $row->address ?? '' }}</td>
                                                 <td>{{ $row->phone_number ?? '' }}</td>
                                                 <td>{{ $row->email ?? '' }}</td>
-                                                <td>{{ $row->status ?? '' }}</td>
+                                                <td>{{ $row->status_name ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">

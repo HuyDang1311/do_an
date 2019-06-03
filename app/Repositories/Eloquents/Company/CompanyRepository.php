@@ -54,65 +54,59 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
             'email',
             'status',
             'created_at',
+            DB::raw("CASE WHEN status = " . Company::STATUS_USING
+                . " THEN '" . trans('label.companies.status_using')
+                . "' WHEN status = " . Company::STATUS_STOP
+                . " THEN '" . trans('label.companies.status_stop')
+                . "' END as status_name"),
             DB::raw("ROW_NUMBER () OVER (ORDER BY name) as row_number")
         ]);
     }
 
     /**
-     * List bus station
+     * Show company
      *
-     * @param int $id Id of bus station
+     * @param int $id Id of company
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function showBusStation(int $id)
+    public function showCompany(int $id)
     {
-        $with['childBusStation'] = function ($query) {
-            return $query->select([
-                'id',
-                'parent_id',
-                'name_station'
-            ]);
-        };
-
-        return $this->with($with)->find($id, [
+        return $this->find($id, [
             'id',
-            'city',
-            'name_station',
+            'name',
+            'address',
+            'phone_number',
+            'email',
+            'status',
             'created_at',
-            'latitude',
-            'longitude',
+            DB::raw("CASE WHEN status = " . Company::STATUS_USING
+                . " THEN '" . trans('label.companies.status_using')
+                . "' WHEN status = " . Company::STATUS_STOP
+                . " THEN '" . trans('label.companies.status_stop')
+                . "' END as status_name"),
         ]);
     }
 
     /**
-     * Update bus station
+     * Update company
      *
-     * @param int   $id Id of bus station
+     * @param int $id Id of company
      * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateBusStation(int $id, array $data)
+    public function updateCompany(int $id, array $data)
     {
-        $busStations = $this->update($data, $id);
-
-        $parent = BusStation::whereNull('deleted_at')
-            ->where(DB::raw('lower(city)'), '=', strtolower($busStations->city))
-            ->first(['id']);
-
-        $busStations->parent_id = $parent->id ?? $busStations->id;
-        $busStations->save();
-
-        return $busStations;
+        return $this->update($data, $id);
     }
 
     /**
-     * Create bus station
+     * Create company
      *
      * @param array $data Data
      *
@@ -120,17 +114,8 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function createBusStation(array $data)
+    public function createCompany(array $data)
     {
-        $busStations = $this->create($data);
-
-        $parent = BusStation::whereNull('deleted_at')
-            ->where(DB::raw('lower(city)'), '=', strtolower($busStations->city))
-            ->first(['id']);
-
-        $busStations->parent_id = $parent->id ?? $busStations->id;
-        $busStations->save();
-
-        return $busStations;
+        return $this->create($data);
     }
 }
