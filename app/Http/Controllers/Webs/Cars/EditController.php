@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Companies;
+namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,21 +13,21 @@ class EditController extends Controller
 {
 
     /**
-     * CompanyRepositoryInterface
+     * CarRepositoryInterface
      *
-     * @var CompanyRepositoryInterface
+     * @var CarRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository CompanyRepositoryInterface
+     * @param CarRepositoryInterface $repository CarRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CompanyRepositoryInterface $repository
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }

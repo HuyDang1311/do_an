@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Interfaces\Company;
+namespace App\Repositories\Interfaces\Car;
 
-interface CompanyRepositoryInterface
+interface CarRepositoryInterface
 {
 
     /**
-     * List company
+     * List car
      *
      * @param array $data Data
      *
@@ -14,7 +14,7 @@ interface CompanyRepositoryInterface
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function listCompany(array $data = []);
+    public function listCar(array $data);
 
     /**
      * Show company

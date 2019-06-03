@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Companies;
+namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
@@ -12,21 +13,21 @@ class ShowController extends Controller
 {
 
     /**
-     * CompanyRepositoryInterface
+     * CarRepositoryInterface
      *
-     * @var CompanyRepositoryInterface
+     * @var CarRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository CompanyRepositoryInterface
+     * @param CarRepositoryInterface $repository CarRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CompanyRepositoryInterface $repository
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }

@@ -50,7 +50,6 @@ class ListController extends Controller
 
             $companies = $this->repository->listCompany($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             return back()->with(trans('message.companies.list_fail'));
         }
 

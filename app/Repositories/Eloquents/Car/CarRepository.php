@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\Eloquents\Company;
+namespace App\Repositories\Eloquents\Car;
 
-use App\Models\BusStation;
+use App\Models\Car;
 use App\Models\Company;
 use App\Repositories\Eloquents\AbstractRepository;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use DB;
 
-class CompanyRepository extends AbstractRepository implements CompanyRepositoryInterface
+class CarRepository extends AbstractRepository implements CarRepositoryInterface
 {
 
     /**
@@ -18,7 +18,7 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
      */
     public function model()
     {
-        return Company::class;
+        return Car::class;
     }
 
     /**
@@ -27,10 +27,10 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
      * @var array
      */
     protected $fieldSearchable = [
-        'name' => ['column' => 'companies.name', 'operator' => 'ilike', 'type' => 'normal'],
-        'address' => ['column' => 'companies.address', 'operator' => 'ilike', 'type' => 'normal'],
-        'phone_number' => ['column' => 'companies.phone_number', 'operator' => 'ilike', 'type' => 'normal'],
-        'email' => ['column' => 'companies.email', 'operator' => 'ilike', 'type' => 'normal'],
+        'car_number_plates' => ['column' => 'cars.car_number_plates', 'operator' => 'ilike', 'type' => 'normal'],
+        'car_manufacturer' => ['column' => 'cars.car_manufacturer', 'operator' => 'ilike', 'type' => 'normal'],
+        'company_id' => ['column' => 'cars.company_id', 'operator' => '=', 'type' => 'normal'],
+        'type' => ['column' => 'cars.type', 'operator' => '=', 'type' => 'normal'],
     ];
 
     /**
@@ -42,24 +42,28 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function listCompany(array $data = [])
+    public function listCar(array $data)
     {
         $query = $this->search($data);
 
-        return $query->orderBy('name', 'asc')->all([
-            'id',
-            'name',
-            'address',
-            'phone_number',
-            'email',
-            'status',
-            'created_at',
-            DB::raw("CASE WHEN status = " . Company::STATUS_USING
-                . " THEN '" . trans('label.companies.status_using')
-                . "' WHEN status = " . Company::STATUS_STOP
-                . " THEN '" . trans('label.companies.status_stop')
-                . "' END as status_name"),
-            DB::raw("ROW_NUMBER () OVER (ORDER BY name) as row_number")
+        return $query->scopeQuery(function ($query) {
+                return $query->join('companies', 'companies.id', '=', 'cars.id');
+            })
+            ->orderBy('car_number_plates', 'asc')->all([
+            'cars.id',
+            'cars.car_number_plates',
+            'cars.car_manufacturer',
+            'cars.company_id',
+            'cars.type',
+            'cars.seat_quantity',
+            'cars.created_at',
+            'companies.name as company_name',
+            DB::raw("CASE WHEN cars.type = " . Car::TYPE_LAY
+                . " THEN '" . trans('label.car.type_lay')
+                . "' WHEN cars.type = " . Car::TYPE_SEAT
+                . " THEN '" . trans('label.car.type_seat')
+                . "' END as type_name"),
+            DB::raw("ROW_NUMBER () OVER (ORDER BY cars.car_number_plates) as row_number")
         ]);
     }
 
@@ -83,9 +87,9 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
             'status',
             'created_at',
             DB::raw("CASE WHEN status = " . Company::STATUS_USING
-                . " THEN '" . trans('label.companies.status_using')
+                . " THEN '" . trans('label.cars.status_using')
                 . "' WHEN status = " . Company::STATUS_STOP
-                . " THEN '" . trans('label.companies.status_stop')
+                . " THEN '" . trans('label.cars.status_stop')
                 . "' END as status_name"),
         ]);
     }
