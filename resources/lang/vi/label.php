@@ -116,6 +116,7 @@ return [
         'tr_phone_number' => 'Số điện thoại',
         'tr_company_id' => 'Tên nhà xe',
         'tr_status' => 'Trạng thái',
+        'tr_password' => 'Mật khẩu',
         'tr_created_at' => 'Ngày tạo',
         'using' => 'Đang sử dụng',
         'stop' => 'Ngừng sử dụng',
