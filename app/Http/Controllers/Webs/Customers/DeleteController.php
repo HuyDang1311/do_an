@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Webs\Customers;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,21 +12,21 @@ class DeleteController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * CustomerRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var CustomerRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface $repository DriverRepositoryInterface
+     * @param CustomerRepositoryInterface $repository CustomerRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository
+        CustomerRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -44,9 +44,9 @@ class DeleteController extends Controller
         try {
             $this->repository->delete($id);
         } catch (Exception $ex) {
-            return back()->withErrors(['error' => trans('message.drivers.delete_fail')]);
+            return back()->withErrors(['error' => trans('message.customers.delete_fail')]);
         }
 
-        return redirect('/drivers/index');
+        return redirect('/customers/index');
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\User;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
+use DB;
 
 class CustomerRepository extends AbstractRepository implements CustomerRepositoryInterface
 {
@@ -72,34 +73,22 @@ class CustomerRepository extends AbstractRepository implements CustomerRepositor
      */
     public function showCustomer(int $id)
     {
-        $with['company'] = function ($query) {
-            return $query->select([
-                'id',
-                'name',
-            ]);
-        };
-
-        return $this->with($with)
-            ->scopeQuery(function ($query) {
-                return $query->where('role', '=', User::ROLE_MANAGER);
-            })
-            ->find($id, [
-                'id',
-                'name',
-                'email',
-                'username',
-                'address',
-                'phone_number',
-                'company_id',
-                'status',
-                'created_at',
-                DB::raw("CASE WHEN status = " . User::STATUS_USING
-                    . " THEN '" . trans('label.Customers.using')
-                    . "' WHEN status = " . User::STATUS_STOP
-                    . " THEN '" . trans('label.Customers.stop')
-                    . "' END as status_name"),
-                DB::raw("ROW_NUMBER () OVER (ORDER BY name) as row_number")
-            ]);
+        Customer::$ignoreMutator = false;
+        return $this->find($id, [
+            'id',
+            'name',
+            'email',
+            'address',
+            'phone_number',
+            'status',
+            'created_at',
+            DB::raw("CASE WHEN status = " . Customer::STATUS_USING
+                . " THEN '" . trans('label.customers.using')
+                . "' WHEN status = " . User::STATUS_STOP
+                . " THEN '" . trans('label.customers.stop')
+                . "' END as status_name"),
+            DB::raw("ROW_NUMBER () OVER (ORDER BY name) as row_number")
+        ]);
     }
 
     /**
@@ -131,8 +120,6 @@ class CustomerRepository extends AbstractRepository implements CustomerRepositor
      */
     public function createCustomer(array $data)
     {
-        $data['status'] = User::STATUS_USING;
-        $data['role'] = User::ROLE_MANAGER;
         return $this->create($data);
     }
 }
