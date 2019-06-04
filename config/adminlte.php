@@ -178,6 +178,23 @@ return [
             ],
         ],
         [
+            'text'        => 'Quản lý khách hàng',
+            'icon'        => 'user-circle-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách khách hàng',
+                    'url'  => 'customers/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký khách hàng mới',
+                    'url'  => 'customers/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Quản lý lịch trình',
             'icon'        => 'calendar-check-o',
             'label_color' => 'success',
