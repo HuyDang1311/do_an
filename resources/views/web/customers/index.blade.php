@@ -92,10 +92,8 @@
                                         <th>@lang('label.customers.tr_no')</th>
                                         <th>@lang('label.customers.tr_name')</th>
                                         <th>@lang('label.customers.tr_email')</th>
-                                        <th>@lang('label.customers.tr_username')</th>
                                         <th>@lang('label.customers.tr_address')</th>
                                         <th>@lang('label.customers.tr_phone_number')</th>
-                                        <th>@lang('label.customers.tr_company_id')</th>
                                         <th>@lang('label.customers.tr_status')</th>
                                         <th>@lang('label.customers.tr_created_at')</th>
                                         <th></th>
@@ -108,10 +106,8 @@
                                                 <td>{{ $row->row_number ?? '' }}</td>
                                                 <td>{{ $row->name ?? '' }}</td>
                                                 <td>{{ $row->email ?? '' }}</td>
-                                                <td>{{ $row->username ?? '' }}</td>
                                                 <td>{{ $row->address ?? '' }}</td>
                                                 <td>{{ $row->phone_number ?? '' }}</td>
-                                                <td>{{ $row->company->name ?? '' }}</td>
                                                 <td>{{ $row->status_name ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">

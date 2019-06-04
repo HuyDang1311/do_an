@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Webs\Customers;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,27 +12,27 @@ class ShowController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * CustomerRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var CustomerRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface $repository DriverRepositoryInterface
+     * @param CustomerRepositoryInterface $repository CustomerRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository
+        CustomerRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
 
     /**
-     * Show car
+     * Show customer
      *
      * @param Request $request Request
      * @param int     $id      Id of car
@@ -42,14 +42,14 @@ class ShowController extends Controller
     public function __invoke(Request $request, $id)
     {
         try {
-            $driver = $this->repository->showDriver($id);
+            $customer = $this->repository->showCustomer($id);
         } catch (Exception $ex) {
-            return redirect('drivers/index')
-                ->with(['error' => trans('message.drivers.show_fail')]);
+            return redirect('customers/index')
+                ->with(['error' => trans('message.customers.show_fail')]);
         }
 
-        return view('web.drivers.show')->with([
-            'data' => $driver
+        return view('web.customers.show')->with([
+            'data' => $customer
         ]);
     }
 }

@@ -53,6 +53,7 @@ class Customer extends Authenticatable implements JWTSubject
         'address',
         'email',
         'avatar',
+        'status',
     ];
 
     /**

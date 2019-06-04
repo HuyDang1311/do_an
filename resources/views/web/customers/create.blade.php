@@ -3,16 +3,16 @@
 @section('title', trans('label.title'))
 
 @section('content_header')
-    <h1>@lang('label.drivers.show_title')</h1>
+    <h1>@lang('label.customers.show_title')</h1>
 @stop
 
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <h2 class="box-title"><b>@lang('label.drivers.name') : {{ $data->name ?? '' }}</b></h2>
-            <a href="/drivers/index" class="pull-right btn btn-info">
+            <h2 class="box-title"><b>@lang('label.customers.name') : {{ $data->name ?? '' }}</b></h2>
+            <a href="/customers/index" class="pull-right btn btn-info">
                 <i class="fa fa-list" aria-hidden="true"></i>
-                &nbsp;@lang('label.drivers.list_drivers')</a>
+                &nbsp;@lang('label.customers.list_customers')</a>
         </div>
         <div class="form-group">
         </div>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="name">@lang('label.drivers.tr_name') :</span>
+                        <span for="name">@lang('label.customers.tr_name') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="email">@lang('label.drivers.tr_email') :</span>
+                        <span for="email">@lang('label.customers.tr_email') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -53,23 +53,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="username">@lang('label.drivers.tr_username') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="username" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="password">@lang('label.drivers.tr_password') :</span>
+                        <span for="password">@lang('label.customers.tr_password') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -85,7 +69,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="address">@lang('label.drivers.tr_address') :</span>
+                        <span for="address">@lang('label.customers.tr_address') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -101,34 +85,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="phone_number">@lang('label.drivers.tr_phone_number') :</span>
+                        <span for="phone_number">@lang('label.customers.tr_phone_number') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
                         <input class="form-control" type="number" name="phone_number" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="company_id">@lang('label.drivers.tr_company_id') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select name="company_id" class="form-control" required>
-                            <option value="">@lang('label.please_select')</option>
-                            @foreach($companies as $company)
-                                <option value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
                 <div class="col-md-4">

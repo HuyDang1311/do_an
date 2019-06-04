@@ -27,8 +27,8 @@ class AddLatitudeLongitudeToBusStationsTable extends Migration
     public function down()
     {
         Schema::table('bus_stations', function (Blueprint $table) {
-            $table->drop('latitude');
-            $table->drop('longitude');
+            $table->dropColumn('latitude');
+            $table->dropColumn('longitude');
         });
     }
 }
