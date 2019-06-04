@@ -29,7 +29,7 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
     protected $fieldSearchable = [
         'name' => ['column' => 'users.name', 'operator' => 'ilike', 'type' => 'normal'],
         'email' => ['column' => 'users.email', 'operator' => 'ilike', 'type' => 'normal'],
-        'address' => ['column' => 'users.address', 'operator' => '=', 'type' => 'normal'],
+        'address' => ['column' => 'users.address', 'operator' => 'ilike', 'type' => 'normal'],
         'company_id' => ['column' => 'users.company_id', 'operator' => '=', 'type' => 'normal'],
     ];
 
@@ -116,16 +116,16 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
     }
 
     /**
-     * Update car
+     * Update driver
      *
-     * @param int $id Id of car
+     * @param int   $id   Id of driver
      * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateCar(int $id, array $data)
+    public function updateDriver(int $id, array $data)
     {
         if (!$data['password']) {
             unset($data['password']);

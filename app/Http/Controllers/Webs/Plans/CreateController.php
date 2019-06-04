@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Customers;
+namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;

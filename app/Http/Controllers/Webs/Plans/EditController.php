@@ -1,30 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Customers;
+namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
-use App\Repositories\Interfaces\Car\CarRepositoryInterface;
+use App\Models\User;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class CreateController extends Controller
+class EditController extends Controller
 {
-
-    /**
-     * CarRepositoryInterface
-     *
-     * @var CarRepositoryInterface
-     */
-    protected $repository;
 
     /**
      * DriverRepositoryInterface
      *
      * @var DriverRepositoryInterface
+     */
+    protected $repository;
+
+    /**
+     * CompanyRepositoryInterface
+     *
+     * @var CompanyRepositoryInterface
      */
     protected $repoCompany;
 
@@ -45,35 +45,38 @@ class CreateController extends Controller
     }
 
     /**
-     * Show form update bus stations
+     * Show form update car
      *
      * @param Request $request Request
+     * @param int     $id      Id of bus station
      *
      * @return JsonResponse
-     *
-     * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
         try {
             $companies = $this->repoCompany->listCompany();
-            return view('web.drivers.create')
-                ->with([
-                    'companies' => $companies,
-                ]);
+            $driver = $this->repository->showDriver($id);
         } catch (Exception $ex) {
-            return back()->with(trans('message.drivers.create_fail'));
+            return back()->with(['error' => trans('message.drivers.show_fail')]);
         }
+
+        return view('web.drivers.edit')->with([
+            'data' => $driver,
+            'companies' => $companies,
+            'status' => transArr(User::$statusObject),
+        ]);
     }
 
     /**
-     * Create bus stations
+     * Update car
      *
      * @param Request $request Request
+     * @param int     $id      Id of car
      *
      * @return JsonResponse
      */
-    public function create(Request $request)
+    public function update(Request $request, $id)
     {
         try {
             $data = $request->only([
@@ -84,13 +87,13 @@ class CreateController extends Controller
                 'phone_number',
                 'password',
                 'company_id',
+                'status',
             ]);
-
-            $car = $this->repository->createDriver($data);
+            $company = $this->repository->updateDriver($id, $data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.drivers.create_fail')]);
+            return back()->with(['error' => trans('message.drivers.update_fail')]);
         }
 
-        return redirect('drivers/show/' . $car->id);
+        return redirect('drivers/show/' . $company->id);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Customers;
+namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
 
-class ShowController extends Controller
+class DeleteController extends Controller
 {
 
     /**
@@ -32,24 +32,21 @@ class ShowController extends Controller
     }
 
     /**
-     * Show car
+     * Delete company
      *
      * @param Request $request Request
-     * @param int     $id      Id of car
+     * @param int     $id      Id of company
      *
      * @return JsonResponse
      */
     public function __invoke(Request $request, $id)
     {
         try {
-            $driver = $this->repository->showDriver($id);
+            $this->repository->delete($id);
         } catch (Exception $ex) {
-            return redirect('drivers/index')
-                ->with(['error' => trans('message.drivers.show_fail')]);
+            return back()->withErrors(['error' => trans('message.drivers.delete_fail')]);
         }
 
-        return view('web.drivers.show')->with([
-            'data' => $driver
-        ]);
+        return redirect('/drivers/index');
     }
 }

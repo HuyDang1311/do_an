@@ -62,7 +62,6 @@ class ListController extends Controller
             $companies = $this->repoCompany->listCompany();
             $drivers = $this->repository->listDriver($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             return back()->with(trans('message.drivers.list_fail'));
         }
 

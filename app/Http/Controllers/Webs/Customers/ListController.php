@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Webs\Customers;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
-use Exception;
 use Illuminate\Http\JsonResponse;
+use Exception;
 use Illuminate\Http\Request;
 
-class ListController extends ApiController
+class ListController extends Controller
 {
 
     /**
@@ -32,7 +32,7 @@ class ListController extends ApiController
     }
 
     /**
-     * Handle the incoming request.
+     * List bus stations
      *
      * @param Request $request Request
      *
@@ -41,18 +41,21 @@ class ListController extends ApiController
     public function __invoke(Request $request)
     {
         try {
-            $perPage = $request->get('per_page', 10);
-
-            $customers = $this->repository->paginate($perPage, [
+            $data = $request->only([
                 'phone_number',
+                'address',
                 'name',
-                'status',
-                'created_at'
+                'email',
             ]);
+
+            $customers = $this->repository->listCustomer($data);
         } catch (Exception $ex) {
-            return $this->responseError(trans('message.customer.list_fail'));
+            return back()->with(trans('message.customers.list_fail'));
         }
 
-        return $this->responseSuccess('', $customers);
+        return view('web.customers.index')->with([
+            'input' => $data,
+            'data' => $customers,
+        ]);
     }
 }
