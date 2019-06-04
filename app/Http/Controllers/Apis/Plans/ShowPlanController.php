@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Apis\Plans;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;

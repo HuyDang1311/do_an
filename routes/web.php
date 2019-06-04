@@ -19,4 +19,5 @@ Route::group(['middleware' => 'web'], function () {
     require __DIR__ . '/WEB/route_bus_station.php';
     require __DIR__ . '/WEB/route_company.php';
     require __DIR__ . '/WEB/route_car.php';
+    require __DIR__ . '/WEB/route_driver.php';
 });
