@@ -144,11 +144,21 @@ return [
             ],
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
+            'text'        => 'Quản lý xe',
+            'icon'        => 'car',
             'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách xe',
+                    'url'  => 'cars/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký xe mới',
+                    'url'  => 'cars/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
         ],
         'ACCOUNT SETTINGS',
         [

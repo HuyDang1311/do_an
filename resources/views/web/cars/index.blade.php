@@ -3,7 +3,7 @@
 @section('title', trans('label.title'))
 
 @section('content_header')
-    <h1>@lang('label.companies.title')</h1>
+    <h1>@lang('label.cars.title')</h1>
 @stop
 
 @section('content')
@@ -17,38 +17,44 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="name">@lang('label.companies.name')</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                   value="{{ $input['name'] ?? '' }}"
-                                   placeholder="{{ trans('label.companies.pld_name') }}">
+                            <label for="car_number_plates">@lang('label.cars.car_number_plates')</label>
+                            <input type="text" class="form-control" id="car_number_plates" name="car_number_plates"
+                                   value="{{ $input['car_number_plates'] ?? '' }}"
+                                   placeholder="{{ trans('label.cars.pld_car_number_plates') }}">
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="address">@lang('label.companies.address')</label>
-                            <input type="text" class="form-control" id="address" name="address"
-                                   value="{{ $input['address'] ?? '' }}"
-                                   placeholder="{{ trans('label.companies.pld_address') }}">
+                            <label for="car_manufacturer">@lang('label.cars.car_manufacturer')</label>
+                            <input type="text" class="form-control" id="car_manufacturer" name="car_manufacturer"
+                                   value="{{ $input['car_manufacturer'] ?? '' }}"
+                                   placeholder="{{ trans('label.cars.pld_car_manufacturer') }}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="phone_number">@lang('label.companies.phone_number')</label>
-                            <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                   value="{{ $input['phone_number'] ?? '' }}"
-                                   placeholder="{{ trans('label.companies.pld_phone_number') }}">
+                            <label for="company_id">@lang('label.cars.company_id')</label>
+                            <select name="company_id" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
+                                @foreach($companies as $company)
+                                    <option {!! $company->id === ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="email">@lang('label.companies.email')</label>
-                            <input type="text" class="form-control" id="email" name="email"
-                                   value="{{ $input['email'] ?? '' }}"
-                                   placeholder="{{ trans('label.companies.pld_email') }}">
+                            <label for="type">@lang('label.cars.type')</label>
+                            <select name="type" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
+                                @foreach($types as $key => $value)
+                                    <option {!! $key === ($input['type'] ?? '') ? 'selected' : '' !!} value="{{ $key }}">{{ $value ?? '' }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -75,8 +81,8 @@
     <div class="box box-default">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><b>@lang('label.companies.list_companies')</b></h3>
-                <a href="/companies/create" class="btn btn-success pull-right">
+                <h3 class="box-title"><b>@lang('label.cars.list_cars')</b></h3>
+                <a href="/cars/create" class="btn btn-success pull-right">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     &nbsp;@lang('label.create')</a>
             </div>
@@ -89,13 +95,13 @@
                                    aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row">
-                                        <th>@lang('label.companies.tr_no')</th>
-                                        <th>@lang('label.companies.tr_name')</th>
-                                        <th>@lang('label.companies.tr_address')</th>
-                                        <th>@lang('label.companies.tr_phone_number')</th>
-                                        <th>@lang('label.companies.tr_email')</th>
-                                        <th>@lang('label.companies.tr_status')</th>
-                                        <th>@lang('label.companies.tr_created_at')</th>
+                                        <th>@lang('label.cars.tr_no')</th>
+                                        <th>@lang('label.cars.tr_car_number_plates')</th>
+                                        <th>@lang('label.cars.tr_car_manufacturer')</th>
+                                        <th>@lang('label.cars.tr_company_name')</th>
+                                        <th>@lang('label.cars.tr_type')</th>
+                                        <th>@lang('label.cars.tr_seat_quantity')</th>
+                                        <th>@lang('label.cars.tr_created_at')</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -104,25 +110,25 @@
                                         @foreach($data as $row)
                                             <tr role="row" class="odd">
                                                 <td>{{ $row->row_number ?? '' }}</td>
-                                                <td>{{ $row->name ?? '' }}</td>
-                                                <td>{{ $row->address ?? '' }}</td>
-                                                <td>{{ $row->phone_number ?? '' }}</td>
-                                                <td>{{ $row->email ?? '' }}</td>
-                                                <td>{{ $row->status_name ?? '' }}</td>
+                                                <td>{{ $row->car_number_plates ?? '' }}</td>
+                                                <td>{{ $row->car_manufacturer ?? '' }}</td>
+                                                <td>{{ $row->company->name ?? '' }}</td>
+                                                <td>{{ $row->type_name ?? '' }}</td>
+                                                <td>{{ $row->seat_quantity ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">
                                                         <div class="form-group pull-left" style="margin-left: 10px;">
-                                                            <a class="btn btn-default" href="/companies/show/{{ $row->id }}">
+                                                            <a class="btn btn-default" href="/cars/show/{{ $row->id }}">
                                                                 <i class="fa fa-search"></i>
                                                                 @lang('label.show')</a>
                                                         </div>
                                                         <div class="form-group pull-left" style="margin-left: 10px;">
-                                                            <a class="btn btn-info" href="/companies/edit/{{ $row->id }}">
+                                                            <a class="btn btn-info" href="/cars/edit/{{ $row->id }}">
                                                                 <i class="fa fa-edit"></i>
                                                                 @lang('label.edit')</a>
                                                         </div>
-                                                        <form class="pull-left" method="post" action="/companies/delete/{{ $row->id }}">
+                                                        <form class="pull-left" method="post" action="/cars/delete/{{ $row->id }}">
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger float-left" style="margin-left: 10px;">
                                                                 <i class="fa fa-remove"></i>

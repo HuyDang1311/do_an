@@ -3,16 +3,16 @@
 @section('title', trans('label.title'))
 
 @section('content_header')
-    <h1>@lang('label.bus-stations.show_title')</h1>
+    <h1>@lang('label.cars.show_title')</h1>
 @stop
 
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data['name_station'] ?? '' }}</b></h2>
-            <a href="/bus-stations/index" class="pull-right btn btn-info">
+            <h2 class="box-title"><b>@lang('label.cars.name') : {{ $data->name ?? '' }}</b></h2>
+            <a href="/cars/index" class="pull-right btn btn-info">
                 <i class="fa fa-list" aria-hidden="true"></i>
-                &nbsp;@lang('label.bus-stations.list_stations')</a>
+                &nbsp;@lang('label.cars.list_cars')</a>
         </div>
         <div class="form-group">
         </div>
@@ -21,13 +21,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="city">@lang('validation.attributes.city') :</span>
+                        <span for="car_number_plates">@lang('label.cars.tr_car_number_plates') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="city" class="form-control" />
+                        <input type="text" class="form-control" name="car_number_plates" required/>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -37,13 +37,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="name_station">@lang('validation.attributes.name_station') :</span>
+                        <span for="car_manufacturer">@lang('label.cars.tr_car_manufacturer') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="name_station"  class="form-control" />
+                        <input class="form-control" type="text" name="car_manufacturer" required />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -53,13 +53,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="latitude">@lang('validation.attributes.latitude') :</span>
+                        <span for="company_id">@lang('label.cars.tr_company_name') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="latitude" class="form-control"  />
+                        <select name="company_id" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -69,13 +74,39 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="longitude">@lang('validation.attributes.longitude') :</span>
+                        <span for="type">@lang('label.cars.tr_type') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="longitude" class="form-control"  />
+                        <select name="type" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($types as $key => $value)
+                                <option value="{{ $key }}">{{ $value ?? '' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="seat_quantity">@lang('label.cars.tr_seat_quantity') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="seat_quantity" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($seat as $key => $value)
+                                <option value="{{ $key }}">{{ $value ?? '' }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-4">

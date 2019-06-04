@@ -13,7 +13,7 @@ class EditController extends Controller
 {
 
     /**
-     * BusStationRepositoryInterface
+     * CompanyRepositoryInterface
      *
      * @var CompanyRepositoryInterface
      */
@@ -22,7 +22,7 @@ class EditController extends Controller
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository BusStationRepositoryInterface
+     * @param CompanyRepositoryInterface $repository CompanyRepositoryInterface
      *
      * @return void
      */

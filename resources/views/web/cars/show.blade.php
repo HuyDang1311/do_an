@@ -3,16 +3,16 @@
 @section('title', trans('label.title'))
 
 @section('content_header')
-    <h1>@lang('label.companies.show_title')</h1>
+    <h1>@lang('label.cars.show_title')</h1>
 @stop
 
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <h2 class="box-title"><b>@lang('label.companies.name') : {{ $data->name ?? '' }}</b></h2>
-            <a href="/companies/index" class="pull-right btn btn-info">
+            <h2 class="box-title"><b>@lang('label.cars.name') : {{ $data->car_number_plates ?? '' }}</b></h2>
+            <a href="/cars/index" class="pull-right btn btn-info">
                 <i class="fa fa-list" aria-hidden="true"></i>
-                &nbsp;@lang('label.companies.list_companies')</a>
+                &nbsp;@lang('label.cars.list_cars')</a>
         </div>
         <div class="form-group">
         </div>
@@ -20,13 +20,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="name">@lang('label.companies.tr_name') :</span>
+                    <span class="form-text" for="cars_number_plates">@lang('label.cars.tr_car_number_plates') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->name ?? '' }}</span>
+                    <span  class="form-text">{{ $data->car_number_plates ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -34,13 +34,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="address">@lang('label.companies.tr_address') :</span>
+                    <span class="form-text" for="cars_manufacturer">@lang('label.cars.tr_car_manufacturer') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->address ?? '' }}</span>
+                    <span class="form-text">{{ $data->car_manufacturer ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -48,13 +48,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="phone_number">@lang('label.companies.tr_phone_number') :</span>
+                    <span class="form-text" for="company_id">@lang('label.cars.tr_company_id') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->phone_number ?? '' }}</span>
+                    <span class="form-text">{{ $data->company->name ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -62,13 +62,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="email">@lang('label.companies.tr_email') :</span>
+                    <span class="form-text" for="type">@lang('label.cars.tr_type') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->email ?? '' }}</span>
+                    <span class="form-text">{{ $data->type_name ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -76,13 +76,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="status_name">@lang('label.companies.tr_status') :</span>
+                    <span class="form-text" for="seat_quantity">@lang('label.cars.tr_seat_quantity') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->status_name ?? '' }}</span>
+                    <span class="form-text">{{ $data->seat_quantity ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -90,13 +90,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span for="created_at">@lang('label.companies.tr_created_at') :</span>
+                    <span class="form-text" for="created_at">@lang('label.cars.tr_created_at') :</span>
                 </div>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
                 <div class="form-group">
-                    <span>{{ $data->created_at ?? '' }}</span>
+                    <span class="form-text">{{ $data->created_at ?? '' }}</span>
                 </div>
             </div>
             <!-- /.col -->
@@ -104,12 +104,12 @@
 
         <div class="row">
             <div class="col-md-4">
-                <a class="btn btn-primary pull-right" href="/companies/edit/{{ $data['id'] ?? '' }}"><i class="fa fa-edit"></i>
+                <a class="btn btn-primary pull-right" href="/cars/edit/{{ $data['id'] ?? '' }}"><i class="fa fa-edit"></i>
                     &nbsp;@lang('label.edit')</a>
             </div>
             <!-- /.col -->
             <div class="col-md-8">
-                <form method="post" action="/companies/delete/{{ $data['id'] ?? '' }}">
+                <form method="post" action="/cars/delete/{{ $data['id'] ?? '' }}">
                     @csrf
                     <button type="submit" class="btn btn-danger pull-left"><i class="fa fa-search"></i>
                         &nbsp;@lang('label.delete')</button>

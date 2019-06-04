@@ -42,7 +42,7 @@ class CompanyRepository extends AbstractRepository implements CompanyRepositoryI
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function listCompany(array $data)
+    public function listCompany(array $data = [])
     {
         $query = $this->search($data);
 

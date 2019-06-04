@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Companies;
+namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
@@ -12,44 +13,44 @@ class ShowController extends Controller
 {
 
     /**
-     * CompanyRepositoryInterface
+     * CarRepositoryInterface
      *
-     * @var CompanyRepositoryInterface
+     * @var CarRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository CompanyRepositoryInterface
+     * @param CarRepositoryInterface $repository CarRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CompanyRepositoryInterface $repository
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
 
     /**
-     * Show company
+     * Show car
      *
      * @param Request $request Request
-     * @param int     $id      Id of company
+     * @param int     $id      Id of car
      *
      * @return JsonResponse
      */
     public function __invoke(Request $request, $id)
     {
         try {
-            $company = $this->repository->showCompany($id);
+            $car = $this->repository->showCar($id);
         } catch (Exception $ex) {
-            return redirect('companies/index')
-                ->with(['error' => trans('message.companies.show_fail')]);
+            return redirect('cars/index')
+                ->with(['error' => trans('message.cars.show_fail')]);
         }
 
-        return view('web.companies.show')->with([
-            'data' => $company
+        return view('web.cars.show')->with([
+            'data' => $car
         ]);
     }
 }

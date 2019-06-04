@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Companies;
+namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,21 +12,21 @@ class DeleteController extends Controller
 {
 
     /**
-     * CompanyRepositoryInterface
+     * CarRepositoryInterface
      *
-     * @var CompanyRepositoryInterface
+     * @var CarRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository CompanyRepositoryInterface
+     * @param CarRepositoryInterface $repository CarRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CompanyRepositoryInterface $repository
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -44,9 +44,9 @@ class DeleteController extends Controller
         try {
             $this->repository->delete($id);
         } catch (Exception $ex) {
-            return back()->withErrors(['error' => trans('message.companies.delete_fail')]);
+            return back()->withErrors(['error' => trans('message.cars.delete_fail')]);
         }
 
-        return redirect('/companies/index');
+        return redirect('/cars/index');
     }
 }
