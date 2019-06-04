@@ -217,7 +217,7 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
             "bus_start.name_station as address_start_bus_station",
             "plans.address_end_id",
             "bus_end.city as address_end_city",
-            "bus_start.name_station as address_end_bus_station",
+            "bus_end.name_station as address_end_bus_station",
             "plans.time_start",
             "plans.time_end",
             "plans.car_id",
