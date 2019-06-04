@@ -123,10 +123,10 @@ class User extends Authenticatable implements JWTSubject
     public function setPasswordAttribute($value)
     {
         if ($value) {
-            return bcrypt($value);
+            return $this->attributes['password'] = bcrypt($value);
         }
 
-        return $value;
+        return $this;
     }
 
     /**

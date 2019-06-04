@@ -117,6 +117,7 @@ return [
         'tr_company_id' => 'Company name',
         'tr_status' => 'Status',
         'tr_created_at' => 'Create date',
+        'tr_password' => 'Password',
         'using' => 'Using',
         'stop' => 'Stopping',
     ],

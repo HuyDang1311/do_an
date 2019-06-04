@@ -127,6 +127,9 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
      */
     public function updateCar(int $id, array $data)
     {
+        if (!$data['password']) {
+            unset($data['password']);
+        }
         return $this->update($data, $id);
     }
 

@@ -88,7 +88,6 @@ class CreateController extends Controller
 
             $car = $this->repository->createDriver($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             return back()->with(['error' => trans('message.drivers.create_fail')]);
         }
 
