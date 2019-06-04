@@ -22,6 +22,24 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
     }
 
     /**
+     * List order
+     *
+     * @param array $data Data
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function listOrders(array $data)
+    {
+        return Order::with($this->withOrderDetail())
+            ->join('plans', 'orders.plan_id', '=', 'plans.id')
+            ->join('companies', 'plans.company_id', '=', 'companies.id')
+            ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+            ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
+            ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
+            ->paginate(10, $this->getColumns());
+    }
+
+    /**
      * Create order
      *
      * @param array $data Data to create order

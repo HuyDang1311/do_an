@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Webs\Orders;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,33 +14,23 @@ class ListController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * OrderRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var OrderRepositoryInterface
      */
     protected $repository;
 
     /**
-     * DriverRepositoryInterface
-     *
-     * @var DriverRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface  $repository  DriverRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
+     * @param OrderRepositoryInterface  $repository  OrderRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        OrderRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -59,17 +50,14 @@ class ListController extends Controller
                 'company_id',
             ]);
 
-            $companies = $this->repoCompany->listCompany();
-            $drivers = $this->repository->listDriver($data);
+            $orders = $this->repository->listOrders($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
-            return back()->with(trans('message.drivers.list_fail'));
+            return back()->with(trans('message.orders.list_fail'));
         }
 
-        return view('web.drivers.index')->with([
+        return view('web.orders.index')->with([
             'input' => $data,
-            'data' => $drivers,
-            'companies' => $companies,
+            'data' => $orders,
         ]);
     }
 }

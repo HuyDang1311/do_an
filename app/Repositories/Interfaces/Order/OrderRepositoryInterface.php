@@ -7,6 +7,15 @@ interface OrderRepositoryInterface
 {
 
     /**
+     * List order
+     *
+     * @param array $data Data
+     *
+     * @return array
+     */
+    public function listOrders(array $data);
+
+    /**
      * Create order
      *
      * @param array $data Data to create order
