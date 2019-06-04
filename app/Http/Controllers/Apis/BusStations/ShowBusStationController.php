@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Apis\BusStations;
 
 use App\Http\Controllers\ApiController;
-use App\Repositories\Interfaces\BusStation\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,19 +14,19 @@ class ShowBusStationController extends ApiController
     /**
      * BusStationRepositoryInterface
      *
-     * @var CompanyRepositoryInterface
+     * @var BusStationRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param CompanyRepositoryInterface $repository BusStationRepositoryInterface
+     * @param BusStationRepositoryInterface $repository BusStationRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CompanyRepositoryInterface $repository
+        BusStationRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }

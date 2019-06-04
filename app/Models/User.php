@@ -35,6 +35,12 @@ class User extends Authenticatable implements JWTSubject
      * @var int
      */
     const STATUS_USING = 1;
+    /**
+     * Status stop.
+     *
+     * @var int
+     */
+    const STATUS_STOP = 2;
 
     /**
      * The table associated with the model.
@@ -51,6 +57,12 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'company_id',
+        'address',
+        'phone_number',
+        'username',
+        'status',
+        'role',
         'password',
     ];
 
@@ -74,6 +86,16 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
+     * Status object
+     *
+     * @var array
+     */
+    public static $statusObject = [
+        self::STATUS_USING => 'label.drivers.using',
+        self::STATUS_STOP => 'label.drivers.stop',
+    ];
+
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -91,5 +113,29 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    /**
+     * Set password attribute
+     *
+     * @return mixed
+     */
+    public function setPasswordAttribute($value)
+    {
+        if ($value) {
+            return bcrypt($value);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Plan belongsTo Company
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 }

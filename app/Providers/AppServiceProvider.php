@@ -6,12 +6,14 @@ use App\Repositories\Eloquents\BusStation\BusStationRepository;
 use App\Repositories\Eloquents\Car\CarRepository;
 use App\Repositories\Eloquents\Company\CompanyRepository;
 use App\Repositories\Eloquents\Customer\CustomerRepository;
+use App\Repositories\Eloquents\Driver\DriverRepository;
 use App\Repositories\Eloquents\Order\OrderRepository;
 use App\Repositories\Eloquents\Plan\PlanRepository;
 use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
+use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -48,6 +50,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CarRepositoryInterface::class,
             CarRepository::class
+        );
+        $this->app->bind(
+            DriverRepositoryInterface::class,
+            DriverRepository::class
         );
     }
 
