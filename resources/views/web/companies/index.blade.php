@@ -76,7 +76,9 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title"><b>@lang('label.companies.list_companies')</b></h3>
-                <a href="/companies/create" class="btn btn-success pull-right">@lang('label.create')</a>
+                <a href="/companies/create" class="btn btn-success pull-right">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    &nbsp;@lang('label.create')</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

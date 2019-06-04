@@ -84,7 +84,9 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title"><b>@lang('label.cars.list_cars')</b></h3>
-                <a href="/cars/create" class="btn btn-success pull-right">@lang('label.create')</a>
+                <a href="/cars/create" class="btn btn-success pull-right">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    &nbsp;@lang('label.create')</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

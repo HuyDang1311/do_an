@@ -59,7 +59,9 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title"><b>@lang('label.bus-stations.list_stations')</b></h3>
-                <a href="/bus-stations/create" class="btn btn-success pull-right">@lang('label.create')</a>
+                <a href="/bus-stations/create" class="btn btn-success pull-right">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    &nbsp;@lang('label.create')</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

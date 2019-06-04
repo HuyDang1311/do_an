@@ -10,7 +10,9 @@
     <div class="box box-info">
         <div class="box-header with-border">
             <h2 class="box-title"><b>@lang('label.bus-stations.name') : {{ $data->name_station ?? '' }}</b></h2>
-            <a href="/bus-stations/index" class="pull-right btn btn-info">@lang('label.bus-stations.list_stations')</a>
+            <a href="/bus-stations/index" class="pull-right btn btn-info">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                &nbsp;@lang('label.bus-stations.list_stations')</a>
         </div>
         <div class="form-group">
         </div>
