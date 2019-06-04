@@ -177,6 +177,29 @@ return [
                 ],
             ],
         ],
+        [
+            'text'        => 'Quản lý lịch trình',
+            'icon'        => 'calendar-check-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách lịch trình',
+                    'url'  => 'plans/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký tài xế mới',
+                    'url'  => 'plans/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Danh sách đặt chỗ',
+            'icon'        => 'bar-chart',
+            'url'         => 'orders/index',
+            'label_color' => 'success',
+        ],
     ],
 
     /*
