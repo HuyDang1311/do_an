@@ -38,8 +38,8 @@
                         <div class="form-group">
                             <label for="company_id">@lang('label.cars.company_id')</label>
                             <select name="company_id" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
                                 @foreach($companies as $company)
-                                    {{ $company }}
                                     <option {!! $company->id === ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
                                 @endforeach
                             </select>
@@ -50,13 +50,11 @@
                         <div class="form-group">
                             <label for="type">@lang('label.cars.type')</label>
                             <select name="type" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
                                 @foreach($types as $key => $value)
-                                    <option {!! $key === $input['type'] ? 'selected' : '' !!} value="{{ $key }}">{{ $value ?? '' }}</option>
+                                    <option {!! $key === ($input['type'] ?? '') ? 'selected' : '' !!} value="{{ $key }}">{{ $value ?? '' }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" class="form-control" id="type" name="type"
-                                   value="{{ $input['type'] ?? '' }}"
-                                   placeholder="{{ trans('label.cars.pld_typel') }}">
                         </div>
                     </div>
                 </div>
@@ -98,11 +96,11 @@
                                 <thead>
                                     <tr role="row">
                                         <th>@lang('label.cars.tr_no')</th>
-                                        <th>@lang('label.cars.tr_name')</th>
-                                        <th>@lang('label.cars.tr_address')</th>
-                                        <th>@lang('label.cars.tr_phone_number')</th>
-                                        <th>@lang('label.cars.tr_email')</th>
-                                        <th>@lang('label.cars.tr_status')</th>
+                                        <th>@lang('label.cars.tr_car_number_plates')</th>
+                                        <th>@lang('label.cars.tr_car_manufacturer')</th>
+                                        <th>@lang('label.cars.tr_company_name')</th>
+                                        <th>@lang('label.cars.tr_type')</th>
+                                        <th>@lang('label.cars.tr_seat_quantity')</th>
                                         <th>@lang('label.cars.tr_created_at')</th>
                                         <th></th>
                                     </tr>
@@ -112,11 +110,11 @@
                                         @foreach($data as $row)
                                             <tr role="row" class="odd">
                                                 <td>{{ $row->row_number ?? '' }}</td>
-                                                <td>{{ $row->name ?? '' }}</td>
-                                                <td>{{ $row->address ?? '' }}</td>
-                                                <td>{{ $row->phone_number ?? '' }}</td>
-                                                <td>{{ $row->email ?? '' }}</td>
-                                                <td>{{ $row->status_name ?? '' }}</td>
+                                                <td>{{ $row->car_number_plates ?? '' }}</td>
+                                                <td>{{ $row->car_manufacturer ?? '' }}</td>
+                                                <td>{{ $row->company->name ?? '' }}</td>
+                                                <td>{{ $row->type_name ?? '' }}</td>
+                                                <td>{{ $row->seat_quantity ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">

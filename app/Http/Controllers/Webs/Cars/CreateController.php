@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Car;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,16 +21,26 @@ class CreateController extends Controller
     protected $repository;
 
     /**
+     * CompanyRepositoryInterface
+     *
+     * @var CompanyRepositoryInterface
+     */
+    protected $repoCompany;
+
+    /**
      * Constructor.
      *
-     * @param CarRepositoryInterface $repository CarRepositoryInterface
+     * @param CarRepositoryInterface     $repository  CarRepositoryInterface
+     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CarRepositoryInterface $repository
+        CarRepositoryInterface $repository,
+        CompanyRepositoryInterface $repoCompany
     ) {
         $this->repository = $repository;
+        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -38,11 +49,22 @@ class CreateController extends Controller
      * @param Request $request Request
      *
      * @return JsonResponse
+     *
+     * @throws \App\Repositories\Exceptions\RepositoryException
      */
     public function show(Request $request)
     {
-        return view('web.companies.create')
-            ->with(['status_object' => transArr(Company::$statusObject)]);
+        try {
+            $companies = $this->repoCompany->listCompany();
+            return view('web.cars.create')
+                ->with([
+                    'companies' => $companies,
+                    'types' => transArr(Car::$type),
+                    'seat' => Car::$seatNumber,
+                ]);
+        } catch (Exception $ex) {
+            return back()->with(trans('message.cars.create_fail'));
+        }
     }
 
     /**
@@ -56,18 +78,18 @@ class CreateController extends Controller
     {
         try {
             $data = $request->only([
-                'name',
-                'address',
-                'phone_number',
-                'email',
-                'status',
+                'car_number_plates',
+                'car_manufacturer',
+                'company_id',
+                'seat_quantity',
+                'type',
             ]);
-            $data['status'] = $data['status'] ?? Company::STATUS_USING;
-            $busStation = $this->repository->createCompany($data);
+
+            $car = $this->repository->createCar($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.create_fail')]);
+            return back()->with(['error' => trans('message.cars.create_fail')]);
         }
 
-        return redirect('companies/show/' . $busStation->id);
+        return redirect('cars/show/' . $car->id);
     }
 }

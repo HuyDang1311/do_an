@@ -17,30 +17,30 @@ interface CarRepositoryInterface
     public function listCar(array $data);
 
     /**
-     * Show company
+     * Show car
      *
-     * @param int $id Id of company
+     * @param int $id Id of car
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function showCompany(int $id);
+    public function showCar(int $id);
 
     /**
-     * Update company
+     * Update car
      *
-     * @param int $id Id of company
+     * @param int $id Id of car
      * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateCompany(int $id, array $data);
+    public function updateCar(int $id, array $data);
 
     /**
-     * Create company
+     * Create car
      *
      * @param array $data Data
      *
@@ -48,5 +48,5 @@ interface CarRepositoryInterface
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function createCompany(array $data);
+    public function createCar(array $data);
 }

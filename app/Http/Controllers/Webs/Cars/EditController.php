@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
+use App\Models\Car;
 use App\Models\Company;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,20 +22,30 @@ class EditController extends Controller
     protected $repository;
 
     /**
+     * CompanyRepositoryInterface
+     *
+     * @var CompanyRepositoryInterface
+     */
+    protected $repoCompany;
+
+    /**
      * Constructor.
      *
-     * @param CarRepositoryInterface $repository CarRepositoryInterface
+     * @param CarRepositoryInterface     $repository  CarRepositoryInterface
+     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CarRepositoryInterface $repository
+        CarRepositoryInterface $repository,
+        CompanyRepositoryInterface $repoCompany
     ) {
         $this->repository = $repository;
+        $this->repoCompany = $repoCompany;
     }
 
     /**
-     * Show form update bus stations
+     * Show form update car
      *
      * @param Request $request Request
      * @param int     $id      Id of bus station
@@ -43,22 +55,25 @@ class EditController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            $company = $this->repository->showCompany($id);
+            $companies = $this->repoCompany->listCompany();
+            $car = $this->repository->showCar($id);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.show_fail')]);
+            return back()->with(['error' => trans('message.cars.show_fail')]);
         }
 
-        return view('web.companies.edit')->with([
-            'data' => $company,
-            'status_object' => transArr(Company::$statusObject)
+        return view('web.cars.edit')->with([
+            'data' => $car,
+            'companies' => $companies,
+            'types' => transArr(Car::$type),
+            'seat' => Car::$seatNumber,
         ]);
     }
 
     /**
-     * Update company
+     * Update car
      *
      * @param Request $request Request
-     * @param int     $id      Id of company
+     * @param int     $id      Id of car
      *
      * @return JsonResponse
      */
@@ -66,17 +81,17 @@ class EditController extends Controller
     {
         try {
             $data = $request->only([
-                'name',
-                'address',
-                'phone_number',
-                'email',
-                'status',
+                'car_number_plates',
+                'car_manufacturer',
+                'company_id',
+                'seat_quantity',
+                'type',
             ]);
-            $company = $this->repository->updateCompany($id, $data);
+            $company = $this->repository->updateCar($id, $data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.update_fail')]);
+            return back()->with(['error' => trans('message.cars.update_fail')]);
         }
 
-        return redirect('companies/show/' . $company->id);
+        return redirect('cars/show/' . $company->id);
     }
 }

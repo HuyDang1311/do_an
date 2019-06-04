@@ -25,6 +25,20 @@ class Car extends Model
     const TYPE_SEAT = 2;
 
     /**
+     * Seat number 1.
+     *
+     * @var int
+     */
+    const SEAT_NUMBER_1 = 20;
+
+    /**
+     * Seat number 2.
+     *
+     * @var int
+     */
+    const SEAT_NUMBER_2 = 40;
+
+    /**
      * Type object.
      *
      * @var array
@@ -32,6 +46,16 @@ class Car extends Model
     public static $type = [
         self::TYPE_LAY => 'label.car.type_lay',
         self::TYPE_SEAT => 'label.car.type_seat'
+    ];
+
+    /**
+     * Type object.
+     *
+     * @var array
+     */
+    public static $seatNumber = [
+        self::SEAT_NUMBER_1 => self::SEAT_NUMBER_1,
+        self::SEAT_NUMBER_2 => self::SEAT_NUMBER_2
     ];
 
     /**
@@ -53,4 +77,14 @@ class Car extends Model
         'company_id',
         'type'
     ];
+
+    /**
+     * Plan belongsTo Company
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
 }

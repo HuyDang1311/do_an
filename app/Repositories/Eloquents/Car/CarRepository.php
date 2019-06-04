@@ -3,7 +3,6 @@
 namespace App\Repositories\Eloquents\Car;
 
 use App\Models\Car;
-use App\Models\Company;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use DB;
@@ -44,10 +43,17 @@ class CarRepository extends AbstractRepository implements CarRepositoryInterface
      */
     public function listCar(array $data)
     {
-        $query = $this->search($data);
+        $with['company'] = function ($query) {
+            return $query->select([
+                'companies.id',
+                'companies.name',
+            ]);
+        };
+
+        $query = $this->with($with)->search($data);
 
         return $query->scopeQuery(function ($query) {
-                return $query->join('companies', 'companies.id', '=', 'cars.id');
+                return $query->join('companies', 'companies.id', '=', 'cars.company_id');
             })
             ->orderBy('car_number_plates', 'asc')->all([
             'cars.id',
@@ -68,49 +74,56 @@ class CarRepository extends AbstractRepository implements CarRepositoryInterface
     }
 
     /**
-     * Show company
+     * Show car
      *
-     * @param int $id Id of company
+     * @param int $id Id of car
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function showCompany(int $id)
+    public function showCar(int $id)
     {
-        return $this->find($id, [
-            'id',
-            'name',
-            'address',
-            'phone_number',
-            'email',
-            'status',
-            'created_at',
-            DB::raw("CASE WHEN status = " . Company::STATUS_USING
-                . " THEN '" . trans('label.cars.status_using')
-                . "' WHEN status = " . Company::STATUS_STOP
-                . " THEN '" . trans('label.cars.status_stop')
-                . "' END as status_name"),
+        $with['company'] = function ($query) {
+            return $query->select([
+                'companies.id',
+                'companies.name',
+            ]);
+        };
+
+        return $this->with($with)->find($id, [
+            'cars.id',
+            'cars.car_number_plates',
+            'cars.car_manufacturer',
+            'cars.company_id',
+            'cars.type',
+            'cars.seat_quantity',
+            'cars.created_at',
+            DB::raw("CASE WHEN cars.type = " . Car::TYPE_LAY
+                . " THEN '" . trans('label.car.type_lay')
+                . "' WHEN cars.type = " . Car::TYPE_SEAT
+                . " THEN '" . trans('label.car.type_seat')
+                . "' END as type_name"),
         ]);
     }
 
     /**
-     * Update company
+     * Update car
      *
-     * @param int $id Id of company
+     * @param int $id Id of car
      * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateCompany(int $id, array $data)
+    public function updateCar(int $id, array $data)
     {
         return $this->update($data, $id);
     }
 
     /**
-     * Create company
+     * Create car
      *
      * @param array $data Data
      *
@@ -118,7 +131,7 @@ class CarRepository extends AbstractRepository implements CarRepositoryInterface
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function createCompany(array $data)
+    public function createCar(array $data)
     {
         return $this->create($data);
     }
