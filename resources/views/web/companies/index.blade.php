@@ -112,19 +112,19 @@
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">
-                                                        <div class="form-group pull-left" style="margin-left: 10px;">
-                                                            <a class="btn btn-default" href="/companies/show/{{ $row->id }}">
+                                                        <div class="form-group pull-left">
+                                                            <a class="btn btn-default btn-table-list" href="/companies/show/{{ $row->id }}">
                                                                 <i class="fa fa-search"></i>
                                                                 @lang('label.show')</a>
                                                         </div>
-                                                        <div class="form-group pull-left" style="margin-left: 10px;">
-                                                            <a class="btn btn-info" href="/companies/edit/{{ $row->id }}">
+                                                        <div class="form-group pull-left">
+                                                            <a class="btn btn-info btn-table-list" href="/companies/edit/{{ $row->id }}">
                                                                 <i class="fa fa-edit"></i>
                                                                 @lang('label.edit')</a>
                                                         </div>
                                                         <form class="pull-left" method="post" action="/companies/delete/{{ $row->id }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-danger float-left" style="margin-left: 10px;">
+                                                            <button type="submit" class="btn btn-danger float-left btn-table-list">
                                                                 <i class="fa fa-remove"></i>
                                                                 &nbsp;@lang('label.delete')</button>
                                                         </form>
