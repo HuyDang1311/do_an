@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Drivers;
+namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
@@ -89,7 +89,7 @@ class EditController extends Controller
                 'company_id',
                 'status',
             ]);
-            $company = $this->repository->updateCar($id, $data);
+            $company = $this->repository->updateDriver($id, $data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.drivers.update_fail')]);
         }

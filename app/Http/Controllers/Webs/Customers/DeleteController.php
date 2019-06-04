@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Drivers;
+namespace App\Http\Controllers\Webs\Customers;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;

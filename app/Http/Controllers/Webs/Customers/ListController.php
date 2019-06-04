@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Drivers;
+namespace App\Http\Controllers\Webs\Customers;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
-use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Customer\CustomerRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,33 +12,23 @@ class ListController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * CustomerRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var CustomerRepositoryInterface
      */
     protected $repository;
 
     /**
-     * DriverRepositoryInterface
-     *
-     * @var DriverRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface  $repository  DriverRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
+     * @param CustomerRepositoryInterface $repository CustomerRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        CustomerRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -53,23 +42,20 @@ class ListController extends Controller
     {
         try {
             $data = $request->only([
+                'phone_number',
+                'address',
                 'name',
                 'email',
-                'address',
-                'company_id',
             ]);
 
-            $companies = $this->repoCompany->listCompany();
-            $drivers = $this->repository->listDriver($data);
+            $customers = $this->repository->listCustomer($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
-            return back()->with(trans('message.drivers.list_fail'));
+            return back()->with(trans('message.customers.list_fail'));
         }
 
-        return view('web.drivers.index')->with([
+        return view('web.customers.index')->with([
             'input' => $data,
-            'data' => $drivers,
-            'companies' => $companies,
+            'data' => $customers,
         ]);
     }
 }

@@ -28,16 +28,16 @@ interface DriverRepositoryInterface
     public function showDriver(int $id);
 
     /**
-     * Update car
+     * Update driver
      *
-     * @param int $id Id of car
+     * @param int   $id   Id of driver
      * @param array $data Data
      *
      * @return mixed
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function updateCar(int $id, array $data);
+    public function updateDriver(int $id, array $data);
 
     /**
      * Create driver

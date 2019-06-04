@@ -61,7 +61,8 @@ class Customer extends Authenticatable implements JWTSubject
      * @var array
      */
     public static $statusObject = [
-        self::STATUS_USING => 'label.status.using',
+        self::STATUS_USING => 'label.customers.using',
+        self::STATUS_STOP => 'label.customers.stop',
     ];
 
     /**

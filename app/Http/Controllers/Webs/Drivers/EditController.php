@@ -89,7 +89,7 @@ class EditController extends Controller
                 'company_id',
                 'status',
             ]);
-            $company = $this->repository->updateCar($id, $data);
+            $company = $this->repository->updateDriver($id, $data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.drivers.update_fail')]);
         }

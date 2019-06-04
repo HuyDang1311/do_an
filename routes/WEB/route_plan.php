@@ -11,12 +11,12 @@
 |
 */
 
-Route::namespace('Webs\Drivers')->prefix('drivers')->group(function () {
-    Route::get('/index', 'ListController')->name('web.driver.list');
-    Route::get('/show/{id}', 'ShowController')->name('web.driver.show');
-    Route::get('/edit/{id}', 'EditController@show')->name('web.driver.show_edit');
-    Route::post('/edit/{id}', 'EditController@update')->name('web.driver.edit');
-    Route::get('/create', 'CreateController@show')->name('web.driver.show_create');
-    Route::post('/create', 'CreateController@create')->name('web.driver.create');
-    Route::post('/delete/{id}', 'DeleteController')->name('web.driver.delete');
+Route::namespace('Webs\Plans')->prefix('plans')->group(function () {
+    Route::get('/index', 'ListController')->name('web.plans.list');
+    Route::get('/show/{id}', 'ShowController')->name('web.plans.show');
+    Route::get('/edit/{id}', 'EditController@show')->name('web.plans.show_edit');
+    Route::post('/edit/{id}', 'EditController@update')->name('web.plans.edit');
+    Route::get('/create', 'CreateController@show')->name('web.plans.show_create');
+    Route::post('/create', 'CreateController@create')->name('web.plans.create');
+    Route::post('/delete/{id}', 'DeleteController')->name('web.plans.delete');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Webs\Drivers;
+namespace App\Http\Controllers\Webs\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;

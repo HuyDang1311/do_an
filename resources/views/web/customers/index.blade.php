@@ -3,7 +3,7 @@
 @section('title', trans('label.title'))
 
 @section('content_header')
-    <h1>@lang('label.drivers.title')</h1>
+    <h1>@lang('label.customers.title')</h1>
 @stop
 
 @section('content')
@@ -17,41 +17,38 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="name">@lang('label.drivers.tr_name')</label>
+                            <label for="name">@lang('label.customers.tr_name')</label>
                             <input type="text" class="form-control" id="name" name="name"
                                    value="{{ $input['name'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_name') }}">
+                                   placeholder="{{ trans('label.customers.pld_name') }}">
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="email">@lang('label.drivers.tr_email')</label>
+                            <label for="email">@lang('label.customers.tr_email')</label>
                             <input type="text" class="form-control" id="email" name="email"
                                    value="{{ $input['email'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_email') }}">
+                                   placeholder="{{ trans('label.customers.pld_email') }}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="address">@lang('label.drivers.tr_address')</label>
+                            <label for="address">@lang('label.customers.tr_address')</label>
                             <input type="text" class="form-control" id="address" name="address"
                                    value="{{ $input['address'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_address') }}">
+                                   placeholder="{{ trans('label.customers.pld_address') }}">
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="company_id">@lang('label.drivers.tr_company_id')</label>
-                            <select name="company_id" class="form-control" >
-                                <option value="">@lang('label.please_select')</option>
-                                @foreach($companies as $company)
-                                    <option {!! $company->id === ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
-                                @endforeach
-                            </select>
+                            <label for="phone_number">@lang('label.customers.tr_phone_number')</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                   value="{{ $input['phone_number'] ?? '' }}"
+                                   placeholder="{{ trans('label.customers.pld_phone_number') }}">
                         </div>
                     </div>
                 </div>
@@ -78,8 +75,8 @@
     <div class="box box-default">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><b>@lang('label.drivers.list_drivers')</b></h3>
-                <a href="/drivers/create" class="btn btn-success pull-right">
+                <h3 class="box-title"><b>@lang('label.customers.list_customers')</b></h3>
+                <a href="/customers/create" class="btn btn-success pull-right">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     &nbsp;@lang('label.create')</a>
             </div>
@@ -92,15 +89,15 @@
                                    aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row">
-                                        <th>@lang('label.drivers.tr_no')</th>
-                                        <th>@lang('label.drivers.tr_name')</th>
-                                        <th>@lang('label.drivers.tr_email')</th>
-                                        <th>@lang('label.drivers.tr_username')</th>
-                                        <th>@lang('label.drivers.tr_address')</th>
-                                        <th>@lang('label.drivers.tr_phone_number')</th>
-                                        <th>@lang('label.drivers.tr_company_id')</th>
-                                        <th>@lang('label.drivers.tr_status')</th>
-                                        <th>@lang('label.drivers.tr_created_at')</th>
+                                        <th>@lang('label.customers.tr_no')</th>
+                                        <th>@lang('label.customers.tr_name')</th>
+                                        <th>@lang('label.customers.tr_email')</th>
+                                        <th>@lang('label.customers.tr_username')</th>
+                                        <th>@lang('label.customers.tr_address')</th>
+                                        <th>@lang('label.customers.tr_phone_number')</th>
+                                        <th>@lang('label.customers.tr_company_id')</th>
+                                        <th>@lang('label.customers.tr_status')</th>
+                                        <th>@lang('label.customers.tr_created_at')</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -120,16 +117,16 @@
                                                 <td class="sorting_1">
                                                     <div class="btn-group">
                                                         <div class="form-group pull-left">
-                                                            <a class="btn btn-default btn-table-list" href="/drivers/show/{{ $row->id }}">
+                                                            <a class="btn btn-default btn-table-list" href="/customers/show/{{ $row->id }}">
                                                                 <i class="fa fa-search"></i>
                                                                 @lang('label.show')</a>
                                                         </div>
                                                         <div class="form-group pull-left">
-                                                            <a class="btn btn-info btn-table-list" href="/drivers/edit/{{ $row->id }}">
+                                                            <a class="btn btn-info btn-table-list" href="/customers/edit/{{ $row->id }}">
                                                                 <i class="fa fa-edit"></i>
                                                                 @lang('label.edit')</a>
                                                         </div>
-                                                        <form class="pull-left" method="post" action="/drivers/delete/{{ $row->id }}">
+                                                        <form class="pull-left" method="post" action="/customers/delete/{{ $row->id }}">
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger float-left btn-table-list">
                                                                 <i class="fa fa-remove"></i>
