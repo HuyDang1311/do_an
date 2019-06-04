@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group pull-right">
-                    <span class="form-text" for="company_id">@lang('label.cars.tr_company_id') :</span>
+                    <span class="form-text" for="company_id">@lang('label.cars.tr_company_name') :</span>
                 </div>
             </div>
             <!-- /.col -->
