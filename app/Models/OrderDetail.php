@@ -66,4 +66,24 @@ class OrderDetail extends Model
     {
         return $this->belongsTo(Order::class, 'order_id', 'id');
     }
+
+    /**
+     * OrderDetail belongsTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function addressStart()
+    {
+        return $this->belongsTo(BusStation::class, 'address_start_id', 'id');
+    }
+
+    /**
+     * OrderDetail belongsTo BusStation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function addressEnd()
+    {
+        return $this->belongsTo(BusStation::class, 'address_end_id', 'id');
+    }
 }

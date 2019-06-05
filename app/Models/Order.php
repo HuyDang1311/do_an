@@ -15,11 +15,11 @@ class Order extends Model
     const STATUS_REGISTERED = 1;
 
     /**
-     * Status running.
+     * Status paying.
      *
      * @var int
      */
-    const STATUS_RUNNING = 2;
+    const STATUS_PAYING = 2;
 
     /**
      * Status done.
@@ -65,7 +65,7 @@ class Order extends Model
      */
     public static $statusObject = [
         self::STATUS_REGISTERED => 'label.order_status.registered',
-        self::STATUS_RUNNING => 'label.order_status.running',
+        self::STATUS_PAYING => 'label.order_status.paying',
         self::STATUS_DONE => 'label.order_status.done',
         self::STATUS_CANCEL => 'label.order_status.cancel',
     ];
@@ -86,13 +86,23 @@ class Order extends Model
     ];
 
     /**
-     * Order hasMany OrderDetail
+     * Order hasOne OrderDetail
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function orderDetail()
     {
-        return $this->hasMany(OrderDetail::class, 'order_id', 'id');
+        return $this->hasOne(OrderDetail::class, 'order_id', 'id');
+    }
+
+    /**
+     * Order belongsTo Customer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 
     /**

@@ -21,16 +21,26 @@ class ListController extends Controller
     protected $repository;
 
     /**
+     * CompanyRepositoryInterface
+     *
+     * @var CompanyRepositoryInterface
+     */
+    protected $repoCompany;
+
+    /**
      * Constructor.
      *
-     * @param OrderRepositoryInterface  $repository  OrderRepositoryInterface
+     * @param OrderRepositoryInterface   $repository  OrderRepositoryInterface
+     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        OrderRepositoryInterface $repository
+        OrderRepositoryInterface $repository,
+        CompanyRepositoryInterface $repoCompany
     ) {
         $this->repository = $repository;
+        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -50,6 +60,8 @@ class ListController extends Controller
                 'company_id',
             ]);
 
+            $companies = $this->repoCompany->listCompany();
+
             $orders = $this->repository->listOrders($data);
         } catch (Exception $ex) {
             return back()->with(trans('message.orders.list_fail'));
@@ -58,6 +70,7 @@ class ListController extends Controller
         return view('web.orders.index')->with([
             'input' => $data,
             'data' => $orders,
+            'companies' => $companies
         ]);
     }
 }
