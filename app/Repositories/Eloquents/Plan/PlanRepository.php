@@ -172,8 +172,8 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                 'orders.status',
                 DB::raw("CASE WHEN orders.status = " . Order::STATUS_REGISTERED
                     . " THEN '" . trans(Order::$statusObject[Order::STATUS_REGISTERED])
-                    . "' WHEN orders.status = " . Order::STATUS_RUNNING
-                    . " THEN '" . trans(Order::$statusObject[Order::STATUS_RUNNING])
+                    . "' WHEN orders.status = " . Order::STATUS_PAYING
+                    . " THEN '" . trans(Order::$statusObject[Order::STATUS_PAYING])
                     . "' WHEN orders.status = " . Order::STATUS_DONE
                     . " THEN '" . trans(Order::$statusObject[Order::STATUS_DONE])
                     . "' ELSE '" . trans(Order::$statusObject[Order::STATUS_CANCEL])

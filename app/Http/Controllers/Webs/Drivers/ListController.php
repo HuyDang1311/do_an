@@ -20,9 +20,9 @@ class ListController extends Controller
     protected $repository;
 
     /**
-     * DriverRepositoryInterface
+     * CompanyRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var CompanyRepositoryInterface
      */
     protected $repoCompany;
 

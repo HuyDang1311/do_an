@@ -110,6 +110,16 @@ class Plan extends Model
     }
 
     /**
+     * Plan belongsTo User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function driver()
+    {
+        return $this->belongsTo(User::class, 'user_driver_id', 'id');
+    }
+
+    /**
      * Plan hasMany Order
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

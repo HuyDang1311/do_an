@@ -13,4 +13,6 @@
 
 Route::namespace('Webs\Orders')->prefix('orders')->group(function () {
     Route::get('/index', 'ListController')->name('web.order.list');
+    Route::get('/show/{id}', 'ShowController')->name('web.order.show');
+    Route::post('/cancel/{id}', 'CancelController')->name('web.order.cancel');
 });

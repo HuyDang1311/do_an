@@ -30,13 +30,24 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     public function listOrders(array $data)
     {
-        return Order::with($this->withOrderDetail())
-            ->join('plans', 'orders.plan_id', '=', 'plans.id')
+        $columns = [
+            'order_detail.quantity',
+            'order_detail.total_money',
+            'customers.name as customer_name',
+            'plans.time_start as time_start',
+            'plans.time_end as time_end',
+            DB::raw("ROW_NUMBER () OVER (ORDER BY orders.created_at desc) as row_number")
+        ];
+        $columns = array_merge($columns, $this->getColumns());
+
+        return Order::join('plans', 'orders.plan_id', '=', 'plans.id')
+            ->join('customers', 'orders.customer_id', '=', 'customers.id')
             ->join('companies', 'plans.company_id', '=', 'companies.id')
             ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
             ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
             ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
-            ->paginate(10, $this->getColumns());
+            ->orderBy('orders.created_at', 'desc')
+            ->paginate(10, $columns);
     }
 
     /**
@@ -124,9 +135,6 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      */
     public function cancelOrder(int $id, int $status = Order::STATUS_DONE)
     {
-        Order::where('status' , '=', Order::STATUS_REGISTERED)
-            ->findOrFail($id);
-
         return $this->update([
             'status' => $status
         ], $id);
@@ -172,8 +180,8 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             'orders.status',
             DB::raw("CASE WHEN orders.status = " . Order::STATUS_REGISTERED
                 . " THEN '" . trans(Order::$statusObject[Order::STATUS_REGISTERED])
-                . "' WHEN orders.status = " . Order::STATUS_RUNNING
-                . " THEN '" . trans(Order::$statusObject[Order::STATUS_RUNNING])
+                . "' WHEN orders.status = " . Order::STATUS_PAYING
+                . " THEN '" . trans(Order::$statusObject[Order::STATUS_PAYING])
                 . "' WHEN orders.status = " . Order::STATUS_DONE
                 . " THEN '" . trans(Order::$statusObject[Order::STATUS_DONE])
                 . "' ELSE '" . trans(Order::$statusObject[Order::STATUS_CANCEL])
