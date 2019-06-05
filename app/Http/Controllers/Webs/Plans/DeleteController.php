@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,21 +13,21 @@ class DeleteController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * PlanRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var PlanRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface $repository DriverRepositoryInterface
+     * @param PlanRepositoryInterface $repository PlanRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository
+        PlanRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -44,9 +45,9 @@ class DeleteController extends Controller
         try {
             $this->repository->delete($id);
         } catch (Exception $ex) {
-            return back()->withErrors(['error' => trans('message.drivers.delete_fail')]);
+            return back()->withErrors(['error' => trans('message.plans.delete_fail')]);
         }
 
-        return redirect('/drivers/index');
+        return redirect('/plans/index');
     }
 }

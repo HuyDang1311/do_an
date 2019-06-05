@@ -84,14 +84,15 @@ class ListController extends Controller
 
             $busStations = $this->repoBusStation->listBusStation(BusStation::TYPE_CITY);
             $companies = $this->repoCompany->listCompany();
-            $drivers = $this->repoDriver->listDriver($data);
+            $drivers = $this->repoDriver->listDriver([]);
+            $plans = $this->repository->getPlans($data);
         } catch (Exception $ex) {
             return back()->with(trans('message.plans.list_fail'));
         }
 
         return view('web.plans.index')->with([
             'input' => $data,
-            'data' => $drivers,
+            'data' => $plans,
             'drivers' => $drivers,
             'companies' => $companies,
             'busStations' => $busStations,

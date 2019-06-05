@@ -66,6 +66,8 @@ class Plan extends Model
         'time_end',
         'car_id',
         'company_id',
+        'user_driver_id',
+        'price_ticket',
         'status',
     ];
 
