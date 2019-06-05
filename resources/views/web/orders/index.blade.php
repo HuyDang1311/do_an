@@ -30,7 +30,7 @@
                             <select name="company_id" class="form-control" >
                                 <option value="">@lang('label.please_select')</option>
                                 @foreach($companies as $company)
-                                    <option {!! $company->id === ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
+                                    <option {!! $company->id == ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
                                 @endforeach
                             </select>
                         </div>
