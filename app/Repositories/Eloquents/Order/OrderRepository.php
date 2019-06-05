@@ -46,6 +46,15 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
             ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
             ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
+            ->where(function ($query) use ($data) {
+                if ($data['name'] ?? null) {
+                    $query->where('customers.name', 'ilike', '%' . $data['name'] . '%');
+                }
+                if ($data['company_id'] ?? null) {
+                    $query->where('companies.id', $data['company_id']);
+                }
+                return $query;
+            })
             ->orderBy('orders.created_at', 'desc')
             ->paginate(10, $columns);
     }

@@ -55,8 +55,6 @@ class ListController extends Controller
         try {
             $data = $request->only([
                 'name',
-                'email',
-                'address',
                 'company_id',
             ]);
 
