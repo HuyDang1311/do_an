@@ -15,33 +15,6 @@
         <form role="form" method="get">
             <div class="box-body" style="">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">@lang('label.drivers.tr_name')</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                   value="{{ $input['name'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_name') }}">
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="email">@lang('label.drivers.tr_email')</label>
-                            <input type="text" class="form-control" id="email" name="email"
-                                   value="{{ $input['email'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_email') }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="address">@lang('label.drivers.tr_address')</label>
-                            <input type="text" class="form-control" id="address" name="address"
-                                   value="{{ $input['address'] ?? '' }}"
-                                   placeholder="{{ trans('label.drivers.pld_address') }}">
-                        </div>
-                    </div>
                     <!-- /.col -->
                     <div class="col-md-6">
                         <div class="form-group">
@@ -50,6 +23,49 @@
                                 <option value="">@lang('label.please_select')</option>
                                 @foreach($companies as $company)
                                     <option {!! $company->id === ($input['company_id'] ?? '') ? 'selected' : '' !!} value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="address_start_id">@lang('label.drivers.tr_address_start_id')</label>
+                            <select name="address_start_id" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
+                                @foreach($busStations as $busStation)
+                                    <option {!! $busStation->id === ($input['address_start_id'] ?? '') ? 'selected' : '' !!} value="{{ $busStation->id }}">{{ $busStation->city ?? '' }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="user_driver_id">@lang('label.drivers.tr_user_driver_id')</label>
+                            <select name="user_driver_id" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
+                                @foreach($drivers as $driver)
+                                    <option {!! $driver->id === ($input['user_driver_id'] ?? '') ? 'selected' : '' !!} value="{{ $driver->id }}">{{ $driver->name ?? '' }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="address_end_id">@lang('label.drivers.tr_address_end_idd')</label>
+                            <select name="address_end_id" class="form-control" >
+                                <option value="">@lang('label.please_select')</option>
+                                @foreach($busStations as $busStation)
+                                    <option {!! $busStation->id === ($input['address_end_id'] ?? '') ? 'selected' : '' !!} value="{{ $busStation->id }}">{{ $busStation->city ?? '' }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -104,48 +120,48 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @if(count($data ?? []))
-                                        @foreach($data as $row)
-                                            <tr role="row" class="odd">
-                                                <td>{{ $row->row_number ?? '' }}</td>
-                                                <td>{{ $row->name ?? '' }}</td>
-                                                <td>{{ $row->email ?? '' }}</td>
-                                                <td>{{ $row->username ?? '' }}</td>
-                                                <td>{{ $row->address ?? '' }}</td>
-                                                <td>{{ $row->phone_number ?? '' }}</td>
-                                                <td>{{ $row->company->name ?? '' }}</td>
-                                                <td>{{ $row->status_name ?? '' }}</td>
-                                                <td>{{ $row->created_at ?? '' }}</td>
-                                                <td class="sorting_1">
-                                                    <div class="btn-group">
-                                                        <div class="form-group pull-left">
-                                                            <a class="btn btn-default btn-table-list" href="/drivers/show/{{ $row->id }}">
-                                                                <i class="fa fa-search"></i>
-                                                                @lang('label.show')</a>
-                                                        </div>
-                                                        <div class="form-group pull-left">
-                                                            <a class="btn btn-info btn-table-list" href="/drivers/edit/{{ $row->id }}">
-                                                                <i class="fa fa-edit"></i>
-                                                                @lang('label.edit')</a>
-                                                        </div>
-                                                        <form class="pull-left" method="post" action="/drivers/delete/{{ $row->id }}">
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger float-left btn-table-list">
-                                                                <i class="fa fa-remove"></i>
-                                                                &nbsp;@lang('label.delete')</button>
-                                                        </form>
-                                                        <!-- /.col -->
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @else
-                                        <tr role="row" class="odd">
-                                            <td>@lang('message.not_found')</td>
-                                        </tr>
-                                    @endif
-                                </tbody>
+{{--                                <tbody>--}}
+{{--                                    @if(count($data ?? []))--}}
+{{--                                        @foreach($data as $row)--}}
+{{--                                            <tr role="row" class="odd">--}}
+{{--                                                <td>{{ $row->row_number ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->name ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->email ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->username ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->address ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->phone_number ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->company->name ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->status_name ?? '' }}</td>--}}
+{{--                                                <td>{{ $row->created_at ?? '' }}</td>--}}
+{{--                                                <td class="sorting_1">--}}
+{{--                                                    <div class="btn-group">--}}
+{{--                                                        <div class="form-group pull-left">--}}
+{{--                                                            <a class="btn btn-default btn-table-list" href="/drivers/show/{{ $row->id }}">--}}
+{{--                                                                <i class="fa fa-search"></i>--}}
+{{--                                                                @lang('label.show')</a>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="form-group pull-left">--}}
+{{--                                                            <a class="btn btn-info btn-table-list" href="/drivers/edit/{{ $row->id }}">--}}
+{{--                                                                <i class="fa fa-edit"></i>--}}
+{{--                                                                @lang('label.edit')</a>--}}
+{{--                                                        </div>--}}
+{{--                                                        <form class="pull-left" method="post" action="/drivers/delete/{{ $row->id }}">--}}
+{{--                                                            @csrf--}}
+{{--                                                            <button type="submit" class="btn btn-danger float-left btn-table-list">--}}
+{{--                                                                <i class="fa fa-remove"></i>--}}
+{{--                                                                &nbsp;@lang('label.delete')</button>--}}
+{{--                                                        </form>--}}
+{{--                                                        <!-- /.col -->--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
+{{--                                            </tr>--}}
+{{--                                        @endforeach--}}
+{{--                                    @else--}}
+{{--                                        <tr role="row" class="odd">--}}
+{{--                                            <td>@lang('message.not_found')</td>--}}
+{{--                                        </tr>--}}
+{{--                                    @endif--}}
+{{--                                </tbody>--}}
                             </table>
                         </div>
                     </div>
