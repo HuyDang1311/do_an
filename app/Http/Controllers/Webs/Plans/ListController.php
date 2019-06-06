@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
+use App\Models\BusStation;
+use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
 use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,9 +16,9 @@ class ListController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * PlanRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var PlanRepositoryInterface
      */
     protected $repository;
 
@@ -27,19 +30,39 @@ class ListController extends Controller
     protected $repoCompany;
 
     /**
+     * DriverRepositoryInterface
+     *
+     * @var DriverRepositoryInterface
+     */
+    protected $repoDriver;
+
+    /**
+     * BusStationRepositoryInterface
+     *
+     * @var BusStationRepositoryInterface
+     */
+    protected $repoBusStation;
+
+    /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface  $repository  DriverRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
+     * @param PlanRepositoryInterface       $repository     PlanRepositoryInterface
+     * @param CompanyRepositoryInterface    $repoCompany    CompanyRepositoryInterface
+     * @param DriverRepositoryInterface     $repoDriver     DriverRepositoryInterface
+     * @param BusStationRepositoryInterface $repoBusStation BusStationRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        PlanRepositoryInterface $repository,
+        CompanyRepositoryInterface $repoCompany,
+        DriverRepositoryInterface $repoDriver,
+        BusStationRepositoryInterface $repoBusStation
     ) {
         $this->repository = $repository;
         $this->repoCompany = $repoCompany;
+        $this->repoDriver = $repoDriver;
+        $this->repoBusStation = $repoBusStation;
     }
 
     /**
@@ -53,23 +76,26 @@ class ListController extends Controller
     {
         try {
             $data = $request->only([
-                'name',
-                'email',
-                'address',
+                'address_start_id',
+                'address_end_id',
+                'user_driver_id',
                 'company_id',
             ]);
 
+            $busStations = $this->repoBusStation->listBusStation(BusStation::TYPE_CITY);
             $companies = $this->repoCompany->listCompany();
-            $drivers = $this->repository->listDriver($data);
+            $drivers = $this->repoDriver->listDriver([]);
+            $plans = $this->repository->getPlans($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
-            return back()->with(trans('message.drivers.list_fail'));
+            return back()->with(trans('message.plans.list_fail'));
         }
 
-        return view('web.drivers.index')->with([
+        return view('web.plans.index')->with([
             'input' => $data,
-            'data' => $drivers,
+            'data' => $plans,
+            'drivers' => $drivers,
             'companies' => $companies,
+            'busStations' => $busStations,
         ]);
     }
 }

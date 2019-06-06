@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Webs\Plans;
 
 use App\Http\Controllers\Controller;
+use App\Models\BusStation;
+use App\Repositories\Interfaces\BusStation\BusStationRepositoryInterface;
+use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
+use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,21 +16,21 @@ class ShowController extends Controller
 {
 
     /**
-     * DriverRepositoryInterface
+     * PlanRepositoryInterface
      *
-     * @var DriverRepositoryInterface
+     * @var PlanRepositoryInterface
      */
     protected $repository;
 
     /**
      * Constructor.
      *
-     * @param DriverRepositoryInterface $repository DriverRepositoryInterface
+     * @param PlanRepositoryInterface $repository PlanRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository
+        PlanRepositoryInterface $repository
     ) {
         $this->repository = $repository;
     }
@@ -42,14 +46,14 @@ class ShowController extends Controller
     public function __invoke(Request $request, $id)
     {
         try {
-            $driver = $this->repository->showDriver($id);
+            $plan = $this->repository->find($id);
         } catch (Exception $ex) {
-            return redirect('drivers/index')
-                ->with(['error' => trans('message.drivers.show_fail')]);
+            return redirect('plans/index')
+                ->with(['error' => trans('message.plans.show_fail')]);
         }
 
-        return view('web.drivers.show')->with([
-            'data' => $driver
+        return view('web.plans.show')->with([
+            'data' => $plan,
         ]);
     }
 }

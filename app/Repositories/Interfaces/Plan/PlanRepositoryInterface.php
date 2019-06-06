@@ -15,6 +15,15 @@ interface PlanRepositoryInterface
     public function listPlan(array $searchData, array $sortData, array $params = []);
 
     /**
+     * List plan
+     *
+     * @param array $data Data
+     *
+     * @return array
+     */
+    public function getPlans(array $data = []);
+
+    /**
      * Show plan
      *
      * @param int $id Id of plan

@@ -57,6 +57,53 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
     }
 
     /**
+     * List plan
+     *
+     * @param array $data Data
+     *
+     * @return array
+     */
+    public function getPlans(array $data = [])
+    {
+        $columns = [
+            'plans.id',
+            'plans.address_start_id',
+            'plans.address_end_id',
+            'plans.time_start',
+            'plans.time_end',
+            'plans.car_id',
+            'plans.user_driver_id',
+            'plans.company_id',
+            'plans.status',
+            'plans.price_ticket',
+            'plans.created_at',
+            DB::raw("ROW_NUMBER () OVER (ORDER BY plans.time_start desc) as row_number")
+        ];
+
+        return Plan::join('bus_stations as bt_start', 'bt_start.id', '=', 'plans.address_start_id')
+            ->join('bus_stations as bt_end', 'bt_end.id', '=', 'plans.address_end_id')
+            ->join('cars', 'cars.id', '=', 'plans.car_id')
+            ->join('users as drivers', 'drivers.id', '=', 'plans.user_driver_id')
+            ->join('companies', 'companies.id', '=', 'plans.company_id')
+            ->where(function ($query) use ($data) {
+                if ($data['address_start_id'] ?? null) {
+                    $query->where('plans.address_start_id', $data['address_start_id']);
+                }
+                if ($data['address_end_id'] ?? null) {
+                    $query->where('plans.address_end_id', $data['address_end_id']);
+                }
+                if ($data['user_driver_id'] ?? null) {
+                    $query->where('plans.user_driver_id', $data['user_driver_id']);
+                }
+                if ($data['company_id'] ?? null) {
+                    $query->where('plans.company_id', $data['company_id']);
+                }
+                return $query;
+            })->orderBy('time_start', 'desc')
+            ->paginate(10, $columns);
+    }
+
+    /**
      * Show plan
      *
      * @param int $id Id of plan
