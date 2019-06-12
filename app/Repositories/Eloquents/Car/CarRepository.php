@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class CarRepository extends AbstractRepository implements CarRepositoryInterface
 {
@@ -53,7 +54,9 @@ class CarRepository extends AbstractRepository implements CarRepositoryInterface
         $query = $this->with($with)->search($data);
 
         return $query->scopeQuery(function ($query) {
-                return $query->join('companies', 'companies.id', '=', 'cars.company_id');
+                $user = Auth::user();
+                return $query->join('companies', 'companies.id', '=', 'cars.company_id')
+                    ->where('company_id', $user->company_id);
             })
             ->orderBy('car_number_plates', 'asc')->all([
             'cars.id',

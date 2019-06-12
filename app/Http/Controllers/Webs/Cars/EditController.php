@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Webs\Cars;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
-use App\Models\Company;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
@@ -22,26 +20,16 @@ class EditController extends Controller
     protected $repository;
 
     /**
-     * CompanyRepositoryInterface
-     *
-     * @var CompanyRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
      * @param CarRepositoryInterface     $repository  CarRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CarRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -55,7 +43,6 @@ class EditController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            $companies = $this->repoCompany->listCompany();
             $car = $this->repository->showCar($id);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.cars.show_fail')]);
@@ -63,7 +50,6 @@ class EditController extends Controller
 
         return view('web.cars.edit')->with([
             'data' => $car,
-            'companies' => $companies,
             'types' => transArr(Car::$type),
             'seat' => Car::$seatNumber,
         ]);
@@ -83,7 +69,6 @@ class EditController extends Controller
             $data = $request->only([
                 'car_number_plates',
                 'car_manufacturer',
-                'company_id',
                 'seat_quantity',
                 'type',
             ]);

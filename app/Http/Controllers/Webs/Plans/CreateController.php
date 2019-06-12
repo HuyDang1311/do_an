@@ -14,6 +14,7 @@ use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CreateController extends Controller
 {
@@ -24,13 +25,6 @@ class CreateController extends Controller
      * @var PlanRepositoryInterface
      */
     protected $repository;
-
-    /**
-     * DriverRepositoryInterface
-     *
-     * @var DriverRepositoryInterface
-     */
-    protected $repoCompany;
 
     /**
      * DriverRepositoryInterface
@@ -57,7 +51,6 @@ class CreateController extends Controller
      * Constructor.
      *
      * @param PlanRepositoryInterface       $repository     PlanRepositoryInterface
-     * @param CompanyRepositoryInterface    $repoCompany    CompanyRepositoryInterface
      * @param DriverRepositoryInterface     $repoDriver     DriverRepositoryInterface
      * @param BusStationRepositoryInterface $repoBusStation BusStationRepositoryInterface
      * @param CarRepositoryInterface $repoCar CarRepositoryInterface
@@ -66,13 +59,11 @@ class CreateController extends Controller
      */
     public function __construct(
         PlanRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany,
         DriverRepositoryInterface $repoDriver,
         BusStationRepositoryInterface $repoBusStation,
         CarRepositoryInterface $repoCar
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
         $this->repoDriver = $repoDriver;
         $this->repoBusStation = $repoBusStation;
         $this->repoCar = $repoCar;
@@ -91,12 +82,10 @@ class CreateController extends Controller
     {
         try {
             $busStations = $this->repoBusStation->listBusStation(BusStation::TYPE_CITY);
-            $companies = $this->repoCompany->listCompany();
             $drivers = $this->repoDriver->listDriver([]);
             $cars = $this->repoCar->listCar([]);
             return view('web.plans.create')
                 ->with([
-                    'companies' => $companies,
                     'busStations' => $busStations,
                     'drivers' => $drivers,
                     'cars' => $cars,
@@ -123,11 +112,11 @@ class CreateController extends Controller
                 'time_end',
                 'car_id',
                 'user_driver_id',
-                'company_id',
                 'price_ticket',
             ]);
 
             $data['status'] = Plan::STATUS_USING;
+            $data['company_id'] = Auth::user()->company_id;
             $plan = $this->repository->create($data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.plans.create_fail')]);

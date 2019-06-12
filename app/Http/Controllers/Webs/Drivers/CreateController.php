@@ -10,6 +10,7 @@ use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CreateController extends Controller
 {
@@ -22,26 +23,16 @@ class CreateController extends Controller
     protected $repository;
 
     /**
-     * DriverRepositoryInterface
-     *
-     * @var DriverRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
      * @param DriverRepositoryInterface  $repository  DriverRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        DriverRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -56,11 +47,7 @@ class CreateController extends Controller
     public function show(Request $request)
     {
         try {
-            $companies = $this->repoCompany->listCompany();
-            return view('web.drivers.create')
-                ->with([
-                    'companies' => $companies,
-                ]);
+            return view('web.drivers.create');
         } catch (Exception $ex) {
             return back()->with(trans('message.drivers.create_fail'));
         }
@@ -83,8 +70,8 @@ class CreateController extends Controller
                 'address',
                 'phone_number',
                 'password',
-                'company_id',
             ]);
+            $data['company_id'] = Auth::user()->company_id;
 
             $car = $this->repository->createDriver($data);
         } catch (Exception $ex) {

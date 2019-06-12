@@ -8,6 +8,7 @@ use App\Models\OrderDetail;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Order\OrderRepositoryInterface;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrderRepository extends AbstractRepository implements OrderRepositoryInterface
 {
@@ -48,6 +49,7 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
             ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
             ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
+            ->where('plans.company_id', Auth::user()->company_id)
             ->where(function ($query) use ($data) {
                 if ($data['name'] ?? null) {
                     $query->where('customers.name', 'ilike', '%' . $data['name'] . '%');
