@@ -226,4 +226,17 @@ return [
         'using' => 'Đã đăng ký',
         'stop' => 'Đã hủy',
     ],
+    'users' => [
+        'name' => 'Thông tin cá nhân',
+        'show_title' => 'Thông tin cá nhân',
+        'title' => 'Thông tin cá nhân',
+        'tr_name' => 'Họ tên',
+        'tr_email' => 'Email',
+        'tr_address' => 'Địa chỉ',
+        'tr_phone_number' => 'Số điện thoại',
+        'tr_username' => 'Tên đăng nhập',
+        'tr_password' => 'Mật khẩu',
+        'using' => 'Đã đăng ký',
+        'stop' => 'Đã hủy',
+    ],
 ];
