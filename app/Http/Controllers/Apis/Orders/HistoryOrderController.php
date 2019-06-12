@@ -45,7 +45,8 @@ class HistoryOrderController extends CustomerAuthController
     {
         try {
             $customerId = $request->get('customer_id');
-            $historyOrder = $this->repository->historyOrder($customerId);
+            $status = $request->get('status');
+            $historyOrder = $this->repository->historyOrder($customerId, $status);
         } catch (ModelNotFoundException $ex) {
             return $this->responseError(trans('message.order.not_found'), [], Response::HTTP_NOT_FOUND);
         } catch (Exception $ex) {
