@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class DriverRepository extends AbstractRepository implements DriverRepositoryInterface
 {
@@ -53,7 +54,9 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
 
         return $this->with($with)->search($data)
             ->scopeQuery(function ($query) {
-                return $query->where('role', '=', User::ROLE_DRIVER);
+                $user = Auth::user();
+                return $query->where('role', '=', User::ROLE_DRIVER)
+                    ->where('company_id', $user->company_id);
             })
             ->orderBy('name', 'asc')->all([
                 'id',

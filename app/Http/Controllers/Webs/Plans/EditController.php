@@ -14,6 +14,7 @@ use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
@@ -24,13 +25,6 @@ class EditController extends Controller
      * @var PlanRepositoryInterface
      */
     protected $repository;
-
-    /**
-     * DriverRepositoryInterface
-     *
-     * @var DriverRepositoryInterface
-     */
-    protected $repoCompany;
 
     /**
      * DriverRepositoryInterface
@@ -57,7 +51,6 @@ class EditController extends Controller
      * Constructor.
      *
      * @param PlanRepositoryInterface       $repository     PlanRepositoryInterface
-     * @param CompanyRepositoryInterface    $repoCompany    CompanyRepositoryInterface
      * @param DriverRepositoryInterface     $repoDriver     DriverRepositoryInterface
      * @param BusStationRepositoryInterface $repoBusStation BusStationRepositoryInterface
      * @param CarRepositoryInterface $repoCar CarRepositoryInterface
@@ -66,13 +59,11 @@ class EditController extends Controller
      */
     public function __construct(
         PlanRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany,
         DriverRepositoryInterface $repoDriver,
         BusStationRepositoryInterface $repoBusStation,
         CarRepositoryInterface $repoCar
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
         $this->repoDriver = $repoDriver;
         $this->repoBusStation = $repoBusStation;
         $this->repoCar = $repoCar;
@@ -90,13 +81,11 @@ class EditController extends Controller
     {
         try {
             $busStations = $this->repoBusStation->listBusStation(BusStation::TYPE_CITY);
-            $companies = $this->repoCompany->listCompany();
             $drivers = $this->repoDriver->listDriver([]);
             $cars = $this->repoCar->listCar([]);
             $plan = $this->repository->find($id);
             return view('web.plans.edit')
                 ->with([
-                    'companies' => $companies,
                     'busStations' => $busStations,
                     'drivers' => $drivers,
                     'cars' => $cars,
@@ -126,10 +115,10 @@ class EditController extends Controller
                 'time_end',
                 'car_id',
                 'user_driver_id',
-                'company_id',
                 'price_ticket',
                 'status',
             ]);
+            $data['company_id'] = Auth::user()->company_id;
             $plan = $this->repository->update($data, $id);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.plans.update_fail')]);

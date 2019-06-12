@@ -116,27 +116,6 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="company_id">@lang('label.drivers.tr_company_id') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select name="company_id" class="form-control" required>
-                            <option value="">@lang('label.please_select')</option>
-                            @foreach($companies as $company)
-                                <option value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
                     <div class="form-group">
                         <button type="reset" class="btn btn-default pull-right"><i class="fa fa-eraser"></i>
                             &nbsp;@lang('label.reset')</button>

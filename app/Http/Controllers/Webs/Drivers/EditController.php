@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Webs\Drivers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Car;
 use App\Models\User;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\Driver\DriverRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
@@ -22,26 +21,16 @@ class EditController extends Controller
     protected $repository;
 
     /**
-     * CompanyRepositoryInterface
-     *
-     * @var CompanyRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
      * @param DriverRepositoryInterface  $repository  DriverRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        DriverRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        DriverRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -55,7 +44,6 @@ class EditController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            $companies = $this->repoCompany->listCompany();
             $driver = $this->repository->showDriver($id);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.drivers.show_fail')]);
@@ -63,7 +51,6 @@ class EditController extends Controller
 
         return view('web.drivers.edit')->with([
             'data' => $driver,
-            'companies' => $companies,
             'status' => transArr(User::$statusObject),
         ]);
     }
@@ -86,9 +73,9 @@ class EditController extends Controller
                 'address',
                 'phone_number',
                 'password',
-                'company_id',
                 'status',
             ]);
+            $data['company_id'] = Auth::user()->company_id;
             $company = $this->repository->updateDriver($id, $data);
         } catch (Exception $ex) {
             return back()->with(['error' => trans('message.drivers.update_fail')]);

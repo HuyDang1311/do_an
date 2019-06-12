@@ -9,6 +9,7 @@ use App\Repositories\Eloquents\AbstractRepository;
 use App\Repositories\Interfaces\Plan\PlanRepositoryInterface;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class PlanRepository extends AbstractRepository implements PlanRepositoryInterface
 {
@@ -79,12 +80,14 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
             'plans.created_at',
             DB::raw("ROW_NUMBER () OVER (ORDER BY plans.time_start desc) as row_number")
         ];
+        $user = Auth::user();
 
         return Plan::join('bus_stations as bt_start', 'bt_start.id', '=', 'plans.address_start_id')
             ->join('bus_stations as bt_end', 'bt_end.id', '=', 'plans.address_end_id')
             ->join('cars', 'cars.id', '=', 'plans.car_id')
             ->join('users as drivers', 'drivers.id', '=', 'plans.user_driver_id')
             ->join('companies', 'companies.id', '=', 'plans.company_id')
+            ->where('plans.company_id', $user->company_id)
             ->where(function ($query) use ($data) {
                 if ($data['address_start_id'] ?? null) {
                     $query->where('plans.address_start_id', $data['address_start_id']);

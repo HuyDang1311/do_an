@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Webs\Cars;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Repositories\Interfaces\Car\CarRepositoryInterface;
-use App\Repositories\Interfaces\Company\CompanyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CreateController extends Controller
 {
@@ -21,26 +21,16 @@ class CreateController extends Controller
     protected $repository;
 
     /**
-     * CompanyRepositoryInterface
-     *
-     * @var CompanyRepositoryInterface
-     */
-    protected $repoCompany;
-
-    /**
      * Constructor.
      *
      * @param CarRepositoryInterface     $repository  CarRepositoryInterface
-     * @param CompanyRepositoryInterface $repoCompany CompanyRepositoryInterface
      *
      * @return void
      */
     public function __construct(
-        CarRepositoryInterface $repository,
-        CompanyRepositoryInterface $repoCompany
+        CarRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->repoCompany = $repoCompany;
     }
 
     /**
@@ -55,10 +45,8 @@ class CreateController extends Controller
     public function show(Request $request)
     {
         try {
-            $companies = $this->repoCompany->listCompany();
             return view('web.cars.create')
                 ->with([
-                    'companies' => $companies,
                     'types' => transArr(Car::$type),
                     'seat' => Car::$seatNumber,
                 ]);
@@ -80,10 +68,10 @@ class CreateController extends Controller
             $data = $request->only([
                 'car_number_plates',
                 'car_manufacturer',
-                'company_id',
                 'seat_quantity',
                 'type',
             ]);
+            $data['company_id'] = Auth::user()->company_id;
 
             $car = $this->repository->createCar($data);
         } catch (Exception $ex) {
