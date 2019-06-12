@@ -55,15 +55,6 @@ class Menu extends Middleware
                 $event->menu->menu = [];
                 call_user_func_array([$event->menu, 'add'], $menu);
             });
-        } elseif ($user && $user->role === User::ROLE_DRIVER) {
-
-            $config = config('adminlte');
-
-            $this->evens->listen(BuildingMenu::class, function (BuildingMenu $event) use ($config) {
-                $menu = $config['menu2'];
-                $event->menu->menu = [];
-                call_user_func_array([$event->menu, 'add'], $menu);
-            });
         }
 
 

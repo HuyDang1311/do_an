@@ -144,6 +144,67 @@ return [
             ],
         ],
         [
+            'text'        => 'Quản lý khách hàng',
+            'icon'        => 'user-circle-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách khách hàng',
+                    'url'  => 'customers/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký khách hàng mới',
+                    'url'  => 'customers/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Thông tin cá nhân',
+            'icon'        => 'id-card',
+            'label_color' => 'success',
+            'url'  => 'users/info',
+        ],
+    ],
+
+    'menu0' => [
+        'MENU',
+        [
+            'text'        => 'Quản lý bến xe',
+            'icon'        => 'bus',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách bến xe',
+                    'url'  => 'bus-stations/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký bến xe mới',
+                    'url'  => 'bus-stations/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý nhà xe',
+            'icon'        => 'home',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách nhà xe',
+                    'url'  => 'companies/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký nhà xe mới',
+                    'url'  => 'companies/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Quản lý xe',
             'icon'        => 'car',
             'label_color' => 'success',
@@ -239,19 +300,14 @@ return [
             ],
         ],
         [
-            'text'        => 'Quản lý khách hàng',
-            'icon'        => 'user-circle-o',
+            'text'        => 'Quản lý xe',
+            'icon'        => 'car',
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Danh sách khách hàng',
-                    'url'  => 'customers/index',
+                    'text' => 'Danh sách xe',
+                    'url'  => 'cars/index',
                     'icon' => 'list',
-                ],
-                [
-                    'text' => 'Đăng ký khách hàng mới',
-                    'url'  => 'customers/create',
-                    'icon' => 'plus-square',
                 ],
             ],
         ],
@@ -278,63 +334,11 @@ return [
             'url'         => 'orders/index',
             'label_color' => 'success',
         ],
-    ],
-
-    'menu2' => [
-        'MENU',
         [
-            'text'        => 'Quản lý xe',
-            'icon'        => 'car',
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Danh sách xe',
-                    'url'  => 'cars/index',
-                    'icon' => 'list',
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Quản lý tài xế',
+            'text'        => 'Thông tin cá nhân',
             'icon'        => 'id-card',
             'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Danh sách tài xế',
-                    'url'  => 'drivers/index',
-                    'icon' => 'list',
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Quản lý khách hàng',
-            'icon'        => 'user-circle-o',
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Danh sách khách hàng',
-                    'url'  => 'customers/index',
-                    'icon' => 'list',
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Quản lý lịch trình',
-            'icon'        => 'calendar-check-o',
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Danh sách lịch trình',
-                    'url'  => 'plans/index',
-                    'icon' => 'list',
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Danh sách đặt chỗ',
-            'icon'        => 'bar-chart',
-            'url'         => 'orders/index',
-            'label_color' => 'success',
+            'url'  => 'users/info',
         ],
     ],
 

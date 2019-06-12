@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -57,5 +58,30 @@ class LoginController extends Controller
     protected function loggedOut(Request $request)
     {
         return redirect('/login');
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return mixed
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function attemptLogin(Request $request)
+    {
+        $result = $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+        $user = $this->guard();
+
+        if (!$user || !$user->user()
+            || ($user->user()->role != User::ROLE_SUPER_ADMIN && $user->user()->role != User::ROLE_ADMIN)) {
+            $this->guard()->logout();
+            return $this->sendFailedLoginResponse($request);
+        }
+
+        return $result;
     }
 }
