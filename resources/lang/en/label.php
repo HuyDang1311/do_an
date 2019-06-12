@@ -33,6 +33,8 @@ return [
     'plan' => [
         'status' => [
             'using'    => 'Using',
+            'done'    => 'Done',
+            'cancel'    => 'Cancel',
         ]
     ],
     'car' => [

@@ -33,6 +33,8 @@ return [
     'plan' => [
         'status' => [
             'using'    => 'Đang sử dụng',
+            'done'    => 'Đã hoàn thành',
+            'cancel'    => 'Đã hủy',
         ]
     ],
     'car' => [
