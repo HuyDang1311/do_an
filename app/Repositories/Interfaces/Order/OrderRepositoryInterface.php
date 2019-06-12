@@ -39,12 +39,13 @@ interface OrderRepositoryInterface
      * History order
      *
      * @param int $customerId Id of customer
+     * @param int $status     Status
      *
      * @return array
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function historyOrder($customerId);
+    public function historyOrder($customerId, $status = null);
 
     /**
      * Cancel order

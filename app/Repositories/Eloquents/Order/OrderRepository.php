@@ -112,18 +112,22 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
      * History order
      *
      * @param int $customerId Id of customer
+     * @param int $status     Status
      *
      * @return array
      *
      * @throws \App\Repositories\Exceptions\RepositoryException
      */
-    public function historyOrder($customerId)
+    public function historyOrder($customerId, $status = null)
     {
         //validate customer id
         Customer::findOrFail($customerId ?? 0);
 
         $result = $this->with($this->withOrderDetail())
-            ->scopeQuery(function ($query) use ($customerId) {
+            ->scopeQuery(function ($query) use ($customerId, $status) {
+                if ($status) {
+                    $query->where('orders.status', intval($status));
+                }
                 return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
                     ->join('cars', 'cars.id', '=', 'plans.car_id')
                     ->join('companies', 'plans.company_id', '=', 'companies.id')
