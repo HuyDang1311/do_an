@@ -205,7 +205,7 @@ return [
                     'icon' => 'list',
                 ],
                 [
-                    'text' => 'Đăng ký tài xế mới',
+                    'text' => 'Đăng ký lịch trình mới',
                     'url'  => 'plans/create',
                     'icon' => 'plus-square',
                 ],

@@ -20,112 +20,97 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="name">@lang('label.drivers.tr_name') :</span>
+                        <span for="address_start_id">@lang('label.plans.tr_address_start_id') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ $data->name ?? '' }}" required/>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="email">@lang('label.drivers.tr_email') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="email" name="email" value="{{ $data->email ?? '' }}" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="username">@lang('label.drivers.tr_username') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="username" value="{{ $data->username ?? '' }}" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="password">@lang('label.drivers.tr_password') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="address">@lang('label.drivers.tr_address') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="address" value="{{ $data->address ?? '' }}" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="phone_number">@lang('label.drivers.tr_phone_number') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" type="number" name="phone_number" value="{{ $data->phone_number ?? '' }}" required />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <!-- /.col -->
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group pull-right">
-                        <span for="status">@lang('label.drivers.tr_status') :</span>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select name="status" class="form-control" required>
+                        <select name="address_start_id" class="form-control" required>
                             <option value="">@lang('label.please_select')</option>
-                            @foreach($status as $key => $values)
-                                <option {!! $data->status === $key ? 'selected' : '' !!}  value="{{ $key }}">{{ $values ?? '' }}</option>
+                            @foreach($busStations as $busStation)
+                                <option {!! $data->address_start_id === $busStation->id ? 'selected' : '' !!}
+                                        value="{{ $busStation->id }}">{{ $busStation->city ?? '' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.box-header -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="address_end_id">@lang('label.plans.tr_address_end_id') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="address_end_id" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($busStations as $busStation)
+                                <option {!! $data->address_end_id === $busStation->id ? 'selected' : '' !!}
+                                        value="{{ $busStation->id }}">{{ $busStation->city ?? '' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="time_start">@lang('label.plans.tr_time_start') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="datetime" name="time_start" value="{{ $data->time_start ?? '' }}" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="time_end">@lang('label.plans.tr_time_end') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="datetime" name="time_end" value="{{ $data->time_end ?? '' }}" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.box-header -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="user_driver_id">@lang('label.plans.tr_user_driver_id') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="user_driver_id" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($drivers as $driver)
+                                <option {!! $data->user_driver_id === $driver->id ? 'selected' : '' !!}
+                                        value="{{ $driver->id }}">{{ $driver->name ?? '' }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -137,7 +122,29 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="company_id">@lang('label.drivers.tr_company_id') :</span>
+                        <span for="car_id">@lang('label.plans.tr_car') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="car_id" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($cars as $car)
+                                <option {!! $data->car_id === $car->id ? 'selected' : '' !!}
+                                        value="{{ $car->id }}">{{ $car->car_number_plates ?? '' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="company_id">@lang('label.plans.tr_company_id') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -146,9 +153,47 @@
                         <select name="company_id" class="form-control" required>
                             <option value="">@lang('label.please_select')</option>
                             @foreach($companies as $company)
-                                <option {!! $data->company_id === $company->id ? 'selected' : '' !!}  value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
+                                <option {!! $data->company_id === $company->id ? 'selected' : '' !!}
+                                        value="{{ $company->id }}">{{ $company->name ?? '' }}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="status">@lang('label.plans.tr_status') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="status" class="form-control" required>
+                            <option value="">@lang('label.please_select')</option>
+                            @foreach($status as $key => $value)
+                                <option {!! $data->status === $key ? 'selected' : '' !!} value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="price_ticket">@lang('label.plans.tr_price_ticket') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="price_ticket" value="{{ $data->price_ticket ?? '' }}" required />
                     </div>
                 </div>
                 <div class="col-md-4">

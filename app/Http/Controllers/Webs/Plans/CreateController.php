@@ -130,7 +130,6 @@ class CreateController extends Controller
             $data['status'] = Plan::STATUS_USING;
             $plan = $this->repository->create($data);
         } catch (Exception $ex) {
-            dd($ex->getMessage());
             return back()->with(['error' => trans('message.plans.create_fail')]);
         }
 

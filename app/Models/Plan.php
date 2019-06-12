@@ -18,6 +18,20 @@ class Plan extends Model
     const STATUS_USING = 1;
 
     /**
+     * Status done.
+     *
+     * @var int
+     */
+    const STATUS_DONE = 2;
+
+    /**
+     * Status cancel.
+     *
+     * @var int
+     */
+    const STATUS_CANCEL = 3;
+
+    /**
      * Type history plan
      *
      * @var int
@@ -51,7 +65,9 @@ class Plan extends Model
      * @var array
      */
     public static $status = [
-        self::STATUS_USING => 'label.plan.status.using'
+        self::STATUS_USING => 'label.plan.status.using',
+        self::STATUS_DONE => 'label.plan.status.done',
+        self::STATUS_CANCEL => 'label.plan.status.cancel',
     ];
 
     /**
