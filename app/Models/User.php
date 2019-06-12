@@ -24,11 +24,11 @@ class User extends Authenticatable implements JWTSubject
      */
     const ROLE_ADMIN = 2;
     /**
-     * Role manager of company.
+     * Role driver of company.
      *
      * @var int
      */
-    const ROLE_MANAGER = 3;
+    const ROLE_DRIVER = 3;
     /**
      * Status using.
      *

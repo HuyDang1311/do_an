@@ -219,6 +219,125 @@ return [
         ],
     ],
 
+    'menu1' => [
+        'MENU',
+        [
+            'text'        => 'Quản lý tài xế',
+            'icon'        => 'id-card',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách tài xế',
+                    'url'  => 'drivers/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký tài xế mới',
+                    'url'  => 'drivers/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý khách hàng',
+            'icon'        => 'user-circle-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách khách hàng',
+                    'url'  => 'customers/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký khách hàng mới',
+                    'url'  => 'customers/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý lịch trình',
+            'icon'        => 'calendar-check-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách lịch trình',
+                    'url'  => 'plans/index',
+                    'icon' => 'list',
+                ],
+                [
+                    'text' => 'Đăng ký lịch trình mới',
+                    'url'  => 'plans/create',
+                    'icon' => 'plus-square',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Danh sách đặt chỗ',
+            'icon'        => 'bar-chart',
+            'url'         => 'orders/index',
+            'label_color' => 'success',
+        ],
+    ],
+
+    'menu2' => [
+        'MENU',
+        [
+            'text'        => 'Quản lý xe',
+            'icon'        => 'car',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách xe',
+                    'url'  => 'cars/index',
+                    'icon' => 'list',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý tài xế',
+            'icon'        => 'id-card',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách tài xế',
+                    'url'  => 'drivers/index',
+                    'icon' => 'list',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý khách hàng',
+            'icon'        => 'user-circle-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách khách hàng',
+                    'url'  => 'customers/index',
+                    'icon' => 'list',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quản lý lịch trình',
+            'icon'        => 'calendar-check-o',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách lịch trình',
+                    'url'  => 'plans/index',
+                    'icon' => 'list',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Danh sách đặt chỗ',
+            'icon'        => 'bar-chart',
+            'url'         => 'orders/index',
+            'label_color' => 'success',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

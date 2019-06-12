@@ -53,7 +53,7 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
 
         return $this->with($with)->search($data)
             ->scopeQuery(function ($query) {
-                return $query->where('role', '=', User::ROLE_MANAGER);
+                return $query->where('role', '=', User::ROLE_DRIVER);
             })
             ->orderBy('name', 'asc')->all([
                 'id',
@@ -94,7 +94,7 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
 
         return $this->with($with)
             ->scopeQuery(function ($query) {
-                return $query->where('role', '=', User::ROLE_MANAGER);
+                return $query->where('role', '=', User::ROLE_DRIVER);
             })
             ->find($id, [
                 'id',
@@ -145,7 +145,7 @@ class DriverRepository extends AbstractRepository implements DriverRepositoryInt
     public function createDriver(array $data)
     {
         $data['status'] = User::STATUS_USING;
-        $data['role'] = User::ROLE_MANAGER;
+        $data['role'] = User::ROLE_DRIVER;
         return $this->create($data);
     }
 }
