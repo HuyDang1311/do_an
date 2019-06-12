@@ -75,8 +75,9 @@ class CreateController extends Controller
 
             $car = $this->repository->createDriver($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.drivers.create_fail')]);
+            return back()->withErrors([trans('message.drivers.create_fail')]);
         }
+        session()->flash('message', trans('message.drivers.create_success'));
 
         return redirect('drivers/show/' . $car->id);
     }

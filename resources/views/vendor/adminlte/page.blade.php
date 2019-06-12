@@ -113,7 +113,57 @@
 
             <!-- Main content -->
             <section class="content">
-
+                @if (isset($error) && count($error ?? null))
+                    <div class="alert alert-danger">
+                        @if (is_array($error))
+                            <ul>
+                                @foreach ($error as $err)
+                                    <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        @elseif(is_string($error))
+                            <ul>
+                                <li>{{ $error }}</li>
+                            </ul>
+                        @endif
+                    </div>
+                @endif
+                @if (isset($errors) && count($errors ?? null))
+                    <div class="alert alert-danger">
+                    @if (is_array($errors))
+                        <ul>
+                            @foreach ($errors as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    @elseif(is_string($errors))
+                        <ul>
+                            <li>{{ $errors }}</li>
+                        </ul>
+                    @else
+                        <ul>
+                            @foreach ($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    </div>
+                @endif
+                @if (isset($message) && count($message ?? null))
+                    <div class="alert alert-success">
+                        @if (is_array($message))
+                            <ul>
+                                @foreach ($message->all() as $msg)
+                                    <li>{{ $msg }}</li>
+                                @endforeach
+                            </ul>
+                        @elseif(is_string($message))
+                            <ul>
+                                <li>{{ $message }}</li>
+                            </ul>
+                        @endif
+                    </div>
+                @endif
                 @yield('content')
 
             </section>
