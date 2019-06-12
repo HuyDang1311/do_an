@@ -72,7 +72,7 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input class="form-control" type="datetime" name="time_start" value="{{ $data->time_start ?? '' }}" required />
+                        <input id="time_start" class="form-control" type="text" name="time_start" value="{{ $data->time_start ?? '' }}" required />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -89,7 +89,7 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input class="form-control" type="datetime" name="time_end" value="{{ $data->time_end ?? '' }}" required />
+                        <input id="time_end" class="form-control" type="text" name="time_end" value="{{ $data->time_end ?? '' }}" required />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -222,4 +222,20 @@
         <div class="form-group"></div>
         <div class="box-footer with-border"></div>
     </div>
+@stop
+@section('js')
+    <script type="text/javascript">
+        $(function () {
+            $('#time_start').datetimepicker({
+                format: 'Y-MM-DD HH:mm',
+                formatTime:'HH:mm',
+                validateOnBlur: false,
+            });
+            $('#time_end').datetimepicker({
+                format: 'Y-MM-DD HH:mm',
+                formatTime:'HH:mm',
+                validateOnBlur: false,
+            });
+        });
+    </script>
 @stop
