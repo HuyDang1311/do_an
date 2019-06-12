@@ -23,4 +23,5 @@ Route::group(['middleware' => 'web'], function () {
     require __DIR__ . '/WEB/route_customer.php';
     require __DIR__ . '/WEB/route_plan.php';
     require __DIR__ . '/WEB/route_order.php';
+    require __DIR__ . '/WEB/route_user.php';
 });
