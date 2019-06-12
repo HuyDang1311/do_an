@@ -41,7 +41,7 @@ class UserTableSeeder extends Seeder
                 'address' => $faker->address,
                 'phone_number' => substr($faker->phoneNumber, 0, 15),
                 'company_id' => rand(1, 50),
-                'role' => rand(User::ROLE_ADMIN, User::ROLE_MANAGER),
+                'role' => rand(User::ROLE_ADMIN, User::ROLE_DRIVER),
                 'status' => User::STATUS_USING,
                 'created_at' => $now,
                 'updated_at' => $now,

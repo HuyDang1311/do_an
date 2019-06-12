@@ -25,7 +25,7 @@ class UserResource extends JsonResource
     public static $roleObject = [
         User::ROLE_SUPER_ADMIN => 'label.role.super_admin',
         User::ROLE_ADMIN => 'label.role.admin',
-        User::ROLE_MANAGER => 'label.role.manager',
+        User::ROLE_DRIVER => 'label.role.manager',
     ];
 
     /**
