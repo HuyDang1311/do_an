@@ -203,13 +203,18 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
     {
         $with['order'] = function ($query) {
             return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
-                ->join('companies', 'plans.company_id', '=', 'companies.id')->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
+                ->join('customers', 'customers.id', '=', 'orders.customer_id')
+                ->join('companies', 'plans.company_id', '=', 'companies.id')
+                ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                 ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
                 ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
                 ->select([
                 'orders.id',
                 'orders.plan_id',
                 'orders.customer_id',
+                'customers.name as customer_name',
+                'customers.address as customer_address',
+                'customers.phone_number as customer_phone_number',
                 'orders.order_code',
                 'orders.payment_method_id',
                 DB::raw("CASE WHEN orders.payment_method_id = " . Order::PAYMENT_METHOD_DIRECT_MONEY
@@ -269,10 +274,14 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
             "plans.time_end",
             "plans.car_id",
             'cars.seat_quantity',
+            'cars.car_number_plates',
+            'cars.car_manufacturer',
             'cars.type as car_type',
             "plans.user_driver_id",
             "plans.company_id",
             "companies.name as company_name",
+            "companies.address as company_address",
+            "companies.phone_number as company_phone_number",
             "plans.status",
             "plans.price_ticket",
             'os.seat_ids as seat_ids'
