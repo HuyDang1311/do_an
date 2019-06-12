@@ -309,6 +309,11 @@ return [
                     'url'  => 'cars/index',
                     'icon' => 'list',
                 ],
+                [
+                    'text' => 'Đăng ký xe mới',
+                    'url'  => 'cars/create',
+                    'icon' => 'plus-square',
+                ],
             ],
         ],
         [
