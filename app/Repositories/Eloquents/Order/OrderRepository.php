@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\Eloquents\Order;
 
+use App\Models\Car;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -41,6 +42,7 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
         $columns = array_merge($columns, $this->getColumns());
 
         return Order::join('plans', 'orders.plan_id', '=', 'plans.id')
+            ->join('cars', 'cars.id', '=', 'plans.car_id')
             ->join('customers', 'orders.customer_id', '=', 'customers.id')
             ->join('companies', 'plans.company_id', '=', 'companies.id')
             ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
@@ -96,6 +98,7 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) {
                 return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
+                    ->join('cars', 'cars.id', '=', 'plans.car_id')
                     ->join('companies', 'plans.company_id', '=', 'companies.id')->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                     ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
                     ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id');
@@ -122,6 +125,7 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
         $result = $this->with($this->withOrderDetail())
             ->scopeQuery(function ($query) use ($customerId) {
                 return $query->join('plans', 'orders.plan_id', '=', 'plans.id')
+                    ->join('cars', 'cars.id', '=', 'plans.car_id')
                     ->join('companies', 'plans.company_id', '=', 'companies.id')
                     ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                     ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
@@ -204,6 +208,15 @@ class OrderRepository extends AbstractRepository implements OrderRepositoryInter
             'bt2.city as address_end_city',
             'bt2.name_station as address_end_name_station',
             'companies.name as company_name',
+            'companies.address as company_address',
+            'companies.phone_number as company_phone_number',
+            'cars.car_number_plates',
+            'cars.car_manufacturer',
+            'cars.seat_quantity',
+            DB::raw("CASE WHEN cars.type = " . Car::TYPE_LAY
+                . " THEN '" . trans(Car::$type[Car::TYPE_LAY])
+                . "' ELSE '" . trans(Car::$type[Car::TYPE_SEAT])
+                . "' END as car_type"),
             DB::raw('DATE(plans.time_start) as date_start'),
             DB::raw('DATE(plans.time_end) as date_end'),
             DB::raw("to_char(plans.time_start,'HH24:MI') as time_start"),
