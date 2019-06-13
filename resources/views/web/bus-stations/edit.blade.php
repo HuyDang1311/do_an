@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="city">@lang('validation.attributes.city') :</span>
+                        <span for="city" class="text-bold">@lang('validation.attributes.city') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="name_station">@lang('validation.attributes.name_station') :</span>
+                        <span for="name_station" class="text-bold">@lang('validation.attributes.name_station') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="latitude">@lang('validation.attributes.latitude') :</span>
+                        <span for="latitude" class="text-bold">@lang('validation.attributes.latitude') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group pull-right">
-                        <span for="longitude">@lang('validation.attributes.longitude') :</span>
+                        <span for="longitude" class="text-bold">@lang('validation.attributes.longitude') :</span>
                     </div>
                 </div>
                 <!-- /.col -->
