@@ -7,5 +7,6 @@
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <p><b>Xin chào: {{ \Illuminate\Support\Facades\Auth::user()->name ?? '' }}</b></p>
+    <p><b>Đăng nhập thành công!</b></p>
 @stop
