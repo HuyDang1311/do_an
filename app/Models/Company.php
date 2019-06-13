@@ -53,4 +53,15 @@ class Company extends Model
         'email',
         'status',
     ];
+
+    /**
+     * Company hasMany User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function admin()
+    {
+        return $this->hasMany(User::class, 'company_id', 'id')
+            ->where('role', User::ROLE_ADMIN);
+    }
 }

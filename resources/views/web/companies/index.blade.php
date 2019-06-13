@@ -95,6 +95,7 @@
                                         <th>@lang('label.companies.tr_phone_number')</th>
                                         <th>@lang('label.companies.tr_email')</th>
                                         <th>@lang('label.companies.tr_status')</th>
+                                        <th>@lang('label.companies.tr_admin_username')</th>
                                         <th>@lang('label.companies.tr_created_at')</th>
                                         <th></th>
                                     </tr>
@@ -109,6 +110,7 @@
                                                 <td>{{ $row->phone_number ?? '' }}</td>
                                                 <td>{{ $row->email ?? '' }}</td>
                                                 <td>{{ $row->status_name ?? '' }}</td>
+                                                <td>{{ $row->admin()->first()->username ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-group">
