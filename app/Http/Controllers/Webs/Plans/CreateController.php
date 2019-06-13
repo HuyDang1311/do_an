@@ -91,6 +91,7 @@ class CreateController extends Controller
                     'cars' => $cars,
                 ]);
         } catch (Exception $ex) {
+            session()->flash('error', trans('message.plans.create_fail'));
             return back()->with(trans('message.plans.create_fail'));
         }
     }
@@ -119,9 +120,11 @@ class CreateController extends Controller
             $data['company_id'] = Auth::user()->company_id;
             $plan = $this->repository->create($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.plans.create_fail')]);
+            session()->flash('error', trans('message.plans.create_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.plans.create_success'));
         return redirect('plans/show/' . $plan->id);
     }
 }

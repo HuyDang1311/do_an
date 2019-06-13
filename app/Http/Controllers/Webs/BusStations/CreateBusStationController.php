@@ -61,9 +61,11 @@ class CreateBusStationController extends Controller
             ]);
             $busStation = $this->repository->createBusStation($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.bus_station.create_fail')]);
+            session()->flash('error', trans('message.bus_station.create_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.bus_station.create_success'));
         return redirect('bus-stations/show/' . $busStation->id);
     }
 }

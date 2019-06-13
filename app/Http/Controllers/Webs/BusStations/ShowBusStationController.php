@@ -44,8 +44,8 @@ class ShowBusStationController extends Controller
         try {
             $busStation = $this->repository->showBusStation($id);
         } catch (Exception $ex) {
-            return redirect('bus-stations/index')
-                ->with(['error' => trans('message.bus_station.show_fail')]);
+            session()->flash('error', trans('message.bus_station.show_fail'));
+            return back();
         }
 
         return view('web.bus-stations.show')->with([

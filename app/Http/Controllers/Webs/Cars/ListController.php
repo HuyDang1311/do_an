@@ -63,7 +63,8 @@ class ListController extends Controller
             $companies = $this->repoCompany->listCompany();
             $cars = $this->repository->listCar($data);
         } catch (Exception $ex) {
-            return back()->with(trans('message.cars.list_fail'));
+            session()->flash('error', trans('message.cars.list_fail'));
+            return back()->withInput();
         }
 
         return view('web.cars.index')->with([

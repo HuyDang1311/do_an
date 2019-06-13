@@ -50,7 +50,8 @@ class ListController extends Controller
 
             $customers = $this->repository->listCustomer($data);
         } catch (Exception $ex) {
-            return back()->with(trans('message.customers.list_fail'));
+            session()->flash('error', trans('message.customers.list_fail'));
+            return back();
         }
 
         return view('web.customers.index')->with([

@@ -93,6 +93,7 @@ class EditController extends Controller
                     'status' => transArr(Plan::$status)
                 ]);
         } catch (Exception $ex) {
+            session()->flash('error', trans('message.plans.show_fail'));
             return back()->with(['error' => trans('message.plans.show_fail')]);
         }
     }
@@ -121,9 +122,11 @@ class EditController extends Controller
             $data['company_id'] = Auth::user()->company_id;
             $plan = $this->repository->update($data, $id);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.plans.update_fail')]);
+            session()->flash('error', trans('message.plans.update_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.plans.update_success'));
         return redirect('plans/show/' . $plan->id);
     }
 }

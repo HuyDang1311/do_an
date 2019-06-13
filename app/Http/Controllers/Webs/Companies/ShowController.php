@@ -44,6 +44,7 @@ class ShowController extends Controller
         try {
             $company = $this->repository->showCompany($id);
         } catch (Exception $ex) {
+            session()->flash('error', trans('message.companies.show_fail'));
             return redirect('companies/index')
                 ->with(['error' => trans('message.companies.show_fail')]);
         }

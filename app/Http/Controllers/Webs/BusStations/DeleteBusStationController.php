@@ -44,9 +44,11 @@ class DeleteBusStationController extends Controller
         try {
             $this->repository->delete($id);
         } catch (Exception $ex) {
-            return back()->withErrors(['error' => trans('message.bus_stations.delete_fail')]);
+            session()->flash('error', trans('message.bus_station.delete_fail'));
+            return back();
         }
 
+        session()->flash('message_success', trans('message.bus_station.delete_success'));
         return redirect('/bus-stations/index');
     }
 }

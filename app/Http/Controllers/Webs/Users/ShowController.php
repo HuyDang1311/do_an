@@ -28,8 +28,8 @@ class ShowController extends Controller
         try {
             $user = Auth::user();
         } catch (Exception $ex) {
-            return redirect('plans/index')
-                ->with(['error' => trans('message.users.show_fail')]);
+            session()->flash('error', trans('message.users.show_fail'));
+            return redirect('plans/index');
         }
 
         return view('web.users.show')->with([

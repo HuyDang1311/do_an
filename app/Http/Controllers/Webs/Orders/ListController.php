@@ -62,7 +62,8 @@ class ListController extends Controller
 
             $orders = $this->repository->listOrders($data);
         } catch (Exception $ex) {
-            return back()->with(trans('message.orders.list_fail'));
+            session()->flash('error', trans('message.orders.list_fail'));
+            return back()->withInput($data);
         }
 
         return view('web.orders.index')->with([
