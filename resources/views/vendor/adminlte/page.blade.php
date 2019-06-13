@@ -113,7 +113,36 @@
 
             <!-- Main content -->
             <section class="content">
-
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        @if (is_array(session()->get('error')))
+                            <ul>
+                                @foreach (session()->get('error') as $err)
+                                    <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        @elseif (is_string(session()->get('error')))
+                            <ul>
+                                <li>{{ session()->get('error') }}</li>
+                            </ul>
+                        @endif
+                    </div>
+                @endif
+                @if (session()->has('message_success'))
+                    <div class="alert alert-success">
+                        @if (is_array(session()->get('message_success')))
+                            <ul>
+                                @foreach (session()->get('message_success') as $msg)
+                                    <li>{{ $msg }}</li>
+                                @endforeach
+                            </ul>
+                        @elseif (is_string(session()->get('message_success')))
+                            <ul>
+                                <li>{{ session()->get('message_success') }}</li>
+                            </ul>
+                        @endif
+                    </div>
+                @endif
                 @yield('content')
 
             </section>

@@ -164,6 +164,7 @@ return [
         'tr_date_time' => 'Ngày đi',
         'tr_end_bus_station' => 'Điểm đến',
         'tr_time_end' => 'Giờ đến',
+        'tr_date_end' => 'Ngày đến',
         'tr_company_id' => 'Tên nhà xe',
         'tr_created_at' => 'Ngày tạo',
         'tr_status' => 'Trạng thái',

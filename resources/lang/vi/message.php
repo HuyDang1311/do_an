@@ -45,4 +45,8 @@ return [
         'show_fail'      => 'Có lỗi khi xem thông tin lịch trình.',
         'not_found'      => 'Không tìm thấy thông lịch trình.',
     ],
+    'companies' => [
+        'create_fail' => 'Có lỗi khi tạo nhà xe.',
+        'create_success' => 'Tạo nhà xe thành công.',
+    ],
 ];

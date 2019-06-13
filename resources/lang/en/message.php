@@ -45,4 +45,7 @@ return [
         'show_fail'      => 'Plan not found.',
         'not_found'      => 'Plan not found.',
     ],
+    'companies' => [
+
+    ],
 ];
