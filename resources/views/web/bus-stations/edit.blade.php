@@ -59,7 +59,7 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="latitude" value="{{ $data->latitude ?? '' }}"  class="form-control" />
+                        <input type="text" name="latitude" value="{{ $data->latitude ?? '' }}"  class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -75,7 +75,7 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="number" name="longitude" value="{{ $data->longitude ?? '' }}"  class="form-control" />
+                        <input type="text" name="longitude" value="{{ $data->longitude ?? '' }}"  class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-4">
