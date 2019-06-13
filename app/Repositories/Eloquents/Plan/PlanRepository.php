@@ -211,6 +211,7 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                 ->join('order_detail', 'order_detail.order_id', '=', 'orders.id')
                 ->join('bus_stations as bt1', 'bt1.id', '=', 'order_detail.address_start_id')
                 ->join('bus_stations as bt2', 'bt2.id', '=', 'order_detail.address_end_id')
+                ->where('orders.status', '!=', Order::STATUS_CANCEL)
                 ->select([
                 'orders.id',
                 'orders.plan_id',
