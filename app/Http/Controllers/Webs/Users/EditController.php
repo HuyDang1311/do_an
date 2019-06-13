@@ -28,7 +28,8 @@ class EditController extends Controller
                     'data' => $user,
                 ]);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.users.show_fail')]);
+            session()->flash('error', trans('message.users.show_fail'));
+            return back();
         }
     }
 
@@ -55,9 +56,11 @@ class EditController extends Controller
             $user->fill($data);
             $user->save();
         } catch (Exception $ex) {
+            session()->flash('error', trans('message.users.show_fail'));
             return back()->with(['error' => trans('message.users.update_fail')]);
         }
 
+        session()->flash('message_success', trans('message.users.update_success'));
         return redirect('users/info');
     }
 }

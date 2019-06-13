@@ -87,7 +87,8 @@ class ListController extends Controller
             $drivers = $this->repoDriver->listDriver([]);
             $plans = $this->repository->getPlans($data);
         } catch (Exception $ex) {
-            return back()->with(trans('message.plans.list_fail'));
+            session()->flash('error', trans('message.plans.list_fail'));
+            return back()->withInput($data);
         }
 
         return view('web.plans.index')->with([

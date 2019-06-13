@@ -48,8 +48,8 @@ class ShowController extends Controller
         try {
             $plan = $this->repository->find($id);
         } catch (Exception $ex) {
-            return redirect('plans/index')
-                ->with(['error' => trans('message.plans.show_fail')]);
+            session()->flash('error', trans('message.plans.show_fail'));
+            return redirect('plans/index');
         }
 
         return view('web.plans.show')->with([

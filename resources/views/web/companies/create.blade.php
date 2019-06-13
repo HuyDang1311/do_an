@@ -82,26 +82,117 @@
                 </div>
                 <!-- /.col -->
             </div>
-{{--            <div class="row">--}}
-{{--                <div class="col-md-4">--}}
-{{--                    <div class="form-group pull-right">--}}
-{{--                        <span for="status">@lang('label.companies.tr_status') :</span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- /.col -->--}}
-{{--                <div class="col-md-4">--}}
-{{--                    <div class="form-group">--}}
-{{--                        <select name="status" class="form-control">--}}
-{{--                            @foreach($status_object as $value => $label)--}}
-{{--                                <option value="{{ $value }}">{{ $label ?? '' }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-4">--}}
-{{--                </div>--}}
-{{--                <!-- /.col -->--}}
-{{--            </div>--}}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="email"><b>@lang('label.companies.tr_admin_info')</b></span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_name">@lang('label.companies.tr_admin_name') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="admin_name" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_email">@lang('label.companies.tr_admin_email') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="admin_email" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_username">@lang('label.companies.tr_admin_username') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="admin_username" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_password">@lang('label.companies.tr_admin_password') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="admin_password" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_address">@lang('label.companies.tr_admin_address') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="admin_address" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group pull-right">
+                        <span for="admin_phone_number">@lang('label.companies.tr_admin_phone_number') :</span>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="admin_phone_number" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <!-- /.col -->
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">

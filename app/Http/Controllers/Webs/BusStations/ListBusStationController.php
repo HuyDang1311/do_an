@@ -51,7 +51,8 @@ class ListBusStationController extends Controller
 
             $busStations = $this->repository->listBusStation($type, $data);
         } catch (Exception $ex) {
-            return back()->with(trans('message.bus_station.list_fail'));
+            session()->flash('error', trans('message.bus_station.list_fail'));
+            return back()->withInput($data);
         }
 
         return view('web.bus-stations.index')->with([

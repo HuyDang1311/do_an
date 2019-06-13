@@ -44,7 +44,8 @@ class ShowController extends Controller
         try {
             $order = $this->repository->find($id);
         } catch (Exception $ex) {
-            return back()->with(trans('message.orders.show_fail'));
+            session()->flash('error', trans('message.orders.show_fail'));
+            return back();
         }
 
         return view('web.orders.show')

@@ -44,6 +44,7 @@ class EditBusStationController extends Controller
         try {
             $busStation = $this->repository->showBusStation($id);
         } catch (Exception $ex) {
+            session()->flash('error', trans('message.bus_station.show_fail'));
             return back()->with(['error' => trans('message.bus_station.show_fail')]);
         }
 
@@ -71,9 +72,11 @@ class EditBusStationController extends Controller
             ]);
             $busStation = $this->repository->updateBusStation($id, $data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.bus_station.update_fail')]);
+            session()->flash('error', trans('message.bus_station.update_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.bus_station.update_success'));
         return redirect('bus-stations/show/' . $busStation->id);
     }
 }

@@ -46,7 +46,8 @@ class EditController extends Controller
         try {
             $driver = $this->repository->showDriver($id);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.drivers.show_fail')]);
+            session()->flash('error', trans('message.drivers.update_fail'));
+            return back();
         }
 
         return view('web.drivers.edit')->with([
@@ -78,9 +79,11 @@ class EditController extends Controller
             $data['company_id'] = Auth::user()->company_id;
             $company = $this->repository->updateDriver($id, $data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.drivers.update_fail')]);
+            session()->flash('error', trans('message.drivers.update_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.drivers.update_success'));
         return redirect('drivers/show/' . $company->id);
     }
 }

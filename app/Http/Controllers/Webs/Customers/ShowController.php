@@ -44,8 +44,8 @@ class ShowController extends Controller
         try {
             $customer = $this->repository->showCustomer($id);
         } catch (Exception $ex) {
-            return redirect('customers/index')
-                ->with(['error' => trans('message.customers.show_fail')]);
+            session()->flash('error', trans('message.customers.show_fail'));
+            return redirect('customers/index');
         }
 
         return view('web.customers.show')->with([

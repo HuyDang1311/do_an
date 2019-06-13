@@ -45,8 +45,8 @@ class ShowController extends Controller
         try {
             $car = $this->repository->showCar($id);
         } catch (Exception $ex) {
-            return redirect('cars/index')
-                ->with(['error' => trans('message.cars.show_fail')]);
+            session()->flash('error', trans('message.cars.show_fail'));
+            return redirect('cars/index');
         }
 
         return view('web.cars.show')->with([

@@ -51,7 +51,8 @@ class CreateController extends Controller
                     'seat' => Car::$seatNumber,
                 ]);
         } catch (Exception $ex) {
-            return back()->with(trans('message.cars.create_fail'));
+            session()->flash('error', trans('message.cars.create_fail'));
+            return back();
         }
     }
 
@@ -75,9 +76,11 @@ class CreateController extends Controller
 
             $car = $this->repository->createCar($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.cars.create_fail')]);
+            session()->flash('error', trans('message.cars.create_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.cars.create_success'));
         return redirect('cars/show/' . $car->id);
     }
 }

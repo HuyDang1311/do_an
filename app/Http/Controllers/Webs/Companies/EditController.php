@@ -45,7 +45,8 @@ class EditController extends Controller
         try {
             $company = $this->repository->showCompany($id);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.show_fail')]);
+            session()->flash('error', trans('message.companies.show_fail'));
+            return back();
         }
 
         return view('web.companies.edit')->with([
@@ -74,9 +75,11 @@ class EditController extends Controller
             ]);
             $company = $this->repository->updateCompany($id, $data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.update_fail')]);
+            session()->flash('error', trans('message.companies.update_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.companies.update_success'));
         return redirect('companies/show/' . $company->id);
     }
 }

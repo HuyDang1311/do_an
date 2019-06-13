@@ -44,8 +44,8 @@ class ShowController extends Controller
         try {
             $driver = $this->repository->showDriver($id);
         } catch (Exception $ex) {
-            return redirect('drivers/index')
-                ->with(['error' => trans('message.drivers.show_fail')]);
+            session()->flash('error', trans('message.drivers.show_fail'));
+            return redirect('drivers/index');
         }
 
         return view('web.drivers.show')->with([

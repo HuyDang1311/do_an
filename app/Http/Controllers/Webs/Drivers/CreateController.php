@@ -49,7 +49,8 @@ class CreateController extends Controller
         try {
             return view('web.drivers.create');
         } catch (Exception $ex) {
-            return back()->with(trans('message.drivers.create_fail'));
+            session()->flash('error', trans('message.drivers.create_fail'));
+            return back();
         }
     }
 
@@ -75,10 +76,11 @@ class CreateController extends Controller
 
             $car = $this->repository->createDriver($data);
         } catch (Exception $ex) {
-            return back()->withErrors([trans('message.drivers.create_fail')]);
+            session()->flash('error', trans('message.drivers.create_fail'));
+            return back()->withInput($data);
         }
-        session()->flash('message', trans('message.drivers.create_success'));
 
+        session()->flash('message_success', trans('message.drivers.create_success'));
         return redirect('drivers/show/' . $car->id);
     }
 }

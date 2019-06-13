@@ -45,9 +45,11 @@ class DeleteController extends Controller
         try {
             $this->repository->delete($id);
         } catch (Exception $ex) {
-            return back()->withErrors(['error' => trans('message.plans.delete_fail')]);
+            session()->flash('error', trans('message.plans.delete_fail'));
+            return back();
         }
 
+        session()->flash('message_success', trans('message.plans.delete_success'));
         return redirect('/plans/index');
     }
 }

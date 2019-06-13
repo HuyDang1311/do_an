@@ -45,7 +45,8 @@ class CreateController extends Controller
         try {
             return view('web.customers.create');
         } catch (Exception $ex) {
-            return back()->with(trans('message.customers.create_fail'));
+            session()->flash('error', trans('message.customers.create_fail'));
+            return back();
         }
     }
 
@@ -69,9 +70,11 @@ class CreateController extends Controller
 
             $car = $this->repository->createCustomer($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.customers.create_fail')]);
+            session()->flash('error', trans('message.customers.create_fail'));
+            return back()->withInput();
         }
 
+        session()->flash('message_success', trans('message.customers.create_success'));
         return redirect('customers/show/' . $car->id);
     }
 }
