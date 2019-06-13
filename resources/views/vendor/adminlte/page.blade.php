@@ -113,53 +113,32 @@
 
             <!-- Main content -->
             <section class="content">
-                @if (isset($error) && count($error ?? null))
+                @if (session()->has('error'))
                     <div class="alert alert-danger">
-                        @if (is_array($error))
+                        @if (is_array(session()->get('error')))
                             <ul>
-                                @foreach ($error as $err)
+                                @foreach (session()->get('error') as $err)
                                     <li>{{ $err }}</li>
                                 @endforeach
                             </ul>
-                        @elseif(is_string($error))
+                        @elseif (is_string(session()->get('error')))
                             <ul>
-                                <li>{{ $error }}</li>
+                                <li>{{ session()->get('error') }}</li>
                             </ul>
                         @endif
                     </div>
                 @endif
-                @if (isset($errors) && count($errors ?? null))
-                    <div class="alert alert-danger">
-                    @if (is_array($errors))
-                        <ul>
-                            @foreach ($errors as $err)
-                                <li>{{ $err }}</li>
-                            @endforeach
-                        </ul>
-                    @elseif(is_string($errors))
-                        <ul>
-                            <li>{{ $errors }}</li>
-                        </ul>
-                    @else
-                        <ul>
-                            @foreach ($errors->all() as $err)
-                                <li>{{ $err }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                    </div>
-                @endif
-                @if (isset($message) && count($message ?? null))
+                @if (session()->has('message_success'))
                     <div class="alert alert-success">
-                        @if (is_array($message))
+                        @if (is_array(session()->get('message_success')))
                             <ul>
-                                @foreach ($message->all() as $msg)
+                                @foreach (session()->get('message_success') as $msg)
                                     <li>{{ $msg }}</li>
                                 @endforeach
                             </ul>
-                        @elseif(is_string($message))
+                        @elseif (is_string(session()->get('message_success')))
                             <ul>
-                                <li>{{ $message }}</li>
+                                <li>{{ session()->get('message_success') }}</li>
                             </ul>
                         @endif
                     </div>

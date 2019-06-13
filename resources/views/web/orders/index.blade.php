@@ -72,11 +72,11 @@
                                     <tr role="row">
                                         <th>@lang('label.orders.tr_no')</th>
                                         <th>@lang('label.orders.tr_customer_name')</th>
+                                        <th>@lang('label.orders.tr_order_code')</th>
                                         <th>@lang('label.orders.tr_start_bus_station')</th>
                                         <th>@lang('label.orders.tr_date_time')</th>
-                                        <th>@lang('label.orders.tr_start_time')</th>
                                         <th>@lang('label.orders.tr_end_bus_station')</th>
-                                        <th>@lang('label.orders.tr_time_end')</th>
+                                        <th>@lang('label.orders.tr_date_end')</th>
                                         <th>@lang('label.orders.tr_company_id')</th>
                                         <th>@lang('label.orders.tr_status')</th>
                                         <th>@lang('label.orders.tr_created_at')</th>
@@ -89,11 +89,11 @@
                                             <tr role="row" class="odd">
                                                 <td>{{ $row->row_number ?? '' }}</td>
                                                 <td>{{ $row->customer_name ?? '' }}</td>
+                                                <td>{{ $row->order_code ?? '' }}</td>
                                                 <td>{{ $row->address_start_city ?? '' }} - {{ $row->address_start_name_station ?? '' }}</td>
-                                                <td>{{ $row->date_start ?? '' }}</td>
-                                                <td>{{ $row->time_start ?? '' }}</td>
+                                                <td>{{ $row->date_start ?? '' }} {{ $row->time_start ?? '' }}</td>
                                                 <td>{{ $row->address_end_city ?? '' }} - {{ $row->address_end_name_station ?? '' }}</td>
-                                                <td>{{ $row->time_end ?? '' }}</td>
+                                                <td>{{ $row->date_end ?? '' }} {{ $row->time_end ?? '' }}</td>
                                                 <td>{{ $row->company_name ?? '' }}</td>
                                                 <td>{{ $row->status_name ?? '' }}</td>
                                                 <td>{{ $row->created_at ?? '' }}</td>

@@ -65,9 +65,11 @@ class CreateController extends Controller
             $data['status'] = $data['status'] ?? Company::STATUS_USING;
             $busStation = $this->repository->createCompany($data);
         } catch (Exception $ex) {
-            return back()->with(['error' => trans('message.companies.create_fail')]);
+            session()->flash('error', trans('message.companies.create_fail'));
+            return back()->withInput($data);
         }
 
+        session()->flash('message_success', trans('message.companies.create_success'));
         return redirect('companies/show/' . $busStation->id);
     }
 }
