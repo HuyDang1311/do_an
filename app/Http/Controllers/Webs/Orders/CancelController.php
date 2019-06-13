@@ -45,11 +45,23 @@ class CancelController extends Controller
             $status = $request->get('status', Order::STATUS_CANCEL);
             $this->repository->cancelOrder($id, $status);
         } catch (Exception $ex) {
-            session()->flash('error', trans('message.orders.cancel_fail'));
+            if ($status && $status == Order::STATUS_REGISTERED) {
+                session()->flash('error', trans('message.orders.active_fail'));
+            } elseif ($status && $status == Order::STATUS_PAYING) {
+                session()->flash('error', trans('message.orders.paying_fail'));
+            } else {
+                session()->flash('error', trans('message.orders.cancel_fail'));
+            }
             return back();
         }
 
-        session()->flash('message_success', trans('message.orders.cancel_success'));
+        if ($status && $status == Order::STATUS_REGISTERED) {
+            session()->flash('message_success', trans('message.orders.active_success'));
+        } elseif ($status && $status == Order::STATUS_PAYING) {
+            session()->flash('message_success', trans('message.orders.paying_success'));
+        } else {
+            session()->flash('message_success', trans('message.orders.cancel_success'));
+        }
         return redirect('orders/index');
     }
 }

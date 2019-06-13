@@ -83,6 +83,10 @@ return [
         'show_fail' => 'Có lỗi khi xem thông tin đặt chỗ.',
         'cancel_fail' => 'Có lỗi khi hủy thông tin đặt chỗ.',
         'cancel_success' => 'Hủy thông tin đặt chỗ thành công.',
+        'active_fail' => 'Có lỗi khi kích hoạt đặt chỗ.',
+        'active_success' => 'Kích hoạt đặt chỗ thành công.',
+        'paying_fail' => 'Có lỗi khi thanh toán đặt chỗ.',
+        'paying_success' => 'Thanh toán đặt chỗ thành công.',
     ],
     'plans' => [
         'create_fail' => 'Có lỗi khi tạo thông tin lịch trình.',
