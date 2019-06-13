@@ -136,7 +136,8 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                 ->join('companies', 'companies.id', '=', 'plans.company_id')
                 ->join('cars', 'cars.id', '=', 'plans.car_id')
                 ->leftJoin(
-                    DB::raw('(SELECT array_to_json(array_agg(seat_id)) as seat_ids, plan_id FROM (SELECT unnest(od.seat_ids), od.plan_id FROM orders as od GROUP BY od.seat_ids, od.plan_id) as dt(seat_id, plan_id) GROUP BY dt.plan_id) as os'),
+                    DB::raw('(SELECT array_to_json(array_agg(seat_id)) as seat_ids, plan_id FROM (SELECT unnest(od.seat_ids), od.plan_id FROM orders as od WHERE od.status != '
+                        . Order::STATUS_CANCEL . '  GROUP BY od.seat_ids, od.plan_id) as dt(seat_id, plan_id) GROUP BY dt.plan_id) as os'),
                     'os.plan_id',
                     '=',
                     'plans.id'
@@ -165,7 +166,8 @@ class PlanRepository extends AbstractRepository implements PlanRepositoryInterfa
                 ->join('companies', 'companies.id', '=', 'plans.company_id')
                 ->join('cars', 'cars.id', '=', 'plans.car_id')
                 ->leftJoin(
-                    DB::raw('(SELECT array_to_json(array_agg(seat_id)) as seat_ids, plan_id FROM (SELECT unnest(od.seat_ids), od.plan_id FROM orders as od GROUP BY od.seat_ids, od.plan_id) as dt(seat_id, plan_id) GROUP BY dt.plan_id) as os'),
+                    DB::raw('(SELECT array_to_json(array_agg(seat_id)) as seat_ids, plan_id FROM (SELECT unnest(od.seat_ids), od.plan_id FROM orders as od WHERE od.status !='
+                        . Order::STATUS_CANCEL . '  GROUP BY od.seat_ids, od.plan_id) as dt(seat_id, plan_id) GROUP BY dt.plan_id) as os'),
                     'os.plan_id',
                     '=',
                     'plans.id'
